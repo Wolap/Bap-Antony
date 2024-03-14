@@ -6,14 +6,25 @@ li, a, ul {
 
 .navbar {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
-    padding: 1rem 2rem;
     background-color: #d5d6d6;
+    font-size: 1.1em;
+    padding-block: 1.5em;
 }
 
 .navbar ul {
     display: flex;
-    gap: 2rem;
+    gap: 3rem;
+}
+
+.btnHome {
+    width: 10px;
+    background-color: black;
+}
+
+.btnProfil {
+    width: 10px;
+    background-color: black;
 }
 
