@@ -40,6 +40,7 @@ const createSoumission = async (req, res) => {
                 categorie: req.body.categorie,
                 budget: req.body.budget,
                 lieu: req.body.lieu,
+                image: req.body.image,
                 userId: Number(decoded.id)
             },
         });
@@ -64,6 +65,7 @@ const updateSoumission = async (req, res) => {
                 categorie: req.body.categorie,
                 budget: req.body.budget,
                 lieu: req.body.lieu,
+                image: req.body.image,
                 userId: req.body.userId
             }
         });
