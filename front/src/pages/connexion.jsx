@@ -9,41 +9,49 @@ export default function Connexion() {
 
     return (
         <div className={styles.content}>
-            <h2>Connexion</h2>
-            <form>
-                <div>
-                    <label>Email :</label>
-                    <input
-                        type="email"
-                        value={infoPerso.email}
-                        onChange={(e) =>
-                            setInfoPerso({
-                                ...infoPerso,
-                                email: e.target.value,
-                            })
-                        }
-                    />
-                </div>
-                <div>
-                    <label>Mot de passe :</label>
-                    <input
-                        type="password"
-                        value={infoPerso.password}
-                        onChange={(e) =>
-                            setInfoPerso({
-                                ...infoPerso,
-                                password: e.target.value,
-                            })
-                        }
-                    />
-                </div>
-                <button type="submit" className={styles.buttonConnexion}>
-                    Se connecter
-                </button>
-                <button type="submit" className={styles.buttonInscrire}>
-                    S&apos;inscrire
-                </button>
-            </form>
+            <div className={styles.connexion}>
+                <h2 className={styles.title}>Connexion !</h2>
+                <form className={styles.formulaire}>
+                    <div>
+                        <label>Email :</label>
+                        <input
+                            type="email"
+                            className={styles.input}
+                            value={infoPerso.email}
+                            onChange={(e) =>
+                                setInfoPerso({
+                                    ...infoPerso,
+                                    email: e.target.value,
+                                })
+                            }
+                        />
+                    </div>
+                    <div>
+                        <label>Mot de passe :</label>
+                        <input
+                            type="password"
+                            className={styles.input}
+                            value={infoPerso.password}
+                            onChange={(e) =>
+                                setInfoPerso({
+                                    ...infoPerso,
+                                    password: e.target.value,
+                                })
+                            }
+                        />
+                    </div>
+                    <button type="submit" className={styles.buttonInscrire}>
+                        Connexion
+                    </button>
+                    <button type="submit" className={styles.buttonConnexion}>
+                        Inscription
+                    </button>
+                </form>
+            </div>
+            <div className={styles.txt}>
+                <h3 className={styles.subTitle}>Content de vous revoir !</h3>
+                <p>Lorem ipsum dolor sit amet.</p>
+            </div>
         </div>
     );
 }

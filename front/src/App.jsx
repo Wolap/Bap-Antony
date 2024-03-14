@@ -9,9 +9,8 @@ function App() {
     return (
         <div>
             <div className={styles.inscription}>
-                <Inscription />
+                {/* <Inscription /> */}
                 <Connexion />
-
             </div>
         </div>
     );
