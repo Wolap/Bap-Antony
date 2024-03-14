@@ -1,0 +1,41 @@
+.banner img {
+    width: 100%;
+    margin-top: 2em; 
+    background-color: rgb(48, 48, 48);
+    height: 300px;
+    object-fit: cover;
+}
+
+.presentation {
+    margin-top: 2em;
+    background-color: #bdbdbd;
+    padding: 1em;
+    margin-inline: 4em;
+}
+
+.presentation img {
+    width: 90%;
+    max-width: 600px;
+    height: 90%;
+    max-height: 300px;
+    object-fit: cover;
+}
+
+.presentation div h1 {
+    margin-bottom: 1em;
+}
+
+.infos {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2em;
+}
+
+.infos div {
+    width: 50%;
+    padding: 1em;
+}
+
+.infos:nth-child(even) {
+    flex-direction: row-reverse;
+}
