@@ -94,7 +94,7 @@ function Form() {
                         </div>
                     </section>
                 </div>
-                <button type="submit" id={styles.formbtn}>Confirmer</button>
+                <button type="submit" onClick={handleClick} id={styles.formbtn}>Confirmer</button>
             </form>
     </div>
   );

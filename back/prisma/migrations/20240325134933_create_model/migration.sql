@@ -1,6 +1,6 @@
 -- CreateTable
 CREATE TABLE `User` (
-    `id` VARCHAR(191) NOT NULL,
+    `id` INTEGER NOT NULL AUTO_INCREMENT,
     `nom` VARCHAR(191) NOT NULL,
     `prenom` VARCHAR(191) NOT NULL,
     `mail` VARCHAR(191) NOT NULL,
@@ -12,26 +12,31 @@ CREATE TABLE `User` (
 
 -- CreateTable
 CREATE TABLE `SoumissionProjets` (
-    `id` VARCHAR(191) NOT NULL,
+    `id` INTEGER NOT NULL AUTO_INCREMENT,
     `nomProjet` VARCHAR(191) NOT NULL,
     `description` VARCHAR(191) NOT NULL,
     `categorie` VARCHAR(191) NOT NULL,
-    `budget` INTEGER NOT NULL,
+    `budget` VARCHAR(191) NOT NULL,
     `lieu` VARCHAR(191) NOT NULL,
+    `image` VARCHAR(191) NOT NULL DEFAULT 'default.jpg',
+    `userId` INTEGER NOT NULL,
 
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 -- CreateTable
 CREATE TABLE `PrecedentProjets` (
-    `id` VARCHAR(191) NOT NULL,
+    `id` INTEGER NOT NULL AUTO_INCREMENT,
     `nomProjet` VARCHAR(191) NOT NULL,
     `description` VARCHAR(191) NOT NULL,
     `categorie` VARCHAR(191) NOT NULL,
-    `budget` INTEGER NOT NULL,
+    `budget` VARCHAR(191) NOT NULL,
     `lieu` VARCHAR(191) NOT NULL,
     `status` BOOLEAN NOT NULL,
     `image` VARCHAR(191) NOT NULL,
 
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+-- AddForeignKey
+ALTER TABLE `SoumissionProjets` ADD CONSTRAINT `SoumissionProjets_userId_fkey` FOREIGN KEY (`userId`) REFERENCES `User`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
