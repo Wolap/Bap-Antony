@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
-import Accueil from './pages/accueil.jsx'
+// import ProjetSoumis from './pages/projetSoumis.jsx'
 import './index.module.css'
 import { createBrowserRouter, RouterProvider } from "react-router-dom"
 // import { Router } from 'express'
@@ -10,15 +10,15 @@ import Root from './routes/root.jsx'
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Root />,
-  },
-  {
-    path: "/app",
     element: <App />,
   },
   {
-    path: "/accueil",
-    element: <Accueil />,
+    path: "/root",
+    element: <Root />,
+  },
+  {
+    path: "/projet-soumis",
+    element: <Root />, // a changer
   }
   // Exemple de route
   // {
