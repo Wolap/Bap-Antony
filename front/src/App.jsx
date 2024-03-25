@@ -1,13 +1,13 @@
-// import { useState } from "react";
-import Soumission from "./pages/projetSoumis";
-
-// import styles from "./App.module.css";
+import Navbar from "./components/navbar";
+import Accueil from "./pages/accueil";
+import "./App.module.css";
 
 function App() {
     return (
-        <div>
-              <Soumission />
-        </div>
+        <>
+            <Navbar />
+            <Accueil />
+        </>
     );
 }
 
