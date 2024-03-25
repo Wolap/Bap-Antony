@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App.jsx";
-import ProjetSoumis from "./pages/projeSoumis";
+import ProjetSoumis from "./pages/projetSoumis";
 import "./index.module.css";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
