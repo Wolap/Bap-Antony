@@ -1,0 +1,39 @@
+.flex {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 80px 60px;
+}
+
+.title {
+    font-size: 50px;
+    font-weight: 600;
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 27%;
+    border: 1px solid #e0e0e0;
+    padding: 50px;
+    box-sizing: border-box;
+}
+
+.image {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+}
+
+.lieu {
+    font-style: italic;
+}
+
+.description {
+    text-align: justify;
+}

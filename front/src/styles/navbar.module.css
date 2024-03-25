@@ -1,0 +1,30 @@
+li, a, ul {
+    text-decoration: none;
+    list-style-type: none;
+    color: black;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #d5d6d6;
+    font-size: 1.1em;
+    padding-block: 1.5em;
+}
+
+.navbar ul {
+    display: flex;
+    gap: 3rem;
+}
+
+.btnHome {
+    width: 10px;
+    background-color: black;
+}
+
+.btnProfil {
+    width: 10px;
+    background-color: black;
+}
+
