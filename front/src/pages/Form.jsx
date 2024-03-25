@@ -9,6 +9,23 @@ function Form() {
     const [lieu, setLieu] = useState('');
     const [categorie, setCategorie] = useState('');
 
+    function handleClick (){
+        fetch('http://localhost:3000', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                nom: nom,
+                description: description,
+                img: img,
+                budget: budget,
+                lieu: lieu,
+                categorie: categorie,
+            }),
+        })
+    }
+
   return (
     <div className={styles.formcontainer}>
         <h1>Proposez un projet</h1>
