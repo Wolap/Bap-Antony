@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App.jsx";
-// import ProjetSoumis from './pages/projetSoumis.jsx'
+import ProjetSoumis from "./pages/projetSoumis.jsx";
 import "./index.module.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 // import { Router } from 'express'
@@ -18,7 +18,7 @@ const router = createBrowserRouter([
     },
     {
         path: "/projet-soumis",
-        element: <Root />, // a changer
+        element: <ProjetSoumis />, // a changer
     },
     // Exemple de route
     // {
