@@ -11,7 +11,6 @@ function Form() {
 
   return (
     <div className={styles.formcontainer}>
-        <h1>Proposez un projet</h1>
             <form action="" className={styles.form}>
                 <section className={styles.title}>
                     <span>1</span>
@@ -56,7 +55,7 @@ function Form() {
                         </div>
                         <div className={styles.formgroup}>
                             <label htmlFor="lieu">
-                                <span>Lieu du projet (ne pas mettre le zip code ainsi que la ville)</span>
+                                <span>Lieu du projet</span>
                                 <input id="lieu" name="lieu" placeholder="Lieu du projet" value={lieu} onChange={(e) => setLieu(e.target.value)}></input>
                             </label>
                         </div>
@@ -77,7 +76,7 @@ function Form() {
                         </div>
                     </section>
                 </div>
-                <button type="submit" id={styles.formbtn}>Confirmer</button>
+                <button type="submit" id={styles.formbtn}>Valider</button>
             </form>
     </div>
   );

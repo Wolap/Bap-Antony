@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App.jsx";
 import ProjetSoumis from "./pages/projetSoumis";
+import Form from "./pages/Form";
 import "./index.module.css";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
@@ -21,6 +22,14 @@ const router = createBrowserRouter([
         path: "/projet-soumis",
         element: <ProjetSoumis />, 
     },
+    {
+        path: "/form",
+        element: <Form />,
+    },
+    {
+        path: "/form",
+        element: <Form />,
+    }
     // Exemple de route
     // {
     //   path: "/example",

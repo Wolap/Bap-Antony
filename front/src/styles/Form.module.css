@@ -5,8 +5,11 @@
 }
 
 .formcontainer {
-    padding: 20px;
-    padding-top: 100px;
+    padding: 100px;
+    color: #354BCF;
+    background-image: url('../assets/formBack.png');
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 .formcontainer h1 {
@@ -16,10 +19,12 @@
 }
 
 .form {
-    background-color: rgb(196, 192, 192);
-    padding: 10px;
+    border: #354BCF 1px solid;
+    border-radius: 103px;
+    padding: 50px;
     margin-inline: 20px;
     position: relative;
+    background-color: white;
 }
 
 .title {
@@ -35,7 +40,8 @@
     align-items: center;
     justify-content: center;
     border-radius: 50%;
-    background-color: white;
+    background-color: #354BCF;
+    color: white;
     margin-right: 10px;
     padding: 10px;
 }
@@ -43,6 +49,7 @@
 .title h2 {
     font-size: 20px;
     font-weight: 500;
+    color: #354BCF;
 }
 
 .formcard {
@@ -60,8 +67,8 @@
 .formgroup input {
     width: 100%;
     padding: 10px;
-    border: none;
-    border-radius: 5px;
+    border: #354BCF 1px solid;
+    border-radius: 10px;
     margin-top: 15px;
     margin-bottom: 20px;
 }
@@ -69,8 +76,8 @@
 .formgroup select {
     width: 100%;
     padding: 10px;
-    border: none;
-    border-radius: 5px;
+    border: #354BCF 1px solid;
+    border-radius: 10px;
     margin-top: 15px;
     margin-bottom: 20px;
     cursor: pointer;
@@ -92,18 +99,21 @@ input::file-selector-button {
 #description {
     width: 100%;
     padding: 10px;
-    border: none;
-    border-radius: 5px;
+    border: #354BCF 1px solid;
+    border-radius: 10px;
     margin-top: 15px;
     height: 100px;
 }
 
 #formbtn {
-    padding: 10px 50px;
+    background-color: #354BCF;
+    color: white;
+    padding: 10px 30px;
     border-radius: 5px;
     border: none;
+    border-radius: 17px;
     position: absolute;
-    bottom: 20px;
-    right: 15px;
+    bottom: 50px;
+    right: 100px;
     cursor: pointer;
 }
