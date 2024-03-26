@@ -3,32 +3,25 @@ import styles from "../styles/Inscription.module.css";
 import Navbar from "../components/navbar.jsx";
 
 export default function Inscription() {
-    const [infoPerso, setInfoPerso] = useState({
-        nom: "",
-        prenom: "",
-        email: "",
-        password: "",
-    });
+    
+
+    const [nom , setNom] = useState('');
+    const [prenom , setPrenom] = useState('');
+    const [mail , setMail] = useState('');
+    const [password , setPassword] = useState('');
 
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        fetch("http://localhost:3000/signup", {
+        fetch("http://localhost:3000/auth/signup", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify({
-                nom: infoPerso.nom,
-                prenom: infoPerso.prenom,
-                email: infoPerso.email,
-                password: infoPerso.password,
-            }),
+            body: JSON.stringify({nom, prenom, mail, password}),
         })
         .then((res) => res.json())
         .then((data) => console.log(data))
-        .catch((error) => console.error("Error:", error));
-
     };
 
     return (
@@ -43,10 +36,8 @@ export default function Inscription() {
                             <input
                                 type="text"
                                 className={styles.input}
-                                value={infoPerso.nom}
-                                onChange={(e) =>
-                                    setInfoPerso({...infoPerso, nom: e.target.value,})
-                                }
+                                value={nom}
+                                onChange={(e) => setNom(e.target.value)}
                             />
                         </div>
                         <div>
@@ -54,13 +45,8 @@ export default function Inscription() {
                             <input
                                 type="text"
                                 className={styles.input}
-                                value={infoPerso.prenom}
-                                onChange={(e) =>
-                                    setInfoPerso({
-                                        ...infoPerso,
-                                        prenom: e.target.value,
-                                    })
-                                }
+                                value={prenom}
+                                onChange={(e) => setPrenom(e.target.value)}
                             />
                         </div>
                         <div>
@@ -68,13 +54,8 @@ export default function Inscription() {
                             <input
                                 type="email"
                                 className={styles.input}
-                                value={infoPerso.email}
-                                onChange={(e) =>
-                                    setInfoPerso({
-                                        ...infoPerso,
-                                        email: e.target.value,
-                                    })
-                                }
+                                value={mail}
+                                onChange={(e) => setMail(e.target.value)}
                             />
                         </div>
                         <div>
@@ -82,13 +63,8 @@ export default function Inscription() {
                             <input
                                 type="password"
                                 className={styles.input}
-                                value={infoPerso.password}
-                                onChange={(e) =>
-                                    setInfoPerso({
-                                        ...infoPerso,
-                                        password: e.target.value,
-                                    })
-                                }
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
                             />
                         </div>
                         <button type="submit" className={styles.buttonInscrire}>
