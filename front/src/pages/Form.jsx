@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import styles from '../styles/Form.module.css';
+import Navbar from '../components/navbar.jsx';
 
 function Form() {
     const [nom, setNom] = useState('');
@@ -27,8 +28,10 @@ function Form() {
     }
 
   return (
-    <div className={styles.formcontainer}>
-        <h1>Proposez un projet</h1>
+    <>
+        <Navbar/>
+        <div className={styles.formcontainer}>
+            <h1>Proposez un projet</h1>
             <form action="" className={styles.form}>
                 <section className={styles.title}>
                     <span>1</span>
@@ -96,7 +99,8 @@ function Form() {
                 </div>
                 <button type="submit" onClick={handleClick} id={styles.formbtn}>Confirmer</button>
             </form>
-    </div>
+        </div>
+    </>
   );
 }
 

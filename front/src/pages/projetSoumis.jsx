@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import styles from "../styles/projetSoumis.module.css";
+import Navbar from "../components/navbar.jsx";
 
 export default function Soumission() {
 
@@ -22,28 +23,28 @@ export default function Soumission() {
     }, []);
 
     return (
-        <div>
-            <h1 className={styles.title}>Projet Soumis </h1>
-            <div className={styles.flex}>
+        <>
+			<Navbar/>
+            <div>
+                <h1 className={styles.title}>Projet Soumis </h1>
+                    <div className={styles.flex}>
 
-                {infoProjet.map((item, index) => (
-                    <div key={index} className={styles.card}>
-                        <img
-                            className={styles.image}
-                            src="../assets/exemple.png"
-                            alt=""
-                        />
-                        <h2 className={styles.titleProject}> Nom : {item.nomProjet} </h2>
-                        <h3 className={styles.lieu}> {item.lieu} </h3>
-                        <p className={styles.description}> {item.description} </p>
-                        <h3 className={styles.budget}> Budget : {item.budget} </h3>
-                        <p className={styles.categorie}> {item.categorie} </p>
+                        {infoProjet.map((item, index) => (
+                            <div key={index} className={styles.card}>
+                                <img
+                                    className={styles.image}
+                                    src="../assets/exemple.png"
+                                    alt=""
+                                />
+                                <h2 className={styles.titleProject}> {item.nomProjet} </h2>
+                                <h3 className={styles.lieu}> {item.lieu} </h3>
+                                <p className={styles.description}> {item.description} </p>
+                                <h3 className={styles.budget}> Budget : {item.budget} </h3>
+                                <p className={styles.categorie}> {item.categorie} </p>
+                            </div>
+                        ))}                    
                     </div>
-                ))}  
-
-                 
-                      
             </div>
-        </div>
+        </>
     );
 }
