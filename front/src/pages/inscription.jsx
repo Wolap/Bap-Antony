@@ -12,13 +12,14 @@ export default function Inscription() {
     return (
         <div className={styles.content}>
             <div className={styles.inscription}>
-                <h2 className={styles.title}>Inscription !</h2>
+                <h2 className={styles.title}>Inscription</h2>
                 <form className={styles.formulaire}>
                     <div>
                         <label className={styles.nom}>Nom :</label>
                         <input
                             type="text"
                             className={styles.input}
+                            placeholder="DUPONT"
                             value={infoPerso.nom}
                             onChange={(e) =>
                                 setInfoPerso({
@@ -29,24 +30,11 @@ export default function Inscription() {
                         />
                     </div>
                     <div>
-                        <label>Prénom :</label>
-                        <input
-                            type="text"
-                            className={styles.input}
-                            value={infoPerso.prenom}
-                            onChange={(e) =>
-                                setInfoPerso({
-                                    ...infoPerso,
-                                    prenom: e.target.value,
-                                })
-                            }
-                        />
-                    </div>
-                    <div>
                         <label>Email :</label>
                         <input
                             type="email"
                             className={styles.input}
+                            placeholder="exemple@gmail.com"
                             value={infoPerso.email}
                             onChange={(e) =>
                                 setInfoPerso({
@@ -61,6 +49,7 @@ export default function Inscription() {
                         <input
                             type="password"
                             className={styles.input}
+                            placeholder="********"
                             value={infoPerso.password}
                             onChange={(e) =>
                                 setInfoPerso({
@@ -78,10 +67,12 @@ export default function Inscription() {
                     </button>
                 </form>
             </div>
-            <div className={styles.txt}>
-                <h3 className={styles.subTitle}>Content de vous voir !</h3>
-                <p>Lorem ipsum dolor sit amet.</p>
-            </div>
+
+            <img
+                className={styles.img}
+                src="./src/assets/illustration_inscription.png"
+                alt=""
+            />
         </div>
     );
 }

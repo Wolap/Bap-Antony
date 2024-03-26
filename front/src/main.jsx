@@ -1,10 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App.jsx";
-// import ProjetSoumis from './pages/projetSoumis.jsx'
+import ProjetSoumis from "./pages/projetSoumis.jsx";
+// import Form from './pages/form.jsx'
+import Inscription from "./pages/inscription.jsx";
+import Connexion from "./pages/connexion.jsx";
 import "./index.module.css";
+
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-// import { Router } from 'express'
 import Root from "./routes/root.jsx";
 
 const router = createBrowserRouter([
@@ -18,13 +21,20 @@ const router = createBrowserRouter([
     },
     {
         path: "/projet-soumis",
-        element: <Root />, // a changer
+        element: <ProjetSoumis />,
     },
-    // Exemple de route
     // {
-    //   path: "/example",
-    //   element: <ExamplePage />,
-    // }
+    //     path: "/formulaire-soumission-projet",
+    //     element: <Form />,
+    // },
+    {
+        path: "/inscription",
+        element: <Inscription />,
+    },
+    {
+        path: "/connexion",
+        element: <Connexion />,
+    },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(

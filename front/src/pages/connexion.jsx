@@ -9,14 +9,20 @@ export default function Connexion() {
 
     return (
         <div className={styles.content}>
+            <img
+                className={styles.img}
+                src="./src/assets/illustration_connexion.png"
+                alt=""
+            />
             <div className={styles.connexion}>
-                <h2 className={styles.title}>Connexion !</h2>
+                <h2 className={styles.title}>Connexion</h2>
                 <form className={styles.formulaire}>
                     <div>
                         <label>Email :</label>
                         <input
                             type="email"
                             className={styles.input}
+                            placeholder="exemple@gmail.com"
                             value={infoPerso.email}
                             onChange={(e) =>
                                 setInfoPerso({
@@ -31,6 +37,7 @@ export default function Connexion() {
                         <input
                             type="password"
                             className={styles.input}
+                            placeholder="••••••••"
                             value={infoPerso.password}
                             onChange={(e) =>
                                 setInfoPerso({
@@ -47,10 +54,6 @@ export default function Connexion() {
                         Inscription
                     </button>
                 </form>
-            </div>
-            <div className={styles.txt}>
-                <h3 className={styles.subTitle}>Content de vous revoir !</h3>
-                <p>Lorem ipsum dolor sit amet.</p>
             </div>
         </div>
     );
