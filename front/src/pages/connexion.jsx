@@ -2,28 +2,55 @@ import { useState } from "react";
 import styles from "../styles/Connexion.module.css";
 
 export default function Connexion() {
-    const [infoPerso, setInfoPerso] = useState({
-        email: "",
-        password: "",
-    });
+
+    const [mail, setMail] = useState("");
+    const [password, setPassword] = useState("");
+    const [message, setMessage] = useState("");
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
+        fetch("http://localhost:3000/auth/login", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({mail, password}),
+        })
+        .then((res) => {
+            if (res.ok) {
+                return res.json();
+            }
+            throw new Error('Login failed');
+        })
+        .then((data) => {
+            setMessage("Login successful!");    
+            
+            localStorage.setItem('token', data.token);
+            localStorage.setItem('userId', data.userId);
+            console.log("data", data)
+            console.log(data.token);
+            console.log("user", data.userId);
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            setMessage("Login failed. Please check your credentials.");
+        });
+    };
 
     return (
         <div className={styles.content}>
             <div className={styles.connexion}>
                 <h2 className={styles.title}>Connexion !</h2>
-                <form className={styles.formulaire}>
+                {message && <p>{message}</p>}
+                <form className={styles.formulaire} onSubmit={handleSubmit} >
                     <div>
-                        <label>Email :</label>
+                        <label>mail :</label>
                         <input
-                            type="email"
+                            type="mail"
                             className={styles.input}
-                            value={infoPerso.email}
-                            onChange={(e) =>
-                                setInfoPerso({
-                                    ...infoPerso,
-                                    email: e.target.value,
-                                })
-                            }
+                            value={mail}
+                            onChange={(e) => setMail(e.target.value)}
                         />
                     </div>
                     <div>
@@ -31,21 +58,14 @@ export default function Connexion() {
                         <input
                             type="password"
                             className={styles.input}
-                            value={infoPerso.password}
-                            onChange={(e) =>
-                                setInfoPerso({
-                                    ...infoPerso,
-                                    password: e.target.value,
-                                })
-                            }
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value) }
                         />
                     </div>
                     <button type="submit" className={styles.buttonInscrire}>
                         Connexion
                     </button>
-                    <button type="submit" className={styles.buttonConnexion}>
-                        Inscription
-                    </button>
+                    <a> Vous inscrire </a>
                 </form>
             </div>
             <div className={styles.txt}>
