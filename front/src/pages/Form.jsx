@@ -13,9 +13,21 @@ function Form() {
 
     const [message, setMessage] = useState(''); 
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
+    // Fonction pour convertir une image en base64
+    function convertImageToBase64(file) {
+        return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = () => resolve(reader.result);
+        reader.onerror = error => reject(error);
+        });
+    }
     
+    // Utilisation de la fonction pour convertir l'image sélectionnée en base64
+    const handleSubmit = async (e) => {
+        const file = e.target.files[0];
+        const base64Image = await convertImageToBase64(file);
+
         const token = localStorage.getItem('token');
         let userId = localStorage.getItem('userId');
     
@@ -23,64 +35,96 @@ function Form() {
             setMessage('Vous devez être connecté pour proposer un projet');
             return;
         }
-    
-        let imageData = null;
-    
-        if (image) {
-            const reader = new FileReader();
-            reader.readAsDataURL(image);
-            reader.onloadend = async () => {
-                imageData = reader.result.split(',')[1]; 
-    
-                try {
-                    const response = await fetch("http://localhost:3000/soumissions", {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                            'x-access-token': token,
-                        },
-                        body: JSON.stringify({
-                            nomProjet,
-                            description,
-                            categorie,
-                            budget,
-                            lieu,
-                            image: imageData,
-                            userId,
-                        }),
-                    });
-                    const data = await response.json();
-                    console.log(data);
-                } catch (error) {
-                    console.error('Error:', error);
-                }
-            };
-        } else {
-            
-            try {
-                const response = await fetch("http://localhost:3000/soumissions", {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'x-access-token': token,
-                    },
-                    body: JSON.stringify({
-                        nomProjet,
-                        description,
-                        categorie,
-                        budget,
-                        lieu,
-                        image: 'default_image_base64_encoded', // Provide your default image data here
-                        userId,
-                    }),
-                });
-                const data = await response.json();
-                console.log(data);
-            } catch (error) {
-                console.error('Error:', error);
-            }
-        }
+
+        // Envoyer base64Image vers votre backend Express
+        fetch("http://localhost:3000/soumissions", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ 
+                nomProjet,
+                description,
+                categorie,
+                budget,
+                lieu,
+                image: base64Image,
+                userId,
+            })
+            .then((res) => res.json())
+            .then((data) => console.log(data))
+        })
     }
+  
+
+    // const handleSubmit = async (e) => {
+    //     e.preventDefault();
+    
+    //     const token = localStorage.getItem('token');
+    //     let userId = localStorage.getItem('userId');
+    
+    //     if (!token) {
+    //         setMessage('Vous devez être connecté pour proposer un projet');
+    //         return;
+    //     }
+    
+    //     let imageData = null;
+    
+    //     if (image) {   
+    //         const reader = new FileReader();
+    //         reader.readAsDataURL(image);
+    //         reader.onloadend = async () => {
+    //             imageData = reader.result.split(',')[1]; 
+    
+    //             try {
+    //                 const response = await fetch("http://localhost:3000/soumissions", {
+    //                     method: 'POST',
+    //                     headers: {
+    //                         'Content-Type': 'application/json',
+    //                         'x-access-token': token,
+    //                     },
+    //                     body: JSON.stringify({
+    //                         nomProjet,
+    //                         description,
+    //                         categorie,
+    //                         budget,
+    //                         lieu,
+    //                         image: imageData,
+    //                         userId,
+    //                     }),
+    //                 });
+    //                 const data = await response.json();
+    //                 console.log(data);
+    //             } catch (error) {
+    //                 console.error('Error:', error);
+    //             }
+    //         };
+    //     } else {
+            
+    //         try {
+    //             const response = await fetch("http://localhost:3000/soumissions", {
+    //                 method: 'POST',
+    //                 headers: {
+    //                     'Content-Type': 'application/json',
+    //                     'x-access-token': token,
+    //                 },
+    //                 body: JSON.stringify({
+    //                     nomProjet,
+    //                     description,
+    //                     categorie,
+    //                     budget,
+    //                     lieu,
+    //                     image: 'default_image_base64_encoded', // Provide your default image data here
+    //                     userId,
+    //                 }),
+    //             });
+    //             const data = await response.json();
+    //             console.log(data);
+    //         } catch (error) {
+    //             console.error('Error:', error);
+    //         }
+    //     }
+    // }
     
 
   return (
