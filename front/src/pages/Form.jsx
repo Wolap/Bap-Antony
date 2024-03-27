@@ -17,7 +17,7 @@ function Form() {
         e.preventDefault();
     
         const token = localStorage.getItem('token');
-        const userId = localStorage.getItem('userId');
+        let userId = localStorage.getItem('userId');
     
         if (!token) {
             setMessage('Vous devez être connecté pour proposer un projet');
