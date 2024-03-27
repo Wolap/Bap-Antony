@@ -76,6 +76,29 @@ export default function Soumission() {
                     alt=""
                 />
 
+                <div className={styles.searchFilterBar}>
+                    <input
+                        type="search"
+                        className={styles.search}
+                        placeholder="Recherche"
+                    />
+                    <div className={styles.filter}>
+                        <select name="filtre" id="filtre">
+                            <option value="recent">Le plus récent</option>
+                            <option value="ancien">Le plus ancien</option>
+                            <option value="like">Le plus aimé</option>
+                        </select>
+                        <select name="catégorie" id="categorie">
+                            <option value="tous">
+                                Choisissez une catégorie
+                            </option>
+                            <option value="environnement">Environnement</option>
+                            <option value="santé">Santé</option>
+                            <option value="éducation">Éducation</option>
+                        </select>
+                    </div>
+                </div>
+
                 <div className={styles.flex}>
                     <div className={styles.card}>
                         <img
@@ -97,6 +120,14 @@ export default function Soumission() {
                             <p className={styles.categorie}>
                                 Catégorie : {infoCatgorie.categorie}
                             </p>
+                            <div className={styles.contentLike}>
+                                <img
+                                    className={styles.imageLike}
+                                    src="./src/assets/like.png"
+                                    alt=""
+                                />
+                                <p className={styles.textLike}>234</p>
+                            </div>
                         </div>
                     </div>
                     <div className={styles.card}>
@@ -120,6 +151,14 @@ export default function Soumission() {
                             <p className={styles.categorie}>
                                 Catégorie : {infoCatgorie.categorie}
                             </p>
+                            <div className={styles.contentLike}>
+                                <img
+                                    className={styles.imageLike}
+                                    src="./src/assets/like.png"
+                                    alt=""
+                                />
+                                <p className={styles.textLike}>234</p>
+                            </div>
                         </div>
                     </div>
                     <div className={styles.card}>
@@ -142,6 +181,14 @@ export default function Soumission() {
                             <p className={styles.categorie}>
                                 Catégorie : {infoCatgorie.categorie}
                             </p>
+                            <div className={styles.contentLike}>
+                                <img
+                                    className={styles.imageLike}
+                                    src="./src/assets/like.png"
+                                    alt=""
+                                />
+                                <p className={styles.textLike}>234</p>
+                            </div>
                         </div>
                     </div>
                     <div className={styles.card}>
@@ -164,6 +211,14 @@ export default function Soumission() {
                             <p className={styles.categorie}>
                                 Catégorie : {infoCatgorie.categorie}
                             </p>
+                            <div className={styles.contentLike}>
+                                <img
+                                    className={styles.imageLike}
+                                    src="./src/assets/like.png"
+                                    alt=""
+                                />
+                                <p className={styles.textLike}>234</p>
+                            </div>
                         </div>
                     </div>
                     <div className={styles.card}>
@@ -186,6 +241,14 @@ export default function Soumission() {
                             <p className={styles.categorie}>
                                 Catégorie : {infoCatgorie.categorie}
                             </p>
+                            <div className={styles.contentLike}>
+                                <img
+                                    className={styles.imageLike}
+                                    src="./src/assets/like.png"
+                                    alt=""
+                                />
+                                <p className={styles.textLike}>234</p>
+                            </div>
                         </div>
                     </div>
                     <div className={styles.card}>
@@ -208,6 +271,14 @@ export default function Soumission() {
                             <p className={styles.categorie}>
                                 Catégorie : {infoCatgorie.categorie}
                             </p>
+                            <div className={styles.contentLike}>
+                                <img
+                                    className={styles.imageLike}
+                                    src="./src/assets/like.png"
+                                    alt=""
+                                />
+                                <p className={styles.textLike}>234</p>
+                            </div>
                         </div>
                     </div>
                 </div>
