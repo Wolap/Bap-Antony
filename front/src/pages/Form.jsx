@@ -17,7 +17,7 @@ function Form() {
         e.preventDefault();
     
         const token = localStorage.getItem('token');
-        const userId = localStorage.getItem('userId');
+        let userId = localStorage.getItem('userId');
     
         if (!token) {
             setMessage('Vous devez être connecté pour proposer un projet');
@@ -120,14 +120,14 @@ function Form() {
                             <label htmlFor="budget">
                                 <span>Budget du projet</span>
                                 <select id="budget" name="budget" value={budget} onChange={(e) => setBudget(e.target.value)}>
-                                    <option value="0-100">0 - 100€</option>
-                                    <option value="100-1000">100€ - 1.000€</option>
-                                    <option value="1000-5000">1.000€ - 5.000€</option>
-                                    <option value="5000-10000">5.000€ - 10.000€</option>
-                                    <option value="10000-50000">10.000€ - 50.000€</option>
-                                    <option value="50000-100000">50.000€ - 100.000€</option>
-                                    <option value="100000+">100.000€ +</option>
-                                    <option value="jsp">Je ne sais pas</option>
+                                    <option value="0 - 100€">0 - 100€</option>
+                                    <option value="100 - 1000€">100€ - 1.000€</option>
+                                    <option value="1000 - 5000€">1.000€ - 5.000€</option>
+                                    <option value="5000 - 10000€">5.000€ - 10.000€</option>
+                                    <option value="10000 - 50000€">10.000€ - 50.000€</option>
+                                    <option value="50000 - 100000€">50.000€ - 100.000€</option>
+                                    <option value="100000€ +">100.000€ +</option>
+                                    <option value="N/A">Je ne sais pas</option>
                                 </select>
                             </label>
                         </div>
@@ -141,14 +141,14 @@ function Form() {
                             <label htmlFor="categorie">
                                 <span>Catégorie du projet</span>
                                 <select id="categorie" name="categorie" value={categorie} onChange={(e) => setCategorie(e.target.value)}>
-                                    <option value="ecologie">Ecologie et environnement</option>
-                                    <option value="sport">Sport</option>
-                                    <option value="solidarite">Solidarité et inclusion</option>
-                                    <option value="mobilite">Mobilité</option>
-                                    <option value="culture">Culture</option>
-                                    <option value="sante">Santé</option>
-                                    <option value="education">Education</option>
-                                    <option value="autre">Autre</option>
+                                    <option value="Ecologie et environnement">Ecologie et environnement</option>
+                                    <option value="Sport">Sport</option>
+                                    <option value="Solidarité et inclusion">Solidarité et inclusion</option>
+                                    <option value="Mobilité">Mobilité</option>
+                                    <option value="Culture">Culture</option>
+                                    <option value="Santé">Santé</option>
+                                    <option value="Education">Education</option>
+                                    <option value="Autre">Autre</option>
                                 </select>
                             </label>
                         </div>
