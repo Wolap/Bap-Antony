@@ -1,28 +1,104 @@
 import { useState } from 'react';
 import styles from '../styles/Form.module.css';
+import Navbar from '../components/navbar.jsx';
 
 function Form() {
-    const [nom, setNom] = useState('');
+    const [nomProjet, setNomProjet] = useState('');
     const [description, setDescription] = useState('');
-    const [img, setImg] = useState(null);
+    const [categorie, setCategorie] = useState('');
     const [budget, setBudget] = useState('');
     const [lieu, setLieu] = useState('');
-    const [categorie, setCategorie] = useState('');
+    const [image, setImage] = useState(null);
+
+    const [message, setMessage] = useState(''); 
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+    
+        const token = localStorage.getItem('token');
+        const userId = localStorage.getItem('userId');
+    
+        if (!token) {
+            setMessage('Vous devez être connecté pour proposer un projet');
+            return;
+        }
+    
+        let imageData = null;
+    
+        if (image) {
+            const reader = new FileReader();
+            reader.readAsDataURL(image);
+            reader.onloadend = async () => {
+                imageData = reader.result.split(',')[1]; 
+    
+                try {
+                    const response = await fetch("http://localhost:3000/soumissions", {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'x-access-token': token,
+                        },
+                        body: JSON.stringify({
+                            nomProjet,
+                            description,
+                            categorie,
+                            budget,
+                            lieu,
+                            image: imageData,
+                            userId,
+                        }),
+                    });
+                    const data = await response.json();
+                    console.log(data);
+                } catch (error) {
+                    console.error('Error:', error);
+                }
+            };
+        } else {
+            
+            try {
+                const response = await fetch("http://localhost:3000/soumissions", {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'x-access-token': token,
+                    },
+                    body: JSON.stringify({
+                        nomProjet,
+                        description,
+                        categorie,
+                        budget,
+                        lieu,
+                        image: 'default_image_base64_encoded', // Provide your default image data here
+                        userId,
+                    }),
+                });
+                const data = await response.json();
+                console.log(data);
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        }
+    }
+    
 
   return (
-    <div className={styles.formcontainer}>
-        <h1>Proposez un projet</h1>
-            <form action="" className={styles.form}>
+    <>
+        <Navbar/>
+        <div className={styles.formcontainer}>
+            <h1>Proposez un projet</h1>
+            <form onSubmit={handleSubmit} className={styles.form}>
                 <section className={styles.title}>
                     <span>1</span>
                     <h2>Proposez un projet</h2>
+                    {message && <p>{message}</p>}
                 </section>
                 <div className={styles.formcard}>
                     <section>
                         <div className={styles.formgroup}>
                             <label htmlFor="nom">
                                 <span>Nom du projet</span>
-                                <input type="text" id="nom" name="nom" placeholder="Nom du projet" value={nom} onChange={(e) => setNom(e.target.value)}/>
+                                <input type="text" id="nom" name="nom" placeholder="Nom du projet" value={nomProjet} onChange={(e) => setNomProjet(e.target.value)}/>
                             </label>
                         </div>
                         <div className={styles.formgroup}>
@@ -33,9 +109,9 @@ function Form() {
                         </div>
                         <div className={styles.formgroup}>
                             <label htmlFor="img">
-                                <input type="file" id={styles.img} name="img" accept="image/*" onChange={(e) => { setImg(e.target.files[0]); }}></input>
+                                <input type="file" id={styles.img} name="img" accept="image/*" onChange={(e) => { setImage(e.target.files[0]); }}></input>
                             </label>
-                            {img && <p></p>}
+                            {image && <p></p>}
                         </div>
                     </section>
                     <section>
@@ -77,9 +153,10 @@ function Form() {
                         </div>
                     </section>
                 </div>
-                <button type="submit" id={styles.formbtn}>Confirmer</button>
+                <button type="submit" className={styles.formbtn}>Confirmer</button>
             </form>
-    </div>
+        </div>
+    </>
   );
 }
 

@@ -26,21 +26,27 @@ const getSoumission = async (req, res) => {
 }
 
 const createSoumission = async (req, res) => {
+    console.log(req.body);
     const token = req.headers["x-access-token"];
     if (!token) {
         return res.status(403).json({ error: "No token provided!" });
+    }
+
+    const { nomProjet, description, categorie, budget, lieu, image } = req.body;
+    if (!nomProjet || !description || !categorie || !budget || !lieu || !image) {
+        return res.status(400).json({ error: "Missing required fields in request body!" });
     }
 
     try {
         const decoded = jwt.verify(token, process.env.JWT_SECRET);
         const newSoumission = await prisma.soumissionProjets.create({
             data: {
-                nomProjet: req.body.nomProjet,
-                description: req.body.description,
-                categorie: req.body.categorie,
-                budget: req.body.budget,
-                lieu: req.body.lieu,
-                image: req.body.image,
+                nomProjet,
+                description,
+                categorie,
+                budget,
+                lieu,
+                image,
                 userId: Number(decoded.id)
             },
         });
@@ -49,6 +55,7 @@ const createSoumission = async (req, res) => {
         res.status(500).json({ error: error.message });
     }
 }
+
 
 const updateSoumission = async (req, res) => {
     const { id } = req.params;
@@ -66,7 +73,6 @@ const updateSoumission = async (req, res) => {
                 budget: req.body.budget,
                 lieu: req.body.lieu,
                 image: req.body.image,
-                userId: req.body.userId
             }
         });
         res.json(updatedSoumission);

@@ -27,7 +27,7 @@ model SoumissionProjets {
   nomProjet      String
   description    String
   categorie      String
-  budget         Int
+  budget         String
   lieu           String
   image          String @default("default.jpg")
   user           User   @relation(fields: [userId], references: [id])
@@ -39,7 +39,7 @@ model PrecedentProjets {
   nomProjet      String
   description    String
   categorie      String
-  budget         Int
+  budget         String
   lieu           String
   status         Boolean
   image          String
