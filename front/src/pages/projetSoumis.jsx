@@ -34,40 +34,35 @@ export default function Soumission() {
     function likeProject(projectId) {
         const key = projectId.toString();
         const userId = localStorage.getItem('userId');
-
-        console.log('userId', userId);
-        console.log('localStorage', localStorage.getItem('likesByProject'));
     
         // vérif' si utilisateur connecté
         if (!userId) {
             return false;
         }
-
+    
         // maj likes
         // méthode de useState, prend fonction en argument
         setLikesByProject(prevLikes => {
-            // prevLikes -> récup ancienne valeur
             // copie de l'ancienne valeur
             const updatedLikes = { ...prevLikes };
-
-            // check si projet a like
+            
+            // Vérifier si le projet existe dans le dictionnaire
             if (!updatedLikes[key]) {
-                // si y a pas on crée le tableau ET on ajoute le like de l'utilisateur
-                updatedLikes[key] = { [userId]: true };
-            } 
-
-            // si projet a déjà like alors on ajoute juste celui de l'utilisateur
-            else if (!updatedLikes[key][userId]) {
-                updatedLikes[key][userId] = true;
-            } 
-            // si user a déjà liké on retire son like
-            else {
-                return updatedLikes;
+                // Si le projet n'existe pas, créer un nouveau dictionnaire avec l'utilisateur
+                return { ...updatedLikes, [key]: { [userId]: true } };
+            } else {
+                // Si le projet existe déjà
+                if (updatedLikes[key][userId]) {
+                    // Si l'utilisateur a déjà aimé, supprimer le like
+                    const { [userId]: deletedValue, ...remainingLikes } = updatedLikes[key];
+                    return { ...updatedLikes, [key]: remainingLikes };
+                } else {
+                    // Si l'utilisateur n'a pas aimé, ajouter le like
+                    return { ...updatedLikes, [key]: { ...updatedLikes[key], [userId]: true } };
+                }
             }
-
-            localStorage.setItem('likesByProject', JSON.stringify(updatedLikes));
-            return updatedLikes;
         });
+        
         return true;
     }
 
