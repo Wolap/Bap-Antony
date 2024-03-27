@@ -29,7 +29,7 @@ model SoumissionProjets {
   categorie      String
   budget         String
   lieu           String
-  image          String @default("default.jpg")
+  image          Bytes
   user           User   @relation(fields: [userId], references: [id])
   userId         Int
 }
@@ -42,5 +42,5 @@ model PrecedentProjets {
   budget         String
   lieu           String
   status         Boolean
-  image          String
+  image          Bytes
 }
