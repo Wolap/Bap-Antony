@@ -23,13 +23,13 @@ function Form() {
             return;
         }
     
-        let imageData = null; // Default to null
+        let imageData = null;
     
         if (image) {
             const reader = new FileReader();
             reader.readAsDataURL(image);
             reader.onloadend = async () => {
-                imageData = reader.result.split(',')[1]; // Extract base64 data
+                imageData = reader.result.split(',')[1]; 
     
                 try {
                     const response = await fetch("http://localhost:3000/soumissions", {
@@ -55,7 +55,7 @@ function Form() {
                 }
             };
         } else {
-            // If no image is uploaded, use the default image
+            
             try {
                 const response = await fetch("http://localhost:3000/soumissions", {
                     method: 'POST',

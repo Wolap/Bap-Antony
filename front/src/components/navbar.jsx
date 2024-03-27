@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 import styles from '../styles/navbar.module.css';
 
 const Navbar = () => {
@@ -7,15 +8,15 @@ const Navbar = () => {
     return (
         <div className={styles.navbar}>
             <div className={styles.btnHome}>
-                <a href=""><img src="" alt="" /></a>
+                <Link to="/" ><img src="" alt="" /></Link>
             </div>
             <ul>
-                <li><a href="">Accueil</a></li>
-                <li><a href="">Projets</a></li>
-                <li><a href="">Soumissions Projets</a></li>
+                <li><Link to="/">Accueil</Link></li>
+                <li><Link to="/projets-soumis">Projets</Link></li>
+                <li><Link to="/formulaire-soumission-projet">Soumissions Projets</Link></li>
             </ul>
             <div className={styles.btnProfil}>
-                <a href=""><img src="" alt="" /></a>
+                <Link to="/connexion"><img src="" alt="" /></Link>
             </div>
         </div>
     )
