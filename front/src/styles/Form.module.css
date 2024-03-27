@@ -7,7 +7,7 @@
 .formcontainer {
     padding: 100px;
     color: #354BCF;
-    background-image: url('../assets/formBack.png');
+    background-image: url('../assets/bgForm.png');
     background-size: cover;
     background-repeat: no-repeat;
 }
@@ -20,22 +20,32 @@
 
 .form {
     border: #354BCF 1px solid;
-    border-radius: 103px;
+    border-radius: 5px;
     padding: 50px;
     margin-inline: 20px;
     position: relative;
     background-color: white;
 }
 
+.heart {
+    position: absolute;
+    top: 20px;
+    right: 50px;
+    width: 80px;
+}
+
 .title {
     display: flex;
     padding-top: 10px;
     padding-left: 20px;
+    align-items: center;
 }
 
 .title span {
-    width: 30px;
-    height: 30px;
+    width: 50px;
+    height: 50px;
+    font-size: 30px;
+    font-weight: 600;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -66,18 +76,18 @@
 
 .formgroup input {
     width: 100%;
-    padding: 10px;
+    padding: 20px;
     border: #354BCF 1px solid;
-    border-radius: 10px;
+    border-radius: 5px;
     margin-top: 15px;
     margin-bottom: 20px;
 }
 
 .formgroup select {
     width: 100%;
-    padding: 10px;
+    padding: 20px;
     border: #354BCF 1px solid;
-    border-radius: 10px;
+    border-radius: 5px;
     margin-top: 15px;
     margin-bottom: 20px;
     cursor: pointer;
@@ -100,7 +110,7 @@ input::file-selector-button {
     width: 100%;
     padding: 10px;
     border: #354BCF 1px solid;
-    border-radius: 10px;
+    border-radius: 5px;
     margin-top: 15px;
     height: 100px;
 }
@@ -111,9 +121,10 @@ input::file-selector-button {
     padding: 10px 30px;
     border-radius: 5px;
     border: none;
-    border-radius: 17px;
+    border-radius: 5px;
     position: absolute;
     bottom: 50px;
     right: 100px;
     cursor: pointer;
+    font-weight: 600;
 }

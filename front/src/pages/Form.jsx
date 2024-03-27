@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import Navbar from "../components/navbar";
+import Footer from "../components/footer";
 import styles from '../styles/Form.module.css';
 
 function Form() {
@@ -10,11 +12,14 @@ function Form() {
     const [categorie, setCategorie] = useState('');
 
   return (
+    <>
+    <Navbar />
     <div className={styles.formcontainer}>
             <form action="" className={styles.form}>
+            <img className={styles.heart} src="/src/assets/FormHearts.svg" alt="" />
                 <section className={styles.title}>
                     <span>1</span>
-                    <h2>Proposez un projet</h2>
+                    <h2>Proposer un projet</h2>
                 </section>
                 <div className={styles.formcard}>
                     <section>
@@ -76,9 +81,11 @@ function Form() {
                         </div>
                     </section>
                 </div>
-                <button type="submit" id={styles.formbtn}>Valider</button>
+                <button type="submit" id={styles.formbtn}>valider</button>
             </form>
     </div>
+    <Footer />
+    </>
   );
 }
 
