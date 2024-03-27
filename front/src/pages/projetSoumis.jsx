@@ -39,15 +39,14 @@ export default function Soumission() {
                 <h1 className={styles.title}>Projet Soumis </h1>
                 <input type="text" value={searchTerm} onChange={handleSearchChange} placeholder="Chercher" />
                 <select value={selectedCategory} onChange={handleCategoryChange}>
-                    <option value="all">All</option>
-                    <option value="ecologie">Ecologie et environnement</option>
-                    <option value="sport">Sport</option>
-                    <option value="solidarite">Solidarité et inclusion</option>
-                    <option value="mobilite">Mobilité</option>
-                    <option value="culture">Culture</option>
-                    <option value="sante">Santé</option>
-                    <option value="education">Education</option>
-                    <option value="autre">Autre</option>
+                    <option value="Ecologie et environnement">Ecologie et environnement</option>
+                    <option value="Sport">Sport</option>
+                    <option value="Solidarité et inclusion">Solidarité et inclusion</option>
+                    <option value="Mobilité">Mobilité</option>
+                    <option value="Culture">Culture</option>
+                    <option value="Santé">Santé</option>
+                    <option value="Education">Education</option>
+                    <option value="Autre">Autre</option>
                 </select>
                 <div className={styles.flex}>
                     {infoProjet.filter(item => (selectedCategory === 'all' || item.categorie === selectedCategory) && item.nomProjet.toLowerCase().includes(searchTerm.toLowerCase())).map((item, index) => (
