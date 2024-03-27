@@ -1,6 +1,7 @@
 import { useState } from 'react';
+import Navbar from "../components/navbar";
+import Footer from "../components/footer";
 import styles from '../styles/Form.module.css';
-import Navbar from '../components/navbar.jsx';
 
 function Form() {
     const [nomProjet, setNomProjet] = useState('');
@@ -16,7 +17,7 @@ function Form() {
         e.preventDefault();
     
         const token = localStorage.getItem('token');
-        const userId = localStorage.getItem('userId');
+        let userId = localStorage.getItem('userId');
     
         if (!token) {
             setMessage('Vous devez être connecté pour proposer un projet');
@@ -85,13 +86,13 @@ function Form() {
   return (
     <>
         <Navbar/>
-        <div className={styles.formcontainer}>
-            <h1>Proposez un projet</h1>
-            <form onSubmit={handleSubmit} className={styles.form}>
+    <div className={styles.formcontainer}>
+        <form onSubmit={handleSubmit} className={styles.form}>
+            <img className={styles.heart} src="/src/assets/FormHearts.svg" alt="" />
                 <section className={styles.title}>
                     <span>1</span>
                     <h2>Proposez un projet</h2>
-                    {message && <p>{message}</p>}
+                    
                 </section>
                 <div className={styles.formcard}>
                     <section>
@@ -119,20 +120,20 @@ function Form() {
                             <label htmlFor="budget">
                                 <span>Budget du projet</span>
                                 <select id="budget" name="budget" value={budget} onChange={(e) => setBudget(e.target.value)}>
-                                    <option value="0-100">0 - 100€</option>
-                                    <option value="100-1000">100€ - 1.000€</option>
-                                    <option value="1000-5000">1.000€ - 5.000€</option>
-                                    <option value="5000-10000">5.000€ - 10.000€</option>
-                                    <option value="10000-50000">10.000€ - 50.000€</option>
-                                    <option value="50000-100000">50.000€ - 100.000€</option>
-                                    <option value="100000+">100.000€ +</option>
-                                    <option value="jsp">Je ne sais pas</option>
+                                    <option value="0 - 100€">0 - 100€</option>
+                                    <option value="100 - 1000€">100€ - 1.000€</option>
+                                    <option value="1000 - 5000€">1.000€ - 5.000€</option>
+                                    <option value="5000 - 10000€">5.000€ - 10.000€</option>
+                                    <option value="10000 - 50000€">10.000€ - 50.000€</option>
+                                    <option value="50000 - 100000€">50.000€ - 100.000€</option>
+                                    <option value="100000€ +">100.000€ +</option>
+                                    <option value="N/A">Je ne sais pas</option>
                                 </select>
                             </label>
                         </div>
                         <div className={styles.formgroup}>
                             <label htmlFor="lieu">
-                                <span>Lieu du projet (ne pas mettre le zip code ainsi que la ville)</span>
+                                <span>Lieu du projet</span>
                                 <input id="lieu" name="lieu" placeholder="Lieu du projet" value={lieu} onChange={(e) => setLieu(e.target.value)}></input>
                             </label>
                         </div>
@@ -140,22 +141,24 @@ function Form() {
                             <label htmlFor="categorie">
                                 <span>Catégorie du projet</span>
                                 <select id="categorie" name="categorie" value={categorie} onChange={(e) => setCategorie(e.target.value)}>
-                                    <option value="ecologie">Ecologie et environnement</option>
-                                    <option value="sport">Sport</option>
-                                    <option value="solidarite">Solidarité et inclusion</option>
-                                    <option value="mobilite">Mobilité</option>
-                                    <option value="culture">Culture</option>
-                                    <option value="sante">Santé</option>
-                                    <option value="education">Education</option>
-                                    <option value="autre">Autre</option>
+                                    <option value="Ecologie et environnement">Ecologie et environnement</option>
+                                    <option value="Sport">Sport</option>
+                                    <option value="Solidarité et inclusion">Solidarité et inclusion</option>
+                                    <option value="Mobilité">Mobilité</option>
+                                    <option value="Culture">Culture</option>
+                                    <option value="Santé">Santé</option>
+                                    <option value="Education">Education</option>
+                                    <option value="Autre">Autre</option>
                                 </select>
                             </label>
                         </div>
                     </section>
                 </div>
-                <button type="submit" className={styles.formbtn}>Confirmer</button>
+                {message && <p>{message}</p>}
+                <button type="submit" id={styles.formbtn}>valider</button>
             </form>
-        </div>
+    </div>
+    <Footer />
     </>
   );
 }

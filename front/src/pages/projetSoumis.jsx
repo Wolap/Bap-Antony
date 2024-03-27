@@ -16,7 +16,7 @@ export default function Soumission() {
     }, []);
 
     useEffect(() => {
-        fetch("http://localhost:3000/precedent")
+        fetch("http://localhost:3000/soumissions")
             .then((response) => {
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
