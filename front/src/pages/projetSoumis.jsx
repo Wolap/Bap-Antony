@@ -34,6 +34,9 @@ export default function Soumission() {
     function likeProject(projectId) {
         const key = projectId.toString();
         const userId = localStorage.getItem('userId');
+
+        console.log('userId', userId);
+        console.log('localStorage', localStorage.getItem('likesByProject'));
     
         // vérif' si utilisateur connecté
         if (!userId) {
@@ -55,11 +58,11 @@ export default function Soumission() {
 
             // si projet a déjà like alors on ajoute juste celui de l'utilisateur
             else if (!updatedLikes[key][userId]) {
-                delete updatedLikes[key][userId];
+                updatedLikes[key][userId] = true;
             } 
             // si user a déjà liké on retire son like
             else {
-                updatedLikes[key][userId] = true;
+                return updatedLikes;
             }
 
             localStorage.setItem('likesByProject', JSON.stringify(updatedLikes));
