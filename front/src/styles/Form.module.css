@@ -62,6 +62,10 @@
     color: #354BCF;
 }
 
+.form p {
+    color: red;
+}
+
 .formcard {
     display: flex;
     justify-content: left;

@@ -87,13 +87,12 @@ function Form() {
     <>
         <Navbar/>
     <div className={styles.formcontainer}>
-        <h1>Proposez un projet</h1>
         <form onSubmit={handleSubmit} className={styles.form}>
             <img className={styles.heart} src="/src/assets/FormHearts.svg" alt="" />
                 <section className={styles.title}>
                     <span>1</span>
                     <h2>Proposez un projet</h2>
-                    {message && <p>{message}</p>}
+                    
                 </section>
                 <div className={styles.formcard}>
                     <section>
@@ -155,6 +154,7 @@ function Form() {
                         </div>
                     </section>
                 </div>
+                {message && <p>{message}</p>}
                 <button type="submit" id={styles.formbtn}>valider</button>
             </form>
     </div>
