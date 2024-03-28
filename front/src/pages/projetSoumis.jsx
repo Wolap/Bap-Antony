@@ -53,7 +53,7 @@ export default function Soumission() {
                         <div key={index} className={styles.card}>
                             <img
                                 className={styles.image}
-                                src="../assets/exemple.png"
+                                src="/src/assets/exemple.png"
                                 alt=""
                             />
                             <h2 className={styles.titleProject}> {item.nomProjet} </h2>
