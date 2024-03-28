@@ -26,7 +26,6 @@ const getSoumission = async (req, res) => {
 }
 
 const createSoumission = async (req, res) => {
-    console.log(req.body);
     const token = req.headers["x-access-token"];
 
     if (!token) {
@@ -34,14 +33,12 @@ const createSoumission = async (req, res) => {
     }
 
     const { nomProjet, description, categorie, budget, lieu, image } = req.body;
-    if (!nomProjet || !description || !categorie || !budget || !lieu || !image) {
+    if (!nomProjet || !description || !categorie || !budget || !lieu) {
         return res.status(400).json({ error: "Missing required fields in request body!" });
     }
 
     try {
         const decoded = jwt.verify(token, process.env.JWT_SECRET);
-        // Décoder les données d'image base64 en données binaires
-        const imageBuffer = Buffer.from(image, 'base64');
 
         // Utiliser Prisma pour créer une nouvelle entrée dans la base de données
         const newSoumission = await prisma.soumissionProjets.create({
@@ -51,7 +48,7 @@ const createSoumission = async (req, res) => {
                 categorie,
                 budget,
                 lieu,
-                image: imageBuffer, // Enregistrer l'image décodée
+                image: image || undefined,
                 userId: Number(decoded.id)
             },
         });
