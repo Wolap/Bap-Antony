@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
+import {Buffer} from 'buffer';  
 import styles from "../styles/projetSoumis.module.css";
 import Navbar from "../components/navbar.jsx";
+
+import defaultProjectImage from '../assets/bgForm.png';
 
 export default function Soumission() {
 
@@ -16,8 +19,20 @@ export default function Soumission() {
                 }   
                 return response.json();
             })
-            .then((dataa) => {
-                setInfoProjet(dataa);
+            .then((payload) => {
+                const parsedData = payload.map((item) => {
+                        if (item.image.data.length === 0) {
+                            return { ...item, image: undefined };
+                        }
+
+                        const base64Image = Buffer.from(item.image.data).toString('base64');
+                        return {
+                            ...item,
+                            image: `data:image/jpeg;base64,${base64Image}`,
+                        };
+                });
+
+                setInfoProjet(parsedData);
             })
             .catch((error) => {
                 console.error('Error fetching data:', error);
@@ -53,7 +68,7 @@ export default function Soumission() {
                         <div key={index} className={styles.card}>
                             <img
                                 className={styles.image}
-                                src="/src/assets/exemple.png"
+                                src={item.image ?? defaultProjectImage}
                                 alt=""
                             />
                             <h2 className={styles.titleProject}> {item.nomProjet} </h2>
