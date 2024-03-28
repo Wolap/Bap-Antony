@@ -115,7 +115,7 @@ export default function Soumission() {
                     <option value="Autre">Autre</option>
                 </select>
                 <div className={styles.flex}>
-                    {infoProjet.filter(item => (selectedCategory === 'all' || item.categorie === selectedCategory) && item.nomProjet.toLowerCase().includes(searchTerm.toLowerCase())).map((item, index) => (
+                    {infoProjet.filter(item => (selectedCategory === 'all' || item.categorie === selectedCategory) && item.nomProjet.toLowerCase().includes(searchTerm.toLowerCase())).reverse().map((item, index) => (
                         <div key={index} className={styles.card}>
                             <img
                                 className={styles.image}
