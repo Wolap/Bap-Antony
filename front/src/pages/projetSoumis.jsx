@@ -127,16 +127,16 @@ export default function Soumission() {
                             <h3 className={styles.budget}> Budget : {item.budget} </h3>
                             <p className={styles.categorie}> {item.categorie} </p>
                             <div>
-                                    <button
-                                        className={styles.likeButton}
-                                        onClick={() => likeProject(item.id)}
-                                    >
-                                        Like
-                                    </button>
-                                    <span className={styles.likeCount}>
-                                        {getLikesCount(item.id)}
-                                    </span>
-                                </div>
+                                <button
+                                    className={styles.likeButton}
+                                    onClick={() => likeProject(item.id)}
+                                >
+                                    Like
+                                </button>
+                                <span className={styles.likeCount}>
+                                    {getLikesCount(item.id)}
+                                </span>
+                            </div>
                         </div>
                     ))}
                 </div>
