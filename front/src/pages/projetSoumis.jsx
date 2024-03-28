@@ -8,8 +8,17 @@ import defaultProjectImage from '../assets/bgForm.png';
 export default function Soumission() {
 
     const [infoProjet, setInfoProjet] = useState([]);
+    const [likesByProject, setLikesByProject] = useState({});
     const [selectedCategory, setSelectedCategory] = useState('all');
     const [searchTerm, setSearchTerm] = useState('');
+
+    useEffect(() => {
+        // récup likes du localStorage au premier rendu
+        const likesDictionary = localStorage.getItem('likesByProject');
+        if (likesDictionary) {
+            setLikesByProject(JSON.parse(likesDictionary));
+        }
+    }, []);
 
     useEffect(() => {
         fetch("http://localhost:3000/soumissions")
@@ -47,6 +56,47 @@ export default function Soumission() {
         setSearchTerm(e.target.value);
     };
 
+    function likeProject(projectId) {
+        const key = projectId.toString();
+        const userId = localStorage.getItem('userId');
+    
+        // vérif' si utilisateur connecté
+        if (!userId) {
+            return false;
+        }
+    
+        // maj likes
+        // méthode de useState, prend fonction en argument
+        setLikesByProject(prevLikes => {
+            // copie de l'ancienne valeur
+            const updatedLikes = { ...prevLikes };
+            
+            // Vérifier si le projet existe dans le dictionnaire
+            if (!updatedLikes[key]) {
+                // Si le projet n'existe pas, créer un nouveau dictionnaire avec l'utilisateur
+                return { ...updatedLikes, [key]: { [userId]: true } };
+            } else {
+                // Si le projet existe déjà
+                if (updatedLikes[key][userId]) {
+                    // Si l'utilisateur a déjà aimé, supprimer le like
+                    const { [userId]: deletedValue, ...remainingLikes } = updatedLikes[key];
+                    return { ...updatedLikes, [key]: remainingLikes };
+                } else {
+                    // Si l'utilisateur n'a pas aimé, ajouter le like
+                    return { ...updatedLikes, [key]: { ...updatedLikes[key], [userId]: true } };
+                }
+            }
+        });
+        
+        return true;
+    }
+
+    // Récupérer le nombre de likes
+    function getLikesCount(projectId) {
+        const key = projectId.toString();
+        return likesByProject[key] ? Object.keys(likesByProject[key]).length : 0;
+    }
+
     return (
         <>
             <Navbar/>
@@ -76,6 +126,17 @@ export default function Soumission() {
                             <p className={styles.description}> {item.description} </p>
                             <h3 className={styles.budget}> Budget : {item.budget} </h3>
                             <p className={styles.categorie}> {item.categorie} </p>
+                            <div>
+                                <button
+                                    className={styles.likeButton}
+                                    onClick={() => likeProject(item.id)}
+                                >
+                                    Like
+                                </button>
+                                <span className={styles.likeCount}>
+                                    {getLikesCount(item.id)}
+                                </span>
+                            </div>
                         </div>
                     ))}
                 </div>

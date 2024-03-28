@@ -12,7 +12,7 @@ const Navbar = () => {
             </div>
             <ul>
                 <li><Link to="/">Accueil</Link></li>
-                <li><Link to="/projets-soumis">Projets</Link></li>
+                <li><Link to="/projet-soumis">Projets</Link></li>
                 <li><Link to="/formulaire-soumission-projet">Soumissions Projets</Link></li>
             </ul>
             <div className={styles.btnProfil}>
