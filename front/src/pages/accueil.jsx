@@ -20,6 +20,14 @@ const Accueil = () => {
                 </div>
             </div>
 
+            <div className={styles.fullWidth}>
+                <img
+                    className={styles.trait1}
+                    src="./src/assets/traitAccueil1.png"
+                    alt=""
+                />
+            </div>
+
             <div className={styles.budgetParticipatif}>
                 <h2>Le budget participatif c’est quoi ?</h2>
                 <p>
@@ -30,7 +38,18 @@ const Accueil = () => {
                     municipalité. Cela donne aux citoyens un pouvoir direct sur
                     l`amélioration de leur quartier.
                 </p>
-                <img src="./src/assets/maison_accueil.png" alt="" />
+                <img
+                    src="./src/assets/illustrationAccueil_question.png"
+                    alt=""
+                />
+            </div>
+
+            <div className={styles.fullWidth}>
+                <img
+                    className={styles.trait2}
+                    src="./src/assets/traitAccueil2.png"
+                    alt=""
+                />
             </div>
 
             <div className={styles.participer}>
@@ -46,14 +65,17 @@ const Accueil = () => {
                     façonner votre communauté et à améliorer votre
                     environnement.
                 </p>
-                <img
-                    src="./src/assets/illustrationAccueil_question.png"
-                    alt=""
-                />
+                <img src="./src/assets/maison_accueil.png" alt="" />
             </div>
 
-            <button className={styles.bouttonVoirPlus}>Voir plus</button>
-
+            <div className={styles.fullWidth}>
+                <img
+                    className={styles.trait3}
+                    src="./src/assets/traitAccueil3.png"
+                    alt=""
+                />
+                <button className={styles.bouttonVoirPlus}>Voir plus</button>
+            </div>
             <section className={styles.contentIdee}>
                 <div className={styles.idee}>
                     <h2 className={styles.ideeTitle}>
@@ -85,7 +107,7 @@ const Accueil = () => {
             </section>
 
             <section className={styles.containerCards}>
-                <h2>Les projet soumis </h2>
+                <h2 className={styles.containerCardsTitle}>Les projet soumis </h2>
 
                 <div className={styles.cards}>
                     <div className={styles.card}>
@@ -127,6 +149,7 @@ const Accueil = () => {
                         </div>
                         <button>Je découvre </button>
                     </div>
+
                 </div>
 
                 <button>Voir tous les projets</button>
@@ -165,11 +188,25 @@ const Accueil = () => {
                         conviviale.
                         <br />
                         <br />
+                        <br />
                         <span> À vos idées !</span>
                     </p>
                     <img src="./src/assets/portrait.png" alt="" />
                 </div>
             </section>
+
+            <div className={styles.fullWidth}>
+                <img
+                    className={styles.taches3}
+                    src="./src/assets/illustrationAccueil_tache3.png"
+                    alt=""
+                />
+                <img
+                    className={styles.trait4}
+                    src="./src/assets/traitAccueil4.png"
+                    alt=""
+                />
+            </div>
         </>
     );
 };

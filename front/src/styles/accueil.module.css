@@ -56,66 +56,71 @@ h1 {
 }
 
 .budgetParticipatif {
+    background-color: white;
     width: 70%;
     margin-inline: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: end;
     border: #354bcf solid 1px;
     position: relative;
     border-radius: 10px;
-    padding-left: 50px;
+    padding-right: 50px;
+    margin-top: 100px;
 }
 
 .budgetParticipatif h2 {
     font-size: 40px;
-    margin-block: 50px;
+    margin-block: 20px;
     color: #354bcf;
     font-weight: 900;
 }
 
 .budgetParticipatif p {
-    margin-block: 50px;
+    margin-bottom: 60px;
     width: 75%;
-    font-weight: 900;
     text-align: justify;
+    line-height: 25px;
 }
 
 .budgetParticipatif img {
     position: absolute;
-    right: 0;
+    left: 0;
     bottom: 0;
 }
 
 .participer {
-    margin-top: 100px;
+    margin-top: 200px;
     background-color: #3d47a0;
     width: 70%;
-    display: flex;
-    flex-direction: column;
-    align-items: end;
     margin-inline: auto;
     position: relative;
     border-radius: 10px;
-    padding-right: 50px;
+    padding-left: 50px;
     height: 300px;
+    padding-top: 10px;
 }
 
 .participer h2 {
     font-size: 40px;
-    margin-block: 30px;
+    margin-bottom: 30px;
     color: white;
     font-weight: 900;
+    text-align: center;
 }
 
 .participer p {
     margin-block: 20px;
     width: 75%;
-    font-weight: 900;
     text-align: justify;
     color: white;
+    font-size: 16px;
+    line-height: 40px;
 }
 
 .participer img {
     position: absolute;
-    left: 0;
+    right: 0;
     bottom: 0;
 }
 
@@ -220,7 +225,7 @@ h1 {
     flex-direction: column;
 }
 
-.containerCards h2 {
+.containerCardsTitle {
     text-align: center;
     font-size: 50px;
     margin-top: -50px;
@@ -261,6 +266,7 @@ h1 {
     position: absolute;
     right: 0;
     top: 50%;
+    z-index: -1;
 }
 
 .containerCards button {
@@ -293,27 +299,75 @@ h1 {
 }
 
 .containerDiscours {
-    display: flex;
+    margin-top: -100px;
     width: 70%;
     margin-inline: auto;
     background-color: #3f479a;
     color: white;
+    border-radius: 10px;
 }
 
 .discours {
-    padding-left: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-inline: 50px;
 }
 
-.discours h2 {
-    font-size: 30px;
-    margin-block: 50px;
+.containerDiscours h2 {
+    font-size: 38px;
+    padding-block: 50px 20px;
     text-align: center;
     font-weight: 900;
 }
 
 .discours p {
     margin-block: 50px;
-    width: 50%;
-    font-weight: 900;
+    width: 65%;
     text-align: justify;
+}
+
+.discours img {
+    margin-bottom: 40px;
+}
+
+.taches3 {
+    position: absolute;
+    left: 0;
+    top: -900px;
+    z-index: -1;
+}
+
+.fullWidth {
+    width: 100%;
+    display: flex;
+    position: relative;
+}
+
+.trait1 {
+    position: absolute;
+    left: 8%;
+    top: -50px;
+    z-index: -1;
+}
+
+.trait2 {
+    position: absolute;
+    right: 8%;
+    top: -150px;
+    z-index: -1;
+}
+
+.trait3 {
+    position: absolute;
+    left: 25%;
+    top: 0px;
+    z-index: -1;
+}
+
+.trait4 {
+    position: absolute;
+    right: 8%;
+    bottom: -150px;
+    z-index: -1;
 }
