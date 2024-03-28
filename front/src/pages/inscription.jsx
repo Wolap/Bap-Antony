@@ -9,6 +9,7 @@ export default function Inscription() {
     const [prenom , setPrenom] = useState('');
     const [mail , setMail] = useState('');
     const [password , setPassword] = useState('');
+    const [errorMessage, setErrorMessage] = useState('');
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -20,8 +21,18 @@ export default function Inscription() {
             },
             body: JSON.stringify({nom, prenom, mail, password}),
         })
-        .then((res) => res.json())
+        .then((res) => {
+            if (!res.ok) {
+                throw res;
+            }
+            return res.json();
+        })
         .then((data) => console.log(data))
+        .catch((err) => {
+            err.json().then((errorMessage) => {
+                setErrorMessage(errorMessage.error);
+            });
+        });
     };
 
     return (
@@ -38,6 +49,7 @@ export default function Inscription() {
                                 className={styles.input}
                                 value={nom}
                                 onChange={(e) => setNom(e.target.value)}
+                                required
                             />
                         </div>
                         <div>
@@ -47,6 +59,7 @@ export default function Inscription() {
                                 className={styles.input}
                                 value={prenom}
                                 onChange={(e) => setPrenom(e.target.value)}
+                                required
                             />
                         </div>
                         <div>
@@ -56,7 +69,9 @@ export default function Inscription() {
                                 className={styles.input}
                                 value={mail}
                                 onChange={(e) => setMail(e.target.value)}
+                                required
                             />
+                            {errorMessage && <p>{errorMessage}</p>}
                         </div>
                         <div>
                             <label>Mot de passe :</label>
@@ -65,6 +80,7 @@ export default function Inscription() {
                                 className={styles.input}
                                 value={password}
                                 onChange={(e) => setPassword(e.target.value)}
+                                required
                             />
                         </div>
                         <button type="submit" className={styles.buttonInscrire}>
