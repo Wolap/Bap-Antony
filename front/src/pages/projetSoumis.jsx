@@ -30,15 +30,15 @@ export default function Soumission() {
             })
             .then((payload) => {
                 const parsedData = payload.map((item) => {
-                        if (item.image.data.length === 0) {
-                            return { ...item, image: undefined };
-                        }
+                    if (item.image.data.length === 0) {
+                        return { ...item, image: undefined };
+                    }
 
-                        const base64Image = Buffer.from(item.image.data).toString('base64');
-                        return {
-                            ...item,
-                            image: `data:image/jpeg;base64,${base64Image}`,
-                        };
+                    const base64Image = Buffer.from(item.image.data).toString('base64');
+                    return {
+                        ...item,
+                        image: `data:image/jpeg;base64,${base64Image}`,
+                    };
                 });
 
                 setInfoProjet(parsedData);

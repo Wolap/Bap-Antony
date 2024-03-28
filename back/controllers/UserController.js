@@ -17,10 +17,11 @@ const getProfile = async (req, res) => {
 
         prisma.user.findUnique({
             where: {
-                email: decoded.email
+                mail: decoded.mail
             },
         }).then(user => {
             res.json(user)
+            console.log("user", user)
         })
         .catch(error => {
             res.json(error)
