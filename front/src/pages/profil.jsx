@@ -43,7 +43,7 @@ const Profil = () => {
         })
         .then(response => response.json())
         .then(data => {
-            setInfoUser({data})
+            setInfoUser(data)
             console.log('data : ',data)
         }
         );
