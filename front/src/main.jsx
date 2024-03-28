@@ -5,6 +5,7 @@ import ProjetSoumis from "./pages/projetSoumis";
 import Form from "./pages/Form";
 import Inscription from "./pages/inscription";
 import Connexion from "./pages/connexion";
+import Faq from "./pages/faq";
 
 import "./index.module.css";
 
@@ -35,6 +36,10 @@ const router = createBrowserRouter([
     {
         path: "/connexion",
         element: <Connexion />,
+    },
+    {
+        path: "/faq",
+        element: <Faq />,
     }
     // Exemple de route
     // {
