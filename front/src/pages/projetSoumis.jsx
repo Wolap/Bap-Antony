@@ -104,6 +104,7 @@ export default function Soumission() {
                 <h1 className={styles.title}>Projet Soumis </h1>
                 <input type="text" value={searchTerm} onChange={handleSearchChange} placeholder="Chercher" />
                 <select value={selectedCategory} onChange={handleCategoryChange}>
+                    <option value="all">Toutes les catégories</option>
                     <option value="Ecologie et environnement">Ecologie et environnement</option>
                     <option value="Sport">Sport</option>
                     <option value="Solidarité et inclusion">Solidarité et inclusion</option>
