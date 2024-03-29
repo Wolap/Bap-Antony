@@ -1,0 +1,122 @@
+.title {
+    font-size: 45px;
+    font-weight: 900;
+    margin-block: 75px 25px;
+    color: #00336f;
+    margin-left: 130px;
+}
+
+.text {
+    margin-left: 130px;
+    color: #354bcf;
+}
+
+.content {
+    display: flex;
+    margin-inline: 130px;
+    gap: 80px;
+}
+
+.contentProjet {
+    width: 60%;
+}
+
+.projetImg {
+    width: 700px;
+    height: 430px;
+    margin-block: 50px;
+    border-radius: 20px;
+    filter: drop-shadow(0 0 0.1rem rgb(59, 58, 58));
+}
+
+.projetLieu {
+    color: #354bcf;
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.projetBudget {
+    color: #354bcf;
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.projetDescription {
+    margin-bottom: 10px;
+}
+
+.projetDescriptionText {
+    text-align: justify;
+}
+
+.info {
+    width: 35%;
+}
+
+.infoLike {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    background-color: #ebf2ff;
+    width: 100%;
+    height: 140px;
+    border-radius: 10px;
+}
+
+.nbLike {
+    font-size: 25px;
+    font-weight: 900;
+}
+
+.partager {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    color: #00336f;
+    margin-block: 40px;
+    height: 50px;
+    border-bottom: #6878db 2px solid;
+}
+
+.partagerButton {
+    margin-bottom: 100px;
+}
+
+.partagerButton button {
+    color: white;
+    border: none;
+    width: 100%;
+    height: 50px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+    cursor: pointer;
+}
+
+.partagerLien {
+    background-color: #fd5a57;
+}
+
+.partagerFacebook {
+    background-color: #0866ff;
+}
+
+.partagerX {
+    background-color: black;
+}
+
+.publier,
+.statut,
+.theme {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    color: #00336f;
+    font-weight: 900;
+    font-size: 20px;
+    margin-block: 40px;
+    padding-left: 25px;
+    height: 100px;
+    border: #354bcf 2px solid;
+    border-radius: 20px;
+}

@@ -18,7 +18,7 @@ CREATE TABLE `SoumissionProjets` (
     `categorie` VARCHAR(191) NOT NULL,
     `budget` VARCHAR(191) NOT NULL,
     `lieu` VARCHAR(191) NOT NULL,
-    `image` VARCHAR(191) NOT NULL DEFAULT 'default.jpg',
+    `image` LONGBLOB NULL,
     `userId` INTEGER NOT NULL,
 
     PRIMARY KEY (`id`)
@@ -33,7 +33,7 @@ CREATE TABLE `PrecedentProjets` (
     `budget` VARCHAR(191) NOT NULL,
     `lieu` VARCHAR(191) NOT NULL,
     `status` BOOLEAN NOT NULL,
-    `image` VARCHAR(191) NOT NULL,
+    `image` LONGBLOB NOT NULL,
 
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import {Buffer} from 'buffer';  
+import { Buffer } from "buffer";  
 import styles from "../styles/projetSoumis.module.css";
 import Navbar from "../components/navbar.jsx";
 
