@@ -1,13 +1,11 @@
 import {useState, useEffect} from 'react'
 import { Link } from 'react-router-dom'
 import {Buffer} from 'buffer';  
-import styles from '../styles/projetSoumis.module.css';
-import stylesProjets from '../styles/projetSoumis.module.css';
+import styles from '../styles/profil.module.css';
 
 import Navbar from '../components/navbar';
 import Footer from '../components/footer';
 import ProjectCard from '../components/projectCard';
-import defaultProjectImage from '../assets/bgForm.png';
 
 const Profil = () => {
 
@@ -74,23 +72,33 @@ const Profil = () => {
     return (
         <>
             <Navbar />
-            <section>
-                <h2>Informations</h2>
-                <div>
-                    
+            <section className={styles.containerInfo}>
+                <div className={styles.informations}>
+                    <h2>Informations</h2>
                     <div>
-                        <p>Nom : {infoUser.nom}</p>
-                        <button>Modifier</button>
+                        <div className={styles.flexInfos}>
+                            <p>Nom : {infoUser.nom}</p>
+                            <button>Modifier</button>
+                        </div>
+                        <div className={styles.flexInfos}>
+                            <p>Prénom : {infoUser.prenom}</p>
+                            <button>Modifier</button>
+                        </div>
+                        <div className={styles.flexInfos}>
+                            <p>Adresse mail : {infoUser.mail}</p>
+                            <button>Modifier</button>
+                        </div>
                     </div>
+
                     <div>
-                        <p>Prénom : {infoUser.prenom}</p>
-                        <button>Modifier</button>
+                        <img src="./src/assets/tache_profil.png" alt="" />
                     </div>
+
                     <div>
-                        <p>Adresse mail : {infoUser.mail}</p>
-                        <button>Modifier</button>
+                        <img src="" alt="" />
                     </div>
                 </div>
+
             </section>
 
             <section>
