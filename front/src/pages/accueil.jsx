@@ -7,15 +7,11 @@ const Accueil = () => {
             <div className={styles.containerTitle}>
                 <div className={styles.containerTitleFilter}>
                     <h1 className={styles.title}>
-                        Vous aussi, décidez pour Anthony ?
+                        Vous aussi, décidez pour Anthony !
                     </h1>
                     <div className={styles.containerButton}>
-                        <button className={styles.buttonIdee}>
-                            Voir les idées
-                        </button>
-                        <button className={styles.buttonDecouvrir}>
-                            Je découvre
-                        </button>
+                            <a className={styles.buttonIdee} href="">Voir les idées</a>
+                            <a className={styles.buttonDecouvrir} href="">Je découvre</a>
                     </div>
                 </div>
             </div>
@@ -29,19 +25,21 @@ const Accueil = () => {
             </div>
 
             <div className={styles.budgetParticipatif}>
-                <h2>Le budget participatif c’est quoi ?</h2>
-                <p>
-                    Le budget participatif permet aux habitants de décider
-                    comment dépenser une partie de l`argent public. Ils
-                    proposent des idées, votent pour leurs préférées, et les
-                    projets les plus populaires sont financés et réalisés par la
-                    municipalité. Cela donne aux citoyens un pouvoir direct sur
-                    l`amélioration de leur quartier.
-                </p>
+                <div>
                 <img
                     src="./src/assets/illustrationAccueil_question.png"
                     alt=""
                 />
+                <h2>Le budget participatif c&apos;est quoi ?</h2>
+                <p>
+                    Le budget participatif permet aux habitants de décider
+                    comment dépenser une partie de l&apos;argent public. Ils
+                    proposent des idées, votent pour leurs préférées, et les
+                    projets les plus populaires sont financés et réalisés par la
+                    municipalité. Cela donne aux citoyens un pouvoir direct sur
+                    l&apos;amélioration de leur quartier.
+                </p>
+                </div>
             </div>
 
             <div className={styles.fullWidth}>
@@ -53,18 +51,15 @@ const Accueil = () => {
             </div>
 
             <div className={styles.participer}>
-                <h2> Comment participer ?</h2>
-                <p>
-                    - Proposez des idées: Tout le monde peut suggérer des
-                    projets pour leur quartier. <br />
-                    - Votez pour vos favoris: Choisissez les projets que vous
-                    préférez. <br />
-                    - Les projets gagnants sont réalisés: Ceux avec le plus de
-                    votes reçoivent le financement et sont concrétisés. <br />-
-                    Faites une différence dans votre quartier: Contribuez à
-                    façonner votre communauté et à améliorer votre
-                    environnement.
-                </p>
+                <div className={styles.participerText}>
+                    <h2> Comment participer ?</h2>
+                    <ul>
+                        <li>Proposez des idées: Tout le monde peut suggérer des projets pour leur quartier.</li>
+                        <li>Votez pour vos favoris: Choisissez les projets que vous préférez.</li>
+                        <li>Les projets gagnants sont réalisés: Ceux avec le plus de votes reçoivent le inancement et sont concrétisés.</li>
+                        <li>Faites une différence dans votre quartier: Contribuez à façonner votre communauté et à améliorer votre environnement.</li>
+                    </ul>
+                </div>
                 <img src="./src/assets/maison_accueil.png" alt="" />
             </div>
 
@@ -74,7 +69,7 @@ const Accueil = () => {
                     src="./src/assets/traitAccueil3.png"
                     alt=""
                 />
-                <button className={styles.bouttonVoirPlus}>Voir plus</button>
+                <a className={styles.bouttonVoirPlus} href="">Voir plus</a>
             </div>
             <section className={styles.contentIdee}>
                 <div className={styles.idee}>
@@ -98,7 +93,7 @@ const Accueil = () => {
                             <input type="text" placeholder="Indiquez le lieu" />
                         </div>
                     </div>
-                    <button>Je dépose mon idée</button>
+                    <a href="">Je dépose mon idée</a>
                     <img
                         src="./src/assets/illustrationAccueil_idee.png"
                         alt=""
@@ -121,7 +116,7 @@ const Accueil = () => {
                             <img src="./src/assets/like.png" alt="" />
                             <p>123</p>
                         </div>
-                        <button>Je découvre </button>
+                        <button>Je découvre</button>
                     </div>
                     <div className={styles.card}>
                         <img
@@ -152,7 +147,7 @@ const Accueil = () => {
 
                 </div>
 
-                <button>Voir tous les projets</button>
+                <a className={styles.bouttonVoirProjets} href="">Voir tous les projets</a>
                 <img
                     className={styles.Image}
                     src="./src/assets/illustrationAccueil_tache2.png"
