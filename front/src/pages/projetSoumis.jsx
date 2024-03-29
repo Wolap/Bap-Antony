@@ -71,9 +71,9 @@ export default function Soumission() {
             // copie de l'ancienne valeur
             const updatedLikes = { ...prevLikes };
             
-            // Vérifier si le projet existe dans le dictionnaire
+            // Vérif' si le projet existe dans dico
             if (!updatedLikes[key]) {
-                // Si le projet n'existe pas, créer un nouveau dictionnaire avec l'utilisateur
+                // Si le projet n'existe pas, créer new dico avec le user
                 return { ...updatedLikes, [key]: { [userId]: true } };
             } else {
                 // Si le projet existe déjà

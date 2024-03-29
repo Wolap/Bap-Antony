@@ -26,8 +26,6 @@ const Profil = () => {
 
     // fetch user info
     useEffect(() => {    
-        console.log('token', token);
-        console.log('useEffect running')
         // vérif' si utilisateur connecté
         if (!token) {
             console.log('no token')
@@ -39,7 +37,6 @@ const Profil = () => {
     }, []);
 
     const fetchUserData = () => {
-        console.log('fetchUserData running')
 
         fetch('http://localhost:3000/user', {
             headers: {
@@ -49,7 +46,6 @@ const Profil = () => {
         .then(response => response.json())
         .then(data => {
             setInfoUser(data)
-            console.log('data : ',data)
         }
         );     
     }
@@ -64,7 +60,6 @@ const Profil = () => {
             })
             .then((payload) => {    
                 const parsedData = payload.map((item) => {
-                    console.log('payload', payload)
 
                     if (item.image.data.length === 0) {
                         return { ...item, image: undefined };
@@ -115,10 +110,9 @@ const Profil = () => {
                 }
             }
         });  
+        console.log('likesByProject', likesByProject)
         return true;
     }
-
-    
 
     // Récupérer le nombre de likes
     function getLikesCount(projectId) {
