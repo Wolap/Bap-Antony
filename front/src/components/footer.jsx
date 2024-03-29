@@ -16,6 +16,8 @@ const Footer = () => {
                 <a href="https://www.instagram.com/antony.92160/"><img src="/src/assets/insta.png" alt="" /></a>
                 <a href="https://twitter.com/VilleAntony"><img src="/src/assets/twitter.png" alt="" /></a>
                 <a href="https://www.youtube.com/user/VilleAntony"><img src="/src/assets/youtube.png" alt="" /></a>
+                <a href="https://www.facebook.com/ville.antony/"><img src="/src/assets/fb.png" alt="" /></a>
+                <a href=""><img src="/src/assets/tiktok.png" alt="" /></a>
             </div>
         </div>
     )
