@@ -4,7 +4,6 @@ import styles from '../styles/profil.module.css';
 
 import Navbar from '../components/navbar';
 import Footer from '../components/footer';
-import ProjectCard from '../components/projectCard';
 import defaultProjectImage from '../assets/bgForm.png';
 
 const Profil = () => {
@@ -109,7 +108,7 @@ const Profil = () => {
                         <h2>Informations</h2>
 
                         <div className={styles.textes}>
-                            
+
                             <div className={styles.flexInfos}>
                                 <p> <span>Nom :</span> {editableField === 'nom' ?
                                     <input type="text" value={editedValue} onChange={handleChange} /> :
