@@ -201,6 +201,7 @@ const Profil = () => {
                     ))}
                 </div>
             </section>
+            <Footer />
         </>
     )
 }
