@@ -107,7 +107,9 @@ const Profil = () => {
                 <div className={styles.content}>
                     <div className={styles.informations}>
                         <h2>Informations</h2>
+
                         <div className={styles.textes}>
+                            
                             <div className={styles.flexInfos}>
                                 <p> <span>Nom :</span> {editableField === 'nom' ?
                                     <input type="text" value={editedValue} onChange={handleChange} /> :
