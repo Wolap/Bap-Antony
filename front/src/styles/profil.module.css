@@ -2,13 +2,64 @@
     padding: 40px;
 }
 
-.informations {
+.content {
+    display: flex;
+    justify-content: space-between;
     border-radius: 10px;
     box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.25);
-    padding: 20px;
+    padding-left: 20px;
+}
+
+.informations {
+    width: 100%;
+    max-width: 400px;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+
+.informations h2 {
+    margin-bottom: 20px;
+    font-size: 3em;
+    color: #354BCF;
+}
+
+.textes {
+    margin-left: 30px;
 }
 
 .flexInfos {
     display: flex;
+    align-items: center;   
     margin-bottom: 20px;
 }
+
+.flexInfos p span {
+    font-weight: bold;
+}
+
+.flexInfos button {
+    margin-left: 20px;
+    border: none;
+    background-color: #fff;
+    color: #354BCF;
+}
+
+.images {
+    display: flex;
+}
+
+
+
+.imgTache img {
+    width: 100%;
+}
+
+.imgEcrivain {
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+}
+
+

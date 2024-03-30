@@ -73,29 +73,40 @@ const Profil = () => {
         <>
             <Navbar />
             <section className={styles.containerInfo}>
-                <div className={styles.informations}>
-                    <h2>Informations</h2>
-                    <div>
-                        <div className={styles.flexInfos}>
-                            <p>Nom : {infoUser.nom}</p>
-                            <button>Modifier</button>
-                        </div>
-                        <div className={styles.flexInfos}>
-                            <p>Prénom : {infoUser.prenom}</p>
-                            <button>Modifier</button>
-                        </div>
-                        <div className={styles.flexInfos}>
-                            <p>Adresse mail : {infoUser.mail}</p>
-                            <button>Modifier</button>
+                <div className={styles.content}>
+                    <div className={styles.informations}>
+                        <h2>Informations</h2>
+                        <div className={styles.textes}>
+
+                            <div className={styles.flexInfos}>
+                                <p> <span>Nom :</span> {infoUser.nom}</p>
+                                <button>Modifier</button>
+                            </div>
+
+                            <div className={styles.flexInfos}>
+                                <p> <span>Prénom :</span> {infoUser.prenom}</p>
+                                <button>Modifier</button>
+                            </div>
+
+                            <div className={styles.flexInfos}>
+                                <p> <span>Age :</span> {infoUser.nom} ans</p>
+                            </div>
+
+                            <div className={styles.flexInfos}>
+                                <p> <span>Adresse mail :</span> {infoUser.mail}</p>
+                                <button>Modifier</button>
+                            </div>
                         </div>
                     </div>
 
-                    <div>
-                        <img src="./src/assets/tache_profil.png" alt="" />
-                    </div>
+                    <div className={styles.images}>
+                        <div className={styles.imgTache}>
+                            <img src="./src/assets/tache_profil.png" alt="" />
+                        </div>
 
-                    <div>
-                        <img src="" alt="" />
+                        <div className={styles.imgEcrivain}>
+                            <img src="./src/assets/illustration_ simple_ecrivain.png" alt="" />
+                        </div>
                     </div>
                 </div>
 
