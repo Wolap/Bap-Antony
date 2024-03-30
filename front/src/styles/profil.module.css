@@ -132,6 +132,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    text-align: center;
 }
 
 .projectText p {
@@ -158,6 +159,17 @@
 }
 
 /* Responsive */
+
+@media screen and (max-width: 1470px){
+    .containerProjects {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .userProjects {
+        max-width: 100%;
+    }
+}
 
 @media screen and (max-width: 1024px){
     .imgTache {
@@ -243,5 +255,11 @@
 
     .btnRegister {
         width: 80%;
+    }
+}
+
+@media screen and (max-width: 600px){
+    .imgEcrivain {
+        display: none;
     }
 }
