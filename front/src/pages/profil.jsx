@@ -6,6 +6,7 @@ import styles from '../styles/profil.module.css';
 import Navbar from '../components/navbar';
 import Footer from '../components/footer';
 import ProjectCard from '../components/projectCard';
+import defaultProjectImage from '../assets/bgForm.png';
 
 const Profil = () => {
 
@@ -90,6 +91,7 @@ const Profil = () => {
 
                             <div className={styles.flexInfos}>
                                 <p> <span>Age :</span> {infoUser.nom} ans</p>
+                                <button>Modifier</button>
                             </div>
 
                             <div className={styles.flexInfos}>
@@ -109,25 +111,47 @@ const Profil = () => {
                         </div>
                     </div>
                 </div>
-
             </section>
 
-            <section>
-                <div>
+            <section className={styles.containerProjects}>
+                <div className={styles.userProjects}>
                     <h2>Mes projets</h2>
+
                     {infoProjet.filter(item => item.userId == userId).map((item, index) => (
-                        
-                        <ProjectCard key={index} item={item} />
+                        <div className={styles.cardProject} key={index}>
+                            <div className={styles.projectImg}>
+                                <img 
+                                    src={item.image ?? defaultProjectImage}
+                                    alt="" 
+                                />
+                            </div>
+                            <div className={styles.projectText}>
+                                <p> {item.nomProjet} </p>
+                            </div>
+                        </div>
                     ))}
                 </div>
 
-                <div>
-                    <h2>Mes coups de coeurs</h2>                    
+                <div className={styles.userProjects} >
+
+                    <div className={styles.titleProject}>
+                        <h2>Mes coups de coeurs</h2>                    
+                        <img src="./src/assets/coeur_v2.png" alt="" />
+                    </div>
                     
                     {infoProjet.filter(item => item.likes.some((like) => like.userId == userId)).map((item, index) => (
-                        <ProjectCard key={index} item={item} />
+                        <div className={styles.cardProject} key={index}>
+                            <div className={styles.projectImg}>
+                                <img 
+                                    src={item.image ?? defaultProjectImage}
+                                    alt="" 
+                                />
+                            </div>
+                            <div className={styles.projectText}>
+                                <p> {item.nomProjet} </p>
+                            </div>
+                        </div>
                     ))}
-                    
                 </div>
             </section>
             <Footer />
