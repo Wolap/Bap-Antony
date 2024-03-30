@@ -1,6 +1,5 @@
-import {useState, useEffect} from 'react'
-import { Link } from 'react-router-dom'
-import {Buffer} from 'buffer';  
+import { useState, useEffect } from 'react';
+import { Buffer } from 'buffer';  
 import styles from '../styles/profil.module.css';
 
 import Navbar from '../components/navbar';
@@ -9,26 +8,25 @@ import ProjectCard from '../components/projectCard';
 import defaultProjectImage from '../assets/bgForm.png';
 
 const Profil = () => {
-
     const [infoUser, setInfoUser] = useState([]);
     const [infoProjet, setInfoProjet] = useState([]); 
+    const [editableField, setEditableField] = useState(null);
+    const [editedValue, setEditedValue] = useState('');
     const token = localStorage.getItem('token');
     const userId = localStorage.getItem('userId');
 
-    // fetch user info
+    // Fetch user info
     useEffect(() => {    
-        // vérif' si utilisateur connecté
+        // Verify if user is connected
         if (!token) {
-            console.log('no token')
+            console.log('No token');
             return;
         }
         
         fetchUserData();
-        
     }, []);
 
     const fetchUserData = () => {
-
         fetch('http://localhost:3000/user', {
             headers: {
                 'x-access-token': token 
@@ -36,10 +34,9 @@ const Profil = () => {
         })
         .then(response => response.json())
         .then(data => {
-            setInfoUser(data)
-            console.log("data", data)
-        }
-        );     
+            setInfoUser(data);
+            console.log("Data", data);
+        });     
     }
 
     useEffect(() => {
@@ -52,11 +49,9 @@ const Profil = () => {
             })
             .then((payload) => {    
                 const parsedData = payload.map((item) => {
-
                     if (item.image.data.length === 0) {
                         return { ...item, image: undefined };
                     }
-
                     const base64Image = Buffer.from(item.image.data).toString('base64');
                     return {
                         ...item,
@@ -70,6 +65,41 @@ const Profil = () => {
             });
     }, []);
 
+    const handleEdit = (field) => {
+        setEditableField(field);
+        setEditedValue(infoUser[field]);
+    };
+
+    const handleChange = (event) => {
+        setEditedValue(event.target.value);
+    };
+
+    const handleSave = () => {
+        // Call API to save edited value to the database
+        // For simplicity, let's assume you have an API endpoint to update user info
+        fetch('http://localhost:3000/user', {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+                'x-access-token': token 
+            },
+            body: JSON.stringify({ [editableField]: editedValue })
+        })
+        .then(response => {
+            if (response.ok) {
+                // Update local state with new value
+                setInfoUser(prevState => ({ ...prevState, [editableField]: editedValue }));
+                setEditableField(null);
+                setEditedValue('');
+            } else {
+                throw new Error('Failed to update user info');
+            }
+        })
+        .catch(error => {
+            console.error('Error updating user info:', error);
+        });
+    };
+
     return (
         <>
             <Navbar />
@@ -78,26 +108,42 @@ const Profil = () => {
                     <div className={styles.informations}>
                         <h2>Informations</h2>
                         <div className={styles.textes}>
-
                             <div className={styles.flexInfos}>
-                                <p> <span>Nom :</span> {infoUser.nom}</p>
-                                <button>Modifier</button>
+                                <p> <span>Nom :</span> {editableField === 'nom' ?
+                                    <input type="text" value={editedValue} onChange={handleChange} /> :
+                                    infoUser.nom
+                                }</p>
+                                <button onClick={() => handleEdit('nom')}>Modifier</button>
                             </div>
 
                             <div className={styles.flexInfos}>
-                                <p> <span>Prénom :</span> {infoUser.prenom}</p>
-                                <button>Modifier</button>
+                                <p> <span>Prénom :</span> {editableField === 'prenom' ?
+                                    <input type="text" value={editedValue} onChange={handleChange} /> :
+                                    infoUser.prenom
+                                }</p>
+                                <button onClick={() => handleEdit('prenom')}>Modifier</button>
                             </div>
 
                             <div className={styles.flexInfos}>
-                                <p> <span>Age :</span> {infoUser.nom} ans</p>
-                                <button>Modifier</button>
+                                <p> <span>Age :</span> {editableField === 'age' ?
+                                    <input type="text" value={editedValue} onChange={handleChange} /> :
+                                    infoUser.age
+                                } ans</p>
+                                <button onClick={() => handleEdit('age')}>Modifier</button>
                             </div>
 
                             <div className={styles.flexInfos}>
-                                <p> <span>Adresse mail :</span> {infoUser.mail}</p>
-                                <button>Modifier</button>
+                                <p> <span>Adresse mail :</span> {editableField === 'mail' ?
+                                    <input type="text" value={editedValue} onChange={handleChange} /> :
+                                    infoUser.mail
+                                }</p>
+                                <button onClick={() => handleEdit('mail')}>Modifier</button>
                             </div>
+                        </div>
+                        <div className={styles.containerBtn}>
+                            {editableField && (
+                                <button className={styles.btnRegister} onClick={handleSave}>Enregistrer</button>
+                            )}
                         </div>
                     </div>
 
@@ -159,4 +205,4 @@ const Profil = () => {
     )
 }
 
-export default Profil
+export default Profil;

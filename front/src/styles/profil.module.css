@@ -43,6 +43,12 @@
     font-weight: bold;
 }
 
+.flexInfos input {
+    margin-top: 0.5em;
+    border: 1px solid #354BCF;
+    border-radius: 5px;
+}
+
 .flexInfos button {
     margin-left: 1.5em;
     border: none;
@@ -134,4 +140,19 @@
     font-weight: bold;
 }
 
+.containerBtn {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin-block: 1em;
+}
 
+.btnRegister {
+    width: 300px;
+    background-color: #354BCF;
+    border: none;
+    color: #fff;
+    padding: 0.5em;
+    border-radius: 5px;
+    font-size: 1.2em;
+}
