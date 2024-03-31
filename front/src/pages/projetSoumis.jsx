@@ -3,27 +3,36 @@ import Navbar from "../components/navbar";
 
 import styles from "../styles/projetSoumis.module.css";
 
+
 export default function Soumission() {
-    const [infoNom, setInfoNom] = useState({
-        nom: "Parc de la paix",
-    });
 
-    const [infoLieu, setInfoLieu] = useState({
-        lieu: "34 rue de la paix, 75000 Paris",
-    });
+    const [infoProjet, setInfoProjet] = useState([]);
+    const [selectedCategory, setSelectedCategory] = useState('all');
+    const [searchTerm, setSearchTerm] = useState('');
 
-    const [infoDescription, setInfoDescription] = useState({
-        description:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec, mattis ac neque. Duis vulputate commodo.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec, mattis ac neque. Duis vulputate commodo.",
-    });
+    useEffect(() => {
+        fetch("http://localhost:3000/soumissions")
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }   
+                return response.json();
+            })
+            .then((dataa) => {
+                setInfoProjet(dataa);
+            })
+            .catch((error) => {
+                console.error('Error fetching data:', error);
+            });
+    }, []);
 
-    const [infoBudget, setInfoBudget] = useState({
-        budget: "3499-4999 €",
-    });
+    const handleCategoryChange = (e) => {
+        setSelectedCategory(e.target.value);
+    };
 
-    const [infoCatgorie, setInfoCategorie] = useState({
-        categorie: "Environnement",
-    });
+    const handleSearchChange = (e) => {
+        setSearchTerm(e.target.value);
+    };
 
     return (
         <>
@@ -78,9 +87,11 @@ export default function Soumission() {
 
                 <div className={styles.searchFilterBar}>
                     <input
-                        type="search"
+                        type="text"
                         className={styles.search}
-                        placeholder="Recherche"
+                        value={searchTerm}
+                        onChange={handleSearchChange}
+                        placeholder="Chercher"
                     />
                     <div className={styles.filter}>
                         <select name="filtre" id="filtre">
@@ -88,199 +99,62 @@ export default function Soumission() {
                             <option value="ancien">Le plus ancien</option>
                             <option value="like">Le plus aimé</option>
                         </select>
-                        <select name="catégorie" id="categorie">
-                            <option value="tous">
-                                Choisissez une catégorie
+                        <select
+                            value={selectedCategory}
+                            onChange={handleCategoryChange}
+                        >
+                            <option value="Ecologie et environnement">
+                                Ecologie et environnement
                             </option>
-                            <option value="environnement">Environnement</option>
-                            <option value="santé">Santé</option>
-                            <option value="éducation">Éducation</option>
+                            <option value="Sport">Sport</option>
+                            <option value="Solidarité et inclusion">
+                                Solidarité et inclusion
+                            </option>
+                            <option value="Mobilité">Mobilité</option>
+                            <option value="Culture">Culture</option>
+                            <option value="Santé">Santé</option>
+                            <option value="Education">Education</option>
+                            <option value="Autre">Autre</option>
                         </select>
                     </div>
                 </div>
 
                 <div className={styles.flex}>
-                    <div className={styles.card}>
-                        <img
-                            className={styles.image}
-                            src="./src/assets/exemple.png"
-                            alt=""
-                        />
-                        <div>
-                            <h2 className={styles.titleProject}>
-                                {infoNom.nom}
-                            </h2>
-                            <h3 className={styles.lieu}> {infoLieu.lieu} </h3>
-                            <p className={styles.description}>
-                                {infoDescription.description}
-                            </p>
-                            <h3 className={styles.budget}>
-                                Budget : {infoBudget.budget}
-                            </h3>
-                            <p className={styles.categorie}>
-                                Catégorie : {infoCatgorie.categorie}
-                            </p>
-                            <div className={styles.contentLike}>
+                    {infoProjet
+                        .filter(
+                            (item) =>
+                                (selectedCategory === "all" ||
+                                    item.categorie === selectedCategory) &&
+                                item.nomProjet
+                                    .toLowerCase()
+                                    .includes(searchTerm.toLowerCase())
+                        )
+                        .map((item, index) => (
+                            <div key={index} className={styles.card}>
                                 <img
-                                    className={styles.imageLike}
-                                    src="./src/assets/like.png"
+                                    className={styles.image}
+                                    src="../assets/exemple.png"
                                     alt=""
                                 />
-                                <p className={styles.textLike}>234</p>
+                                <h2 className={styles.titleProject}>
+                                    {" "}
+                                    {item.nomProjet}{" "}
+                                </h2>
+                                <h3 className={styles.lieu}> {item.lieu} </h3>
+                                <p className={styles.description}>
+                                    {" "}
+                                    {item.description}{" "}
+                                </p>
+                                <h3 className={styles.budget}>
+                                    {" "}
+                                    Budget : {item.budget}{" "}
+                                </h3>
+                                <p className={styles.categorie}>
+                                    {" "}
+                                    {item.categorie}{" "}
+                                </p>
                             </div>
-                        </div>
-                    </div>
-                    <div className={styles.card}>
-                        <img
-                            className={styles.image}
-                            src="./src/assets/exemple.png"
-                            alt=""
-                        />
-
-                        <div>
-                            <h2 className={styles.titleProject}>
-                                {infoNom.nom}
-                            </h2>
-                            <h3 className={styles.lieu}> {infoLieu.lieu} </h3>
-                            <p className={styles.description}>
-                                {infoDescription.description}
-                            </p>
-                            <h3 className={styles.budget}>
-                                Budget : {infoBudget.budget}
-                            </h3>
-                            <p className={styles.categorie}>
-                                Catégorie : {infoCatgorie.categorie}
-                            </p>
-                            <div className={styles.contentLike}>
-                                <img
-                                    className={styles.imageLike}
-                                    src="./src/assets/like.png"
-                                    alt=""
-                                />
-                                <p className={styles.textLike}>234</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div className={styles.card}>
-                        <img
-                            className={styles.image}
-                            src="./src/assets/exemple.png"
-                            alt=""
-                        />
-                        <div>
-                            <h2 className={styles.titleProject}>
-                                {infoNom.nom}
-                            </h2>
-                            <h3 className={styles.lieu}> {infoLieu.lieu} </h3>
-                            <p className={styles.description}>
-                                {infoDescription.description}
-                            </p>
-                            <h3 className={styles.budget}>
-                                Budget : {infoBudget.budget}
-                            </h3>
-                            <p className={styles.categorie}>
-                                Catégorie : {infoCatgorie.categorie}
-                            </p>
-                            <div className={styles.contentLike}>
-                                <img
-                                    className={styles.imageLike}
-                                    src="./src/assets/like.png"
-                                    alt=""
-                                />
-                                <p className={styles.textLike}>234</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div className={styles.card}>
-                        <img
-                            className={styles.image}
-                            src="./src/assets/exemple.png"
-                            alt=""
-                        />
-                        <div>
-                            <h2 className={styles.titleProject}>
-                                {infoNom.nom}
-                            </h2>
-                            <h3 className={styles.lieu}> {infoLieu.lieu} </h3>
-                            <p className={styles.description}>
-                                {infoDescription.description}
-                            </p>
-                            <h3 className={styles.budget}>
-                                Budget : {infoBudget.budget}
-                            </h3>
-                            <p className={styles.categorie}>
-                                Catégorie : {infoCatgorie.categorie}
-                            </p>
-                            <div className={styles.contentLike}>
-                                <img
-                                    className={styles.imageLike}
-                                    src="./src/assets/like.png"
-                                    alt=""
-                                />
-                                <p className={styles.textLike}>234</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div className={styles.card}>
-                        <img
-                            className={styles.image}
-                            src="./src/assets/exemple.png"
-                            alt=""
-                        />
-                        <div>
-                            <h2 className={styles.titleProject}>
-                                {infoNom.nom}
-                            </h2>
-                            <h3 className={styles.lieu}> {infoLieu.lieu} </h3>
-                            <p className={styles.description}>
-                                {infoDescription.description}
-                            </p>
-                            <h3 className={styles.budget}>
-                                Budget : {infoBudget.budget}
-                            </h3>
-                            <p className={styles.categorie}>
-                                Catégorie : {infoCatgorie.categorie}
-                            </p>
-                            <div className={styles.contentLike}>
-                                <img
-                                    className={styles.imageLike}
-                                    src="./src/assets/like.png"
-                                    alt=""
-                                />
-                                <p className={styles.textLike}>234</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div className={styles.card}>
-                        <img
-                            className={styles.image}
-                            src="./src/assets/exemple.png"
-                            alt=""
-                        />
-                        <div>
-                            <h2 className={styles.titleProject}>
-                                {infoNom.nom}
-                            </h2>
-                            <h3 className={styles.lieu}> {infoLieu.lieu} </h3>
-                            <p className={styles.description}>
-                                {infoDescription.description}
-                            </p>
-                            <h3 className={styles.budget}>
-                                Budget : {infoBudget.budget}
-                            </h3>
-                            <p className={styles.categorie}>
-                                Catégorie : {infoCatgorie.categorie}
-                            </p>
-                            <div className={styles.contentLike}>
-                                <img
-                                    className={styles.imageLike}
-                                    src="./src/assets/like.png"
-                                    alt=""
-                                />
-                                <p className={styles.textLike}>234</p>
-                            </div>
-                        </div>
-                    </div>
+                        ))}
                 </div>
             </div>
         </>
