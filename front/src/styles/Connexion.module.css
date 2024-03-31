@@ -32,12 +32,6 @@ label {
     margin-bottom: 20px;
 }
 
-/* .subTitle {
-    font-size: xx-large;
-    margin-bottom: 20px;
-    color: #354bcf;
-} */
-
 .content {
     margin: 100px auto;
     display: flex;
@@ -46,6 +40,18 @@ label {
     width: 50%;
     border-radius: 50px;
     border: 1px solid #354bcf;
+
+    @media screen and (max-width: 1600px){
+        width: 70%;
+    }
+
+    @media screen and (max-width: 1150px){
+        border: none;
+    }
+
+    @media screen and (max-width: 600px){
+        width: 90%;
+    }
 }
 
 .connexion {
@@ -56,12 +62,26 @@ label {
     width: 50%;
     height: 60%;
     border-radius: 50px 0 0 50px;
+
+    @media screen and (max-width: 1150px){
+        width: 70%;
+        border: #354bcf 1px solid;
+        border-radius: 50px;
+    }
+
+    @media screen and (max-width: 600px){
+        width: 100%;
+    }
 }
 
 .img {
     width: 50%;
     border-radius: 50px 0 0 50px;
     border-right: #354bcf 1px solid;
+
+    @media screen and (max-width: 1150px){
+        display: none;
+    }
 }
 
 .buttonInscrire,
@@ -81,4 +101,8 @@ label {
 
 .buttonInscrire {
     margin-top: 40px;
+}
+
+.buttonConnexion {
+    margin-bottom: 20px;
 }

@@ -30,6 +30,32 @@ export default function Inscription() {
                         />
                     </div>
                     <div>
+                        <label className={styles.prenom}>Prénom :</label>
+                        <input
+                            type="text"
+                            className={styles.input}
+                            placeholder="Jean"
+                            value={infoPerso.prenom}
+                            onChange={(e) =>
+                                setInfoPerso({
+                                    ...infoPerso,
+                                    prenom: e.target.value,
+                                })
+                            }
+                        />
+                    </div>
+                    <div>
+                        <label className={styles.age}>Age :</label>
+                        <input
+                            type="number"
+                            className={styles.input}
+                            placeholder="23"
+                            min="10"
+                            max="150"
+                            value={infoPerso.age}
+                        />
+                    </div>
+                    <div>
                         <label>Email :</label>
                         <input
                             type="email"
