@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Navbar from "../components/navbar";
 
 import styles from "../styles/projetSoumis.module.css";
@@ -136,23 +136,28 @@ export default function Soumission() {
                                     src="../assets/exemple.png"
                                     alt=""
                                 />
-                                <h2 className={styles.titleProject}>
-                                    {" "}
-                                    {item.nomProjet}{" "}
-                                </h2>
-                                <h3 className={styles.lieu}> {item.lieu} </h3>
-                                <p className={styles.description}>
-                                    {" "}
-                                    {item.description}{" "}
-                                </p>
-                                <h3 className={styles.budget}>
-                                    {" "}
-                                    Budget : {item.budget}{" "}
-                                </h3>
-                                <p className={styles.categorie}>
-                                    {" "}
-                                    {item.categorie}{" "}
-                                </p>
+                                <div>
+                                    <h2 className={styles.titleProject}>
+                                        {" "}
+                                        {item.nomProjet}{" "}
+                                    </h2>
+                                    <h3 className={styles.lieu}>
+                                        {" "}
+                                        {item.lieu}{" "}
+                                    </h3>
+                                    <p className={styles.description}>
+                                        {" "}
+                                        {item.description}{" "}
+                                    </p>
+                                    <h3 className={styles.budget}>
+                                        {" "}
+                                        Budget : {item.budget}{" "}
+                                    </h3>
+                                    <p className={styles.categorie}>
+                                        {" "}
+                                        {item.categorie}{" "}
+                                    </p>
+                                </div>
                             </div>
                         ))}
                 </div>
