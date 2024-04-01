@@ -148,11 +148,7 @@ const Accueil = () => {
                 </div>
 
                 <a className={styles.bouttonVoirProjets} href="">Voir tous les projets</a>
-                <img
-                    className={styles.Image}
-                    src="./src/assets/illustrationAccueil_tache2.png"
-                    alt=""
-                />
+
             </section>
 
             <section className={styles.containerDiscours}>
