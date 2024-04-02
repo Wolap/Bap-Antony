@@ -21,6 +21,10 @@ ul {
     gap: 3rem;
 }
 
+.navbar a {
+    font-family: "fredokaBold", sans-serif;
+}
+
 .connecter {
     display: flex;
     gap: 1rem;
@@ -98,7 +102,7 @@ ul {
 
     .burgerTitle {
         font-size: 30px;
-        font-weight: 900;
+        font-family: "fredokaBold", sans-serif;
         margin-block: 30px;
         text-transform: uppercase;
         color: #354bcf;
@@ -107,7 +111,7 @@ ul {
     .burgerSubtitle {
         margin-bottom: 30px;
         text-transform: uppercase;
-        font-weight: 900;
+        font-family: "fredokaBold", sans-serif;
         align-items: start;
         color: #354bcf;
     }
@@ -129,7 +133,7 @@ ul {
         border: none;
         border-radius: 2.5px;
         font-size: 16px;
-        font-weight: 900;
+        font-family: "fredokaBold", sans-serif;
     }
 
     hr {
@@ -149,7 +153,7 @@ ul {
 
     .budgetSubtitle {
         text-transform: uppercase;
-        font-weight: 900;
+        font-family: "fredokaBold", sans-serif;
         align-items: start;
         color: #354bcf;
     }
@@ -161,11 +165,11 @@ ul {
         background-color: white;
         border: #354bcf solid 2px;
         border-radius: 2.5px;
-        font-weight: 900;
+        font-family: "fredokaBold", sans-serif;
     }
 
     .deconnexion {
-        font-weight: 900;
+        font-family: "fredokaBold", sans-serif;
         width: 100%;
         height: 40px;
         background-color: #e22c3f;
