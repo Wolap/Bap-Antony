@@ -25,6 +25,12 @@
     text-align: center;
 }
 
+.containerLike img {
+    width: 25px;
+    height: 25px;
+
+}
+
 .buttonLike {
     border: none;
     background-color: white;
