@@ -1,12 +1,24 @@
 import { useEffect, useState } from "react";
+import {Buffer} from 'buffer';  
 import styles from "../styles/projetSoumis.module.css";
 import Navbar from "../components/navbar.jsx";
+import ProjectCard from "../components/projectCard.jsx";
 
 export default function Soumission() {
 
     const [infoProjet, setInfoProjet] = useState([]);
+    // const [likesByProject, setLikesByProject] = useState({});
     const [selectedCategory, setSelectedCategory] = useState('all');
     const [searchTerm, setSearchTerm] = useState('');
+
+    useEffect(() => {
+        // récup likes du localStorage au premier rendu
+        // setLikesByProject(JSON.parse(localStorage.getItem('likesByProject') ?? '{}'));
+    }, []);
+
+    useEffect(() => {
+        console.log('infoProjet', infoProjet);
+    }, [infoProjet]);
 
     useEffect(() => {
         fetch("http://localhost:3000/soumissions")
@@ -16,8 +28,20 @@ export default function Soumission() {
                 }   
                 return response.json();
             })
-            .then((dataa) => {
-                setInfoProjet(dataa);
+            .then((payload) => {
+                const parsedData = payload.map((item) => {
+                        if (item.image.data.length === 0) {
+                            return { ...item, image: undefined };
+                        }
+
+                        const base64Image = Buffer.from(item.image.data).toString('base64');
+                        return {
+                            ...item,
+                            image: `data:image/jpeg;base64,${base64Image}`,
+                        };
+                });
+
+                setInfoProjet(parsedData);
             })
             .catch((error) => {
                 console.error('Error fetching data:', error);
@@ -50,18 +74,7 @@ export default function Soumission() {
                 </select>
                 <div className={styles.flex}>
                     {infoProjet.filter(item => (selectedCategory === 'all' || item.categorie === selectedCategory) && item.nomProjet.toLowerCase().includes(searchTerm.toLowerCase())).map((item, index) => (
-                        <div key={index} className={styles.card}>
-                            <img
-                                className={styles.image}
-                                src="/src/assets/exemple.png"
-                                alt=""
-                            />
-                            <h2 className={styles.titleProject}> {item.nomProjet} </h2>
-                            <h3 className={styles.lieu}> {item.lieu} </h3>
-                            <p className={styles.description}> {item.description} </p>
-                            <h3 className={styles.budget}> Budget : {item.budget} </h3>
-                            <p className={styles.categorie}> {item.categorie} </p>
-                        </div>
+                        <ProjectCard key={index} item={item} />
                     ))}
                 </div>
             </div>

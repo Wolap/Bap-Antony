@@ -6,12 +6,13 @@ import styles from '../styles/Form.module.css';
 function Form() {
     const [nomProjet, setNomProjet] = useState('');
     const [description, setDescription] = useState('');
-    const [categorie, setCategorie] = useState('');
-    const [budget, setBudget] = useState('');
+    const [categorie, setCategorie] = useState('Autre');
+    const [budget, setBudget] = useState('N/A');
     const [lieu, setLieu] = useState('');
     const [image, setImage] = useState(null);
 
-    const [message, setMessage] = useState(''); 
+    const [message, setMessage] = useState('');
+  
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -26,7 +27,7 @@ function Form() {
     
         let imageData = null;
     
-        if (image) {
+        if (image) {   
             const reader = new FileReader();
             reader.readAsDataURL(image);
             reader.onloadend = async () => {
@@ -70,7 +71,6 @@ function Form() {
                         categorie,
                         budget,
                         lieu,
-                        image: 'default_image_base64_encoded', // Provide your default image data here
                         userId,
                     }),
                 });
@@ -86,13 +86,13 @@ function Form() {
   return (
     <>
         <Navbar/>
-    <div className={styles.formcontainer}>
-        <form onSubmit={handleSubmit} className={styles.form}>
-            <img className={styles.heart} src="/src/assets/FormHearts.svg" alt="" />
+        <div className={styles.formcontainer}>
+            <form onSubmit={handleSubmit}  className={styles.form}>
+                <img id={styles.bottom} className={styles.heart} src="/src/assets/MainForm.svg" alt="" />
+                <img id={styles.top} className={styles.heart} src="/src/assets/MainHover.svg" alt="" />
                 <section className={styles.title}>
                     <span>1</span>
-                    <h2>Proposez un projet</h2>
-                    
+                    <h2>Proposez un projet</h2>   
                 </section>
                 <div className={styles.formcard}>
                     <section>
@@ -127,7 +127,7 @@ function Form() {
                                     <option value="10000 - 50000€">10.000€ - 50.000€</option>
                                     <option value="50000 - 100000€">50.000€ - 100.000€</option>
                                     <option value="100000€ +">100.000€ +</option>
-                                    <option value="N/A">Je ne sais pas</option>
+                                    <option value="N/A">N/A</option>
                                 </select>
                             </label>
                         </div>
@@ -157,8 +157,8 @@ function Form() {
                 {message && <p>{message}</p>}
                 <button type="submit" id={styles.formbtn}>valider</button>
             </form>
-    </div>
-    <Footer />
+        </div>
+        <Footer />
     </>
   );
 }
