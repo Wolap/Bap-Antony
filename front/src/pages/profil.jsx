@@ -1,43 +1,31 @@
-import {useState, useEffect} from 'react'
-import { Link } from 'react-router-dom'
-import {Buffer} from 'buffer';  
-import styles from '../styles/projetSoumis.module.css';
-import stylesProjets from '../styles/projetSoumis.module.css';
+import { useState, useEffect } from 'react';
+import { Buffer } from 'buffer';  
+import styles from '../styles/profil.module.css';
 
 import Navbar from '../components/navbar';
 import Footer from '../components/footer';
 import defaultProjectImage from '../assets/bgForm.png';
 
 const Profil = () => {
-
     const [infoUser, setInfoUser] = useState([]);
     const [infoProjet, setInfoProjet] = useState([]); 
-    const [likesByProject, setLikesByProject] = useState({});
+    const [editableField, setEditableField] = useState(null);
+    const [editedValue, setEditedValue] = useState('');
     const token = localStorage.getItem('token');
     const userId = localStorage.getItem('userId');
 
-    useEffect(() => {
-        // récup likes du localStorage au premier rendu
-        const likesDictionary = localStorage.getItem('likesByProject');
-        if (likesDictionary) {
-            setLikesByProject(JSON.parse(likesDictionary));
-        }
-    }, []);
-
-    // fetch user info
+    // Fetch user info
     useEffect(() => {    
-        // vérif' si utilisateur connecté
+        // Verify if user is connected
         if (!token) {
-            console.log('no token')
+            console.log('No token');
             return;
         }
         
         fetchUserData();
-        
     }, []);
 
     const fetchUserData = () => {
-
         fetch('http://localhost:3000/user', {
             headers: {
                 'x-access-token': token 
@@ -45,9 +33,9 @@ const Profil = () => {
         })
         .then(response => response.json())
         .then(data => {
-            setInfoUser(data)
-        }
-        );     
+            setInfoUser(data);
+            console.log("Data", data);
+        });     
     }
 
     useEffect(() => {
@@ -60,18 +48,15 @@ const Profil = () => {
             })
             .then((payload) => {    
                 const parsedData = payload.map((item) => {
-
                     if (item.image.data.length === 0) {
                         return { ...item, image: undefined };
                     }
-
                     const base64Image = Buffer.from(item.image.data).toString('base64');
                     return {
                         ...item,
                         image: `data:image/jpeg;base64,${base64Image}`,
                     };
                 });
-
                 setInfoProjet(parsedData);
             })
             .catch((error) => {
@@ -79,103 +64,141 @@ const Profil = () => {
             });
     }, []);
 
-    function likeProject(projectId) {
-        const key = projectId.toString();
-        const userId = localStorage.getItem('userId');
-    
-        // vérif' si utilisateur connecté
-        if (!userId) {
-            return false;
-        }
-    
-        // maj likes
-        // méthode de useState, prend fonction en argument
-        setLikesByProject(prevLikes => {
-            // copie de l'ancienne valeur
-            const updatedLikes = { ...prevLikes };
-            
-            // Vérifier si le projet existe dans le dictionnaire
-            if (!updatedLikes[key]) {
-                // Si le projet n'existe pas, créer un nouveau dictionnaire avec l'utilisateur
-                return { ...updatedLikes, [key]: { [userId]: true } };
+    const handleEdit = (field) => {
+        setEditableField(field);
+        setEditedValue(infoUser[field]);
+    };
+
+    const handleChange = (event) => {
+        setEditedValue(event.target.value);
+    };
+
+    const handleSave = () => {
+        // Call API to save edited value to the database
+        // For simplicity, let's assume you have an API endpoint to update user info
+        fetch('http://localhost:3000/user', {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+                'x-access-token': token 
+            },
+            body: JSON.stringify({ [editableField]: editedValue })
+        })
+        .then(response => {
+            if (response.ok) {
+                // Update local state with new value
+                setInfoUser(prevState => ({ ...prevState, [editableField]: editedValue }));
+                setEditableField(null);
+                setEditedValue('');
             } else {
-                // Si le projet existe déjà
-                if (updatedLikes[key][userId]) {
-                    // Si l'utilisateur a déjà aimé, supprimer le like
-                    const { [userId]: deletedValue, ...remainingLikes } = updatedLikes[key];
-                    return { ...updatedLikes, [key]: remainingLikes };
-                } else {
-                    // Si l'utilisateur n'a pas aimé, ajouter le like
-                    return { ...updatedLikes, [key]: { ...updatedLikes[key], [userId]: true } };
-                }
+                throw new Error('Failed to update user info');
             }
-        });  
-        console.log('likesByProject', likesByProject)
-        return true;
-    }
-
-    // Récupérer le nombre de likes
-    function getLikesCount(projectId) {
-        const key = projectId.toString();
-        return likesByProject[key] ? Object.keys(likesByProject[key]).length : 0;
-    }
-
+        })
+        .catch(error => {
+            console.error('Error updating user info:', error);
+        });
+    };
 
     return (
         <>
             <Navbar />
-            <section>
-                <h2>Informations</h2>
-                <div>
-                    
-                    <div>
-                        <p>Nom : {infoUser.nom}</p>
-                        <button>Modifier</button>
+            <section className={styles.containerInfo}>
+                <div className={styles.content}>
+                    <div className={styles.informations}>
+                        <h2>Informations</h2>
+
+                        <div className={styles.textes}>
+
+                            <div className={styles.flexInfos}>
+                                <p> <span>Nom :</span> {editableField === 'nom' ?
+                                    <input type="text" value={editedValue} onChange={handleChange} /> :
+                                    infoUser.nom
+                                }</p>
+                                <button onClick={() => handleEdit('nom')}>Modifier</button>
+                            </div>
+
+                            <div className={styles.flexInfos}>
+                                <p> <span>Prénom :</span> {editableField === 'prenom' ?
+                                    <input type="text" value={editedValue} onChange={handleChange} /> :
+                                    infoUser.prenom
+                                }</p>
+                                <button onClick={() => handleEdit('prenom')}>Modifier</button>
+                            </div>
+
+                            <div className={styles.flexInfos}>
+                                <p> <span>Age :</span> {editableField === 'age' ?
+                                    <input type="text" value={editedValue} onChange={handleChange} /> :
+                                    infoUser.age
+                                } ans</p>
+                                <button onClick={() => handleEdit('age')}>Modifier</button>
+                            </div>
+
+                            <div className={styles.flexInfos}>
+                                <p> <span>Adresse mail :</span> {editableField === 'mail' ?
+                                    <input type="text" value={editedValue} onChange={handleChange} /> :
+                                    infoUser.mail
+                                }</p>
+                                <button onClick={() => handleEdit('mail')}>Modifier</button>
+                            </div>
+                        </div>
+                        <div className={styles.containerBtn}>
+                            {editableField && (
+                                <button className={styles.btnRegister} onClick={handleSave}>Enregistrer</button>
+                            )}
+                        </div>
                     </div>
-                    <div>
-                        <p>Prénom : {infoUser.prenom}</p>
-                        <button>Modifier</button>
-                    </div>
-                    <div>
-                        <p>Adresse mail : {infoUser.mail}</p>
-                        <button>Modifier</button>
+
+                    <div className={styles.images}>
+                        <div className={styles.imgTache}>
+                            <img src="./src/assets/tache_profil.png" alt="" />
+                        </div>
+
+                        <div className={styles.imgEcrivain}>
+                            <img src="./src/assets/illustration_ simple_ecrivain.png" alt="" />
+                        </div>
                     </div>
                 </div>
             </section>
 
-            <section>
-                <div>
+            <section className={styles.containerProjects}>
+                <div className={styles.userProjects}>
                     <h2>Mes projets</h2>
+
                     {infoProjet.filter(item => item.userId == userId).map((item, index) => (
-                        
-                        <div key={index} className={stylesProjets.card}>
-                            <img
-                                className={stylesProjets.image}
-                                src={item.image ?? defaultProjectImage}
-                                alt=""
-                            />
-                            <h2 className={stylesProjets.titleProject}> {item.nomProjet} </h2>
-                            <h3 className={stylesProjets.lieu}> {item.lieu} </h3>
-                            <p className={stylesProjets.description}> {item.description} </p>
-                            <h3 className={stylesProjets.budget}> Budget : {item.budget} </h3>
-                            <p className={stylesProjets.categorie}> {item.categorie} </p>
-                            <div>
-                                <button
-                                    className={stylesProjets.likeButton}
-                                    onClick={() => likeProject(item.id)}
-                                >
-                                    Like
-                                </button>
-                                <span className={stylesProjets.likeCount}>
-                                    {getLikesCount(item.id)}
-                                </span>
+                        <div className={styles.cardProject} key={index}>
+                            <div className={styles.projectImg}>
+                                <img 
+                                    src={item.image ?? defaultProjectImage}
+                                    alt="" 
+                                />
+                            </div>
+                            <div className={styles.projectText}>
+                                <p> {item.nomProjet} </p>
                             </div>
                         </div>
                     ))}
                 </div>
 
-                <div>
-                    <h2>Mes coups de coeurs</h2>
+                <div className={styles.userProjects} >
+
+                    <div className={styles.titleProject}>
+                        <h2>Mes coups de coeurs</h2>                    
+                        <img src="./src/assets/coeur_v2.png" alt="" />
+                    </div>
+                    
+                    {infoProjet.filter(item => item.likes.some((like) => like.userId == userId)).map((item, index) => (
+                        <div className={styles.cardProject} key={index}>
+                            <div className={styles.projectImg}>
+                                <img 
+                                    src={item.image ?? defaultProjectImage}
+                                    alt="" 
+                                />
+                            </div>
+                            <div className={styles.projectText}>
+                                <p> {item.nomProjet} </p>
+                            </div>
+                        </div>
+                    ))}
                 </div>
             </section>
             <Footer />
@@ -183,4 +206,4 @@ const Profil = () => {
     )
 }
 
-export default Profil
+export default Profil;
