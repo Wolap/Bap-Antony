@@ -1,7 +1,7 @@
 .containerTitle {
     margin-bottom: 50px;
     background-image: url("./src/assets/bg.png");
-    height: 90vh;
+    height: 70vh;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -23,7 +23,7 @@ h1 {
     margin-block: 50px;
     text-align: center;
     color: white;
-    font-weight: 900;
+    font-family: "fredokaBold", sans-serif;
 }
 
 .containerButton {
@@ -36,7 +36,7 @@ h1 {
     & a {
         padding: 15px 40px;
         border-radius: 10px;
-        font-weight: 900;
+        font-family: "fredokaBold", sans-serif;
     }
 }
 
@@ -82,7 +82,7 @@ h1 {
     font-size: 30px;
     margin-block: 20px;
     color: #354bcf;
-    font-weight: 900;
+    font-family: "fredokaBold", sans-serif;
     padding-left: 300px;
     padding-top: 20px;
 }
@@ -125,7 +125,7 @@ h1 {
 .participer h2 {
     font-size: 30px;
     color: white;
-    font-weight: 900;
+    font-family: "fredokaBold", sans-serif;
     text-align: center;
 }
 
@@ -189,7 +189,7 @@ h1 {
 .idee h2 {
     font-size: 30px;
     color: #354bcf;
-    font-weight: 900;
+    font-family: "fredokaBold", sans-serif;
     padding-right: 200px;
 }
 
@@ -246,7 +246,7 @@ h1 {
     background-color: #e22c3f;
     color: white;
     border-radius: 10px;
-    font-weight: 900;
+    font-family: "fredokaBold", sans-serif;
     border: 2px solid #e22c3f;
     padding: 10px 170px;
 }
@@ -269,7 +269,7 @@ h1 {
     text-align: center;
     font-size: 30px;
     color: #354bcf;
-    font-weight: 900;
+    font-family: "fredokaBold", sans-serif;
 }
 
 
@@ -304,7 +304,7 @@ h1 {
     height: 50px;
     width: 80%;
     border-radius: 10px;
-    font-weight: 900;
+    font-family: "fredokaBold", sans-serif;
     border: none;
 }
 
@@ -344,7 +344,7 @@ h1 {
 
 .containerDiscours h2 {
     font-size: 25px;
-    font-weight: 900;
+    font-family: "fredokaBold", sans-serif;
 }
 
 .discours p {
@@ -412,7 +412,7 @@ h1 {
         & a {
             padding: 15px 40px;
             border-radius: 10px;
-            font-weight: 900;
+            font-family: "fredokaBold", sans-serif;
             font-size: 10px;
         }
     }
@@ -588,7 +588,7 @@ h1 {
         & a {
             padding: 15px 40px;
             border-radius: 10px;
-            font-weight: 900;
+            font-family: "fredokaBold", sans-serif;
             font-size: 10px;
         }
     }

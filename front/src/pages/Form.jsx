@@ -3,13 +3,21 @@ import Navbar from "../components/navbar";
 import Footer from "../components/footer";
 import styles from '../styles/Form.module.css';
 
+import { useLocation } from 'react-router-dom';
+
 function Form() {
+    const location = useLocation();
+    const params = new URLSearchParams(location.search);
+    const theme = params.get('categorie');
+    const lieuParam = params.get('lieu');
+
     const [nomProjet, setNomProjet] = useState('');
     const [description, setDescription] = useState('');
-    const [categorie, setCategorie] = useState('Autre');
+    const [categorie, setCategorie] = useState(theme || 'Autre');
     const [budget, setBudget] = useState('N/A');
-    const [lieu, setLieu] = useState('');
+    const [lieu, setLieu] = useState(lieuParam || '');
     const [image, setImage] = useState(null);
+
 
     const [message, setMessage] = useState('');
   

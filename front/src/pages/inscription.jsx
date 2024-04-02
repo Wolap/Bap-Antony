@@ -124,10 +124,6 @@ export default function Inscription() {
                     src="./src/assets/illustration_inscription.png"
                     alt=""
                 />
-                {/* <div className={styles.txt}>
-                    <h3 className={styles.subTitle}>Content de vous voir !</h3>
-                    <p>Lorem ipsum dolor sit amet.</p>
-                </div> */}
             </div>
             <Footer />
         </>
