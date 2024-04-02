@@ -52,8 +52,10 @@ function Form() {
                     });
                     const data = await response.json();
                     console.log(data);
+                    setMessage('Projet soumis avec succès');
                 } catch (error) {
                     console.error('Error:', error);
+                    setMessage('Erreur lors de la soumission du projet');
                 }
             };
         } else {
@@ -76,8 +78,10 @@ function Form() {
                 });
                 const data = await response.json();
                 console.log(data);
+                setMessage('Projet soumis avec succès');
             } catch (error) {
                 console.error('Error:', error);
+                setMessage('Erreur lors de la soumission du projet');
             }
         }
     }
@@ -91,7 +95,7 @@ function Form() {
                 <img className={styles.heart} src="/src/assets/FormHearts.svg" alt="" />
                 <section className={styles.title}>
                     <span>1</span>
-                    <h2>Proposez un projet</h2>   
+                    <h2>Proposez un projet</h2>  
                 </section>
                 <div className={styles.formcard}>
                     <section>
