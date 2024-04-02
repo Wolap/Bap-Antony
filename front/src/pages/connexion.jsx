@@ -22,7 +22,7 @@ export default function Connexion() {
             if (data.error) {
                 throw new Error(data.error);
             } else {
-                setMessage("Login successful!");    
+                setMessage("Connexion réussie !");    
                 localStorage.setItem('token', data.token);
                 localStorage.setItem('userId', data.userId);
                 console.log("data", data)
@@ -32,7 +32,7 @@ export default function Connexion() {
         })
         .catch(error => {
             console.error('Error:', error);
-            setMessage("Login failed. Please check your credentials.");
+            setMessage("Erreur de connexion !");
         });
     };
 
