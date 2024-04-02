@@ -64,7 +64,7 @@ const ProjectCard = (props) => {
                     {likes.length}
                 </span>
             </div>
-            <button className={styles.btnDiscover}> Je découvre </button>
+            <a className={styles.btnDiscover} href={`pageprojet/${item.id}`}>Je découvre</a>
         </div>
     );
 };

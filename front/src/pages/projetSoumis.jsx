@@ -52,21 +52,81 @@ export default function Soumission() {
 
     return (
         <>
-            <Navbar/>
-            <div>
-                <h1 className={styles.title}>Projet Soumis </h1>
-                <input type="text" value={searchTerm} onChange={handleSearchChange} placeholder="Chercher" />
-                <select value={selectedCategory} onChange={handleCategoryChange}>
-                    <option value="all">Toutes les catégories</option>
-                    <option value="Ecologie et environnement">Ecologie et environnement</option>
-                    <option value="Sport">Sport</option>
-                    <option value="Solidarité et inclusion">Solidarité et inclusion</option>
-                    <option value="Mobilité">Mobilité</option>
-                    <option value="Culture">Culture</option>
-                    <option value="Santé">Santé</option>
-                    <option value="Education">Education</option>
-                    <option value="Autre">Autre</option>
-                </select>
+            <Navbar />
+            <div className={styles.content}>
+                <div className={styles.containerTitle}>
+                    <h1 className={styles.title}>
+                        Les projets soumis par vous
+                    </h1>
+                </div>
+                <img
+                    className={styles.imageTrait}
+                    src="./src/assets/trait_soumission.png"
+                    alt=""
+                />
+                <img
+                    className={styles.imageTache1}
+                    src="./src/assets/tache_1.png"
+                    alt=""
+                />
+                <div className={styles.contentSoumission}>
+                    <h2 className={styles.subTitle}>
+                        Proposez nous vos projets
+                    </h2>
+                    <p className={styles.textSoumission}>
+                    Pour la 4ème édition du budget participatif antonien, 13 projets ont été élus. Découvrez-les dès maintenant ci-dessous !
+Cette année, une enveloppe de 600 000€ a été affectée au dispositif. Antony consacre 9,7€ par habitant au budget participatif, contre 6,5€ en moyenne en France. 13 projets ont été élus par les 1477 habitants qui ont participé au vote. Sur cette page, vous trouverez toutes les informations concernant la démarche : règlement, calendrier, projets proposés par les habitants et le suivi des réalisations.
+                    </p>
+                    <a className={styles.buttonSoumission} href="projets-soumis">Je depose mon idée</a>
+                </div>
+
+                <img
+                    className={styles.imageTache2}
+                    src="./src/assets/tache_2.png"
+                    alt=""
+                />
+
+                <img
+                    className={styles.imageTache3}
+                    src="./src/assets/tache_3.png"
+                    alt=""
+                />
+
+                <div className={styles.searchFilterBar}>
+                    <input
+                        type="text"
+                        className={styles.search}
+                        value={searchTerm}
+                        onChange={handleSearchChange}
+                        placeholder="Chercher"
+                    />
+                    <div className={styles.filter}>
+                        <select name="filtre" id="filtre">
+                            <option value="recent">Le plus récent</option>
+                            <option value="ancien">Le plus ancien</option>
+                            <option value="like">Le plus aimé</option>
+                        </select>
+                        <select
+                            value={selectedCategory}
+                            onChange={handleCategoryChange}
+                        >
+                            <option value="all">Toutes les catégories</option>
+                            <option value="Ecologie et environnement">
+                                Ecologie et environnement
+                            </option>
+                            <option value="Sport">Sport</option>
+                            <option value="Solidarité et inclusion">
+                                Solidarité et inclusion
+                            </option>
+                            <option value="Mobilité">Mobilité</option>
+                            <option value="Culture">Culture</option>
+                            <option value="Santé">Santé</option>
+                            <option value="Education">Education</option>
+                            <option value="Autre">Autre</option>
+                        </select>
+                    </div>
+                </div>
+
                 <div className={styles.flex}>
                     {infoProjet.filter(item => (selectedCategory === 'all' || item.categorie === selectedCategory) && item.nomProjet.toLowerCase().includes(searchTerm.toLowerCase())).map((item, index) => (
                         <ProjectCard key={index} item={item} />
