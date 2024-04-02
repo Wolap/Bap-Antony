@@ -5,9 +5,15 @@ import Navbar from "../components/navbar.jsx";
 import { Buffer } from "buffer";
 import defaultProjectImage from "../assets/bgForm.png";
 
-export default function pageProjet() {
+export default function PageProjet() {
     const [pageLink, setPageLink] = useState(window.location.href);
+    const [soumission, setSoumission] = useState([]);
+    const [likes, setLikes] = useState([]);
+    const userId = localStorage.getItem("userId") ?? null;
 
+    let url = window.location.href;
+    let id = new URL(url).pathname.split("/").pop(); 
+       
     const copyLink = () => {
         navigator.clipboard.writeText(pageLink);
         alert("Lien copié !");
@@ -24,35 +30,107 @@ export default function pageProjet() {
         window.open(facebookShareUrl, "_blank");
     };
 
-    const [soumission, setSoumission] = useState([]);
+    // udapte likes
+    // const handleLike = () => {
+    //     const hasLiked = likes.some((like) => like.userId == userId);
 
-    const getSoumission = async (id) => {
-        try {
-            const response = await fetch(
-                `http://localhost:3000/soumissions/${id}`
-            );
-            if (!response.ok) {
-                throw new Error("Network response was not ok");
-            }
-            const soumission = await response.json();
-            const base64Image = Buffer.from(soumission.image.data).toString(
-                "base64"
-            );
-            setSoumission({
-                ...soumission,
-                image: `data:image/jpeg;base64,${base64Image}`,
-            });
-        } catch (error) {
-            console.error("Error fetching data:", error);
-        }
-    };
+    //     if (hasLiked) {
+    //         fetch(`http://localhost:3000/soumissions/${id}/like`, {
+    //             method: "DELETE",
+    //             headers: {
+    //                 "Content-Type": "application/json",
+    //                 "x-access-token": localStorage.getItem("token"),
+    //             },
+    //         })
+    //         .then((response) => {
+    //             if (!response.ok) {
+    //                 return alert("Error liking project");
+    //             }
+    //             setLikes(likes.filter((like) => like.userId != userId));
+    //         });
+    //     } else {
+    //         fetch(`http://localhost:3000/soumissions/${id}/like`, {
+    //             method: "POST",
+    //             headers: {
+    //                 "Content-Type": "application/json",
+    //                 "x-access-token": localStorage.getItem("token"),
+    //             },
+    //         })
+    //         .then((response) => {
+    //             if (!response.ok) {
+    //                 return alert("Error liking project");
+    //             }
+    //             setLikes([...likes, { userId }]);
+    //         });
+    //     }
+    // }
 
-    let url = window.location.href;
-    let id = new URL(url).pathname.split("/").pop();
 
+    // get the number of likes from a project
     useEffect(() => {
-        getSoumission(id);
+        fetch(`http://localhost:3000/soumissions/${id}/likes`)
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error("Network response was not ok");
+                }
+                return response.json();
+            })
+            .then((likes) => {
+                setLikes(likes);
+            })
+            .catch((error) => {
+                console.error("Error fetching data:", error);
+            });
     }, [id]);
+    
+    
+    useEffect(() => {
+        fetch(`http://localhost:3000/soumissions/${id}`)
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error("Network response was not ok");
+                }
+                return response.json();
+            })
+            .then((soumission) => {
+                if (soumission.image.data.length === 0) {
+                    setSoumission({ ...soumission, image: undefined });
+                    return;
+                }
+                const base64Image = Buffer.from(soumission.image.data).toString("base64");
+                console.log(soumission);
+
+                setSoumission({...soumission, image: `data:image/jpeg;base64,${base64Image}`,});
+            })
+            .catch((error) => {
+                console.error("Error fetching data:", error);
+            });
+    }, [id]);
+
+    // const getSoumission = async (id) => {
+    //     try {
+    //         const response = await fetch(
+    //             `http://localhost:3000/soumissions/${id}`
+    //         );
+    //         if (!response.ok) {
+    //             throw new Error("Network response was not ok");
+    //         }
+    //         const soumission = await response.json();
+    //         const base64Image = Buffer.from(soumission.image.data).toString(
+    //             "base64"
+    //         );
+    //         setSoumission({
+    //             ...soumission,
+    //             image: `data:image/jpeg;base64,${base64Image}`,
+    //         });
+    //     } catch (error) {
+    //         console.error("Error fetching data:", error);
+    //     }
+    // };
+
+    // useEffect(() => {
+    //     getSoumission(id);
+    // }, [id]);
 
     return (
         <>
@@ -90,7 +168,7 @@ export default function pageProjet() {
                                 src="/src/assets/likeProjet.png"
                                 alt=""
                             />
-                            <p className={styles.nbLike}>647</p>
+                            <p className={styles.likeCount}> {likes.length} </p>
                         </div>
                         <h2 className={styles.partager}>Partager</h2>
                         <div className={styles.partagerButton}>

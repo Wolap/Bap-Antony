@@ -1,5 +1,5 @@
 import express from 'express'
-import { getSoumissions, getSoumission, createSoumission, updateSoumission, deleteSoumission, likeSoumission, dislikeSoumission } from '../controllers/SoumissionController.js'
+import { getSoumissions, getSoumission, createSoumission, updateSoumission, deleteSoumission, likeSoumission, dislikeSoumission, getLikes } from '../controllers/SoumissionController.js'
 
 const router = express.Router()
 
@@ -11,5 +11,6 @@ router.delete('/:id', deleteSoumission)
 
 router.post('/:id/like', likeSoumission)
 router.delete('/:id/like', dislikeSoumission)
+router.get('/:id/likes', getLikes)
 
 export default router

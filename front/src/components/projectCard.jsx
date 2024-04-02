@@ -58,7 +58,7 @@ const ProjectCard = (props) => {
             </div>
             <div className={styles.containerTextCard}>
                 <div className={styles.container}>
-                    <Link to={`/projet/${item.id}`} className={styles.titleProject}> 
+                    <Link to={`/pageprojet/${item.id}`} className={styles.titleProject}> 
                         <h2> {item.nomProjet} </h2>
                     </Link>
                     <p className={styles.budget}> <span>Budget : {item.budget}</span> </p>
