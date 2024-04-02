@@ -17,20 +17,18 @@ export default function Connexion() {
             },
             body: JSON.stringify({mail, password}),
         })
-        .then((res) => {
-            if (res.ok) {
-                return res.json();
-            }
-            throw new Error('Login failed');
-        })
+        .then((res) => res.json())
         .then((data) => {
-            setMessage("Login successful!");    
-            
-            localStorage.setItem('token', data.token);
-            localStorage.setItem('userId', data.userId);
-            console.log("data", data)
-            console.log(data.token);
-            console.log("user", data.userId);
+            if (data.error) {
+                throw new Error(data.error);
+            } else {
+                setMessage("Login successful!");    
+                localStorage.setItem('token', data.token);
+                localStorage.setItem('userId', data.userId);
+                console.log("data", data)
+                console.log(data.token);
+                console.log("user", data.userId);
+            }
         })
         .catch(error => {
             console.error('Error:', error);

@@ -6,7 +6,17 @@ const prisma = new PrismaClient()
 
 //Sign up
 const signUp = async (req, res) => {
-    const { nom, prenom, mail, password } = req.body
+    const { nom, prenom, age, mail, password } = req.body
+
+    const existingUser = await prisma.user.findUnique({
+        where: {
+            mail: mail
+        }
+    });
+
+    if (existingUser) {
+        return res.status(400).json({ error: 'Email already exists' });
+    }
 
     const hashedPassword = await bcrypt.hash(password, 10)
 
@@ -14,6 +24,7 @@ const signUp = async (req, res) => {
         data: {
             nom,
             prenom,
+            age,
             mail,
             password: hashedPassword
         }

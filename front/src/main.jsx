@@ -4,7 +4,10 @@ import App from "./App.jsx";
 import ProjetSoumis from "./pages/projetSoumis";
 import Form from "./pages/Form";
 import Inscription from "./pages/inscription";
-import Connexion from "./pages/connexion";import "./index.module.css";
+import Connexion from "./pages/connexion";
+import Profil from "./pages/profil";
+
+import "./index.module.css";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Root from "./routes/root.jsx";
@@ -19,7 +22,7 @@ const router = createBrowserRouter([
         element: <Root />,
     },
     {
-        path: "/projet-soumis",
+        path: "/projets-soumis",
         element: <ProjetSoumis />, 
     },
     {
@@ -33,12 +36,11 @@ const router = createBrowserRouter([
     {
         path: "/connexion",
         element: <Connexion />,
+    },
+    {
+        path: "/profil",
+        element: <Profil />,
     }
-    // Exemple de route
-    // {
-    //   path: "/example",
-    //   element: <ExamplePage />,
-    // }
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
