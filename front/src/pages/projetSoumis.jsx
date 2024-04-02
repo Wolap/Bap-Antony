@@ -7,14 +7,8 @@ import ProjectCard from "../components/projectCard.jsx";
 export default function Soumission() {
 
     const [infoProjet, setInfoProjet] = useState([]);
-    // const [likesByProject, setLikesByProject] = useState({});
     const [selectedCategory, setSelectedCategory] = useState('all');
     const [searchTerm, setSearchTerm] = useState('');
-
-    useEffect(() => {
-        // récup likes du localStorage au premier rendu
-        // setLikesByProject(JSON.parse(localStorage.getItem('likesByProject') ?? '{}'));
-    }, []);
 
     useEffect(() => {
         console.log('infoProjet', infoProjet);
