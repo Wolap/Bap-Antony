@@ -1,0 +1,52 @@
+.card {
+    width: 500px;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1em;
+    margin-bottom: 2em;
+    border-radius: 15px;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.25);
+    background-color: #fff;
+}
+
+.containerImg {
+    width: 150px;
+}
+
+.containerImg img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px 10px 0 0;
+}
+
+.containerLike {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    text-align: center;
+}
+
+.buttonLike {
+    border: none;
+    background-color: white;
+}
+
+.buttonLike img {
+    width: 25px;
+    height: 25px;
+}
+
+.btnDiscover {
+    background-color: #354bcf;
+    color: white;
+    border: none;
+    padding: 1em 5em;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-bottom: 2em;
+}
+
+

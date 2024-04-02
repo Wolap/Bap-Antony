@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import styles from "../styles/projetSoumis.module.css";
+import styles from "../styles/projectCard.module.css";
 import defaultProjectImage from '../assets/bgForm.png';
 import { useState } from "react";
 
@@ -48,15 +48,17 @@ const ProjectCard = (props) => {
 
     return (
         <div className={styles.card}>
-            <img
-                className={styles.image}
-                src={item.image ?? defaultProjectImage}
-                alt=""
-            />
-            <h2 className={styles.titleProject}> {item.nomProjet} </h2>
-            <h3 className={styles.lieu}> {item.lieu} </h3>
+            <div className={styles.containerImg}>
+                <img
+                    src={item.image ?? defaultProjectImage}
+                    alt=""
+                />
+            </div>
+            <div className={styles.containerCard}>
+                <h2 className={styles.titleProject}> {item.nomProjet} </h2>
+                <p className={styles.budget}> Budget : {item.budget} </p>
+            </div>
             <p className={styles.description}> {item.description} </p>
-            <h3 className={styles.budget}> Budget : {item.budget} </h3>
             <p className={styles.categorie}> {item.categorie} </p>
             <div>
                 <button
