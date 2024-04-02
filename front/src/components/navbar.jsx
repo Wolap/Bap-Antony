@@ -16,13 +16,16 @@ const MenuBurger = ({ isOpen, toggleMenu }) => (
 const MenuNormal = () => (
     <ul className={styles.menu}>
         <li>
-            <a href="">Accueil</a>
+            <Link to="/">Accueil</Link>
         </li>
         <li>
-            <a href="">Projets</a>
+            <Link to="/projets-soumis">Projets</Link>
         </li>
         <li>
-            <a href="">Soumissions Projets</a>
+            <Link to="/formulaire-soumission-projet">Soumissions Projets</Link>
+        </li>
+        <li>
+            <Link to="/faq">F.A.Q</Link>
         </li>
     </ul>
 );
@@ -30,6 +33,7 @@ const MenuNormal = () => (
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [isMobile, setIsMobile] = useState(false);
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
 
     useEffect(() => {
         function handleResize() {
@@ -44,6 +48,13 @@ const Navbar = () => {
         setIsOpen(!isOpen);
     };
 
+    useEffect(() => {
+        const token = localStorage.getItem("token");
+        if (token) {
+            setIsLoggedIn(true);
+        }
+    }, []);
+
     return (
         <div className={styles.navbar}>
             <div className={styles.btnHome}>
@@ -52,24 +63,19 @@ const Navbar = () => {
                 </Link>
             </div>
 
-            <li>
-                <Link to="/">Accueil</Link>
-            </li>
-            <li>
-                <Link to="/projets-soumis">Projets</Link>
-            </li>
-            <li>
-                <Link to="/formulaire-soumission-projet">
-                    Soumissions Projets
-                </Link>
-            </li>
-
             {!isMobile && <MenuNormal />}
 
             <div className={styles.connecter}>
-                <button className={styles.connexion}>
-                    <Link to="/connexion">Se connecter</Link>
-                </button>
+                {/* Condition pour afficher "Profil" au lieu de "Se connecter" si l'utilisateur est connecté */}
+                {isLoggedIn ? (
+                    <button className={styles.connexion}>
+                        <Link to="/profil">Profil</Link>
+                    </button>
+                ) : (
+                    <button className={styles.connexion}>
+                        <Link to="/connexion">Se connecter</Link>
+                    </button>
+                )}
             </div>
 
             <MenuBurger isOpen={isOpen} toggleMenu={toggleMenu} />
@@ -104,6 +110,9 @@ const Navbar = () => {
                             <Link to="/formulaire-soumission-projet">
                                 Soumettre un projet
                             </Link>
+                        </button>
+                        <button className={styles.budgetProjet}>
+                            <Link to="/faq">F.A.Q</Link>
                         </button>
                         <button className={styles.deconnexion}>
                             <a href="">Déconnexion</a>

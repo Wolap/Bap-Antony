@@ -6,10 +6,6 @@ ul {
     color: black;
 }
 
-a:hover {
-    color: #354bcf;
-}
-
 .navbar {
     display: flex;
     justify-content: space-around;
@@ -33,15 +29,27 @@ a:hover {
 .connexion {
     background-color: #354bcf;
     border: none;
-    color: white;
     font-size: medium;
     width: 150px;
     height: 30px;
     border-radius: 10px;
+
+    & a {
+        color: white;
+    }
+}
+
+.connexion:hover {
+    border: #354bcf solid 2px;
+    background-color: white;
+
+    & a {
+        color: #354bcf;
+    }
 }
 
 .burger {
-    display: none; /* Par défaut, le bouton burger est caché */
+    display: none;
 }
 
 @media screen and (max-width: 768px) {
@@ -59,11 +67,11 @@ a:hover {
     }
 
     .connecter {
-        display: none; 
+        display: none;
     }
 
     .burger {
-        display: block; 
+        display: block;
         background: none;
         border: none;
         cursor: pointer;
