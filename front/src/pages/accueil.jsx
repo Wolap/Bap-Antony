@@ -31,9 +31,8 @@ const Accueil = () => {
                     };
                 });
 
-                // projets dans l'ordre décroissant des likes
-                parsedData.sort((a, b) => b.likes - a.likes);
-                console.log("mostLiked",parsedData.sort((a, b) => b.likes - a.likes));
+                parsedData.sort((a, b) => b.likes.length - a.likes.length);
+                console.log("parsedData",parsedData);
 
                 // prendre les 3 premiers projets
                 const topThree = parsedData.slice(0, 3);
