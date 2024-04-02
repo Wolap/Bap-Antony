@@ -66,7 +66,6 @@ const Navbar = () => {
             {!isMobile && <MenuNormal />}
 
             <div className={styles.connecter}>
-                {/* Condition pour afficher "Profil" au lieu de "Se connecter" si l'utilisateur est connecté */}
                 {isLoggedIn ? (
                     <button className={styles.connexion}>
                         <Link to="/profil">Profil</Link>
@@ -89,12 +88,22 @@ const Navbar = () => {
                     <h3 className={styles.burgerSubtitle}>Votre compte</h3>
 
                     <div className={styles.bouttonCompte}>
-                        <button>
-                            <Link to="/inscription">S&apos;inscrire</Link>
-                        </button>
-                        <button>
-                            <Link to="/connexion">Se connecter</Link>
-                        </button>
+                        {isLoggedIn ? (
+                            <button>
+                                <Link to="/profil">Profil</Link>
+                            </button>
+                        ) : (
+                            <>
+                                <button>
+                                    <Link to="/inscription">
+                                        S&apos;inscrire
+                                    </Link>
+                                </button>
+                                <button>
+                                    <Link to="/connexion">Se connecter</Link>
+                                </button>
+                            </>
+                        )}
                     </div>
 
                     <hr />
