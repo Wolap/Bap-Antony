@@ -1,6 +1,7 @@
 .content {
     position: relative;
 }
+
 .flex {
     display: flex;
     align-items: center;
@@ -11,8 +12,10 @@
 
     @media screen and (max-width: 1200px) {
         flex-direction: column;
+        margin-inline: 1em;
     }
 }
+
 
 .containerTitle {
     margin-bottom: 50px;

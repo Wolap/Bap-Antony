@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import styles from "../styles/pageProjet.module.css";
 import Navbar from "../components/navbar.jsx";
+import Footer from "../components/footer.jsx";
 
 import { Buffer } from "buffer";
 import defaultProjectImage from "../assets/bgForm.png";
@@ -81,11 +82,12 @@ export default function PageProjet() {
 
                 <div className={styles.content}>
                     <div className={styles.contentProjet}>
-                        <img
-                            className={styles.projetImg}
-                            src={soumission.image ?? defaultProjectImage}
-                            alt=""
-                        />
+                        <div className={styles.contentProjetImg}>
+                            <img
+                                src={soumission.image ?? defaultProjectImage}
+                                alt=""
+                            />
+                        </div>
                         <h2 className={styles.projetLieu}>
                             Lieu : <br /> {soumission.lieu}
                         </h2>
@@ -140,6 +142,7 @@ export default function PageProjet() {
                     </div>
                 </div>
             </section>
+            <Footer />
         </>
     );
 }
