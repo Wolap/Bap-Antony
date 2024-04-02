@@ -6,6 +6,8 @@ import Form from "./pages/Form";
 import Inscription from "./pages/inscription";
 import Connexion from "./pages/connexion";
 import Profil from "./pages/profil";
+import Faq from "./pages/faq";
+import PageProjet from "./pages/pageProjet";
 
 import "./index.module.css";
 
@@ -23,15 +25,11 @@ const router = createBrowserRouter([
     },
     {
         path: "/projets-soumis",
-        element: <ProjetSoumis />, 
+        element: <ProjetSoumis />,
     },
     {
         path: "/formulaire-soumission-projet",
         element: <Form />,
-    },
-    {
-        path: "/profil",
-        element: <Profil />,
     },
     {
         path: "/inscription",
@@ -41,6 +39,18 @@ const router = createBrowserRouter([
         path: "/connexion",
         element: <Connexion />,
     },
+    {
+        path: "/pageprojet/:id",
+        element: <PageProjet />,
+    },
+    {
+        path: "/profil",
+        element: <Profil />,
+    },
+    {
+        path: "/faq",
+        element: <Faq />,
+    }
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
