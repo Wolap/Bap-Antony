@@ -114,6 +114,14 @@ h1 {
     padding-bottom: 40px;
 }
 
+.participerText ul {
+    display: block;
+}
+
+.participerText ul li {
+    color: white;
+}
+
 .participer h2 {
     font-size: 30px;
     color: white;
@@ -435,6 +443,10 @@ h1 {
 
     .idee img {
         width: 35%;
+    }
+
+    .projects {
+        flex-direction: column;
     }
 }
 
