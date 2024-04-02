@@ -38,15 +38,21 @@ export default function Connexion() {
 
     return (
         <div className={styles.content}>
+            <img
+                className={styles.img}
+                src="./src/assets/illustration_connexion.png"
+                alt=""
+            />
             <div className={styles.connexion}>
                 <h2 className={styles.title}>Connexion !</h2>
                 {message && <p>{message}</p>}
-                <form className={styles.formulaire} onSubmit={handleSubmit} >
+                <form className={styles.formulaire} onSubmit={handleSubmit}>
                     <div>
                         <label>mail :</label>
                         <input
                             type="mail"
                             className={styles.input}
+                            placeholder="exemple@gmail.com"
                             value={mail}
                             onChange={(e) => setMail(e.target.value)}
                         />
@@ -56,8 +62,9 @@ export default function Connexion() {
                         <input
                             type="password"
                             className={styles.input}
+                            placeholder="••••••••"
                             value={password}
-                            onChange={(e) => setPassword(e.target.value) }
+                            onChange={(e) => setPassword(e.target.value)}
                         />
                     </div>
                     <button type="submit" className={styles.buttonInscrire}>
@@ -65,10 +72,6 @@ export default function Connexion() {
                     </button>
                     <a> Vous inscrire </a>
                 </form>
-            </div>
-            <div className={styles.txt}>
-                <h3 className={styles.subTitle}>Content de vous revoir !</h3>
-                <p>Lorem ipsum dolor sit amet.</p>
             </div>
         </div>
     );

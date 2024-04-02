@@ -7,6 +7,7 @@ export default function Inscription() {
 
     const [nom , setNom] = useState('');
     const [prenom , setPrenom] = useState('');
+    const [age, setAge] = useState('');
     const [mail , setMail] = useState('');
     const [password , setPassword] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
@@ -19,7 +20,7 @@ export default function Inscription() {
             headers: {
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify({nom, prenom, mail, password}),
+            body: JSON.stringify({nom, prenom, age, mail, password}),
         })
         .then((res) => {
             if (!res.ok) {
@@ -46,6 +47,7 @@ export default function Inscription() {
                             <label className={styles.nom}>Nom :</label>
                             <input
                                 type="text"
+                                placeholder="DUPONT"
                                 className={styles.input}
                                 value={nom}
                                 onChange={(e) => setNom(e.target.value)}
@@ -56,6 +58,7 @@ export default function Inscription() {
                             <label>Prénom :</label>
                             <input
                                 type="text"
+                                placeholder="Jean"
                                 className={styles.input}
                                 value={prenom}
                                 onChange={(e) => setPrenom(e.target.value)}
@@ -63,9 +66,22 @@ export default function Inscription() {
                             />
                         </div>
                         <div>
+                            <label>Age :</label>
+                            <input
+                                type="text"
+                                placeholder="23"
+                                className={styles.input}
+                                value={age}
+                                onChange={(e) => setAge(e.target.value)}
+                                required
+                            />
+                            {errorMessage && <p>{errorMessage}</p>}
+                        </div>
+                        <div>
                             <label>Email :</label>
                             <input
                                 type="email"
+                                placeholder="exemple@gmail.com"
                                 className={styles.input}
                                 value={mail}
                                 onChange={(e) => setMail(e.target.value)}
@@ -77,6 +93,7 @@ export default function Inscription() {
                             <label>Mot de passe :</label>
                             <input
                                 type="password"
+                                placeholder="********"
                                 className={styles.input}
                                 value={password}
                                 onChange={(e) => setPassword(e.target.value)}
@@ -89,6 +106,11 @@ export default function Inscription() {
                         <a> Vous connecter </a>
                     </form>
                 </div>
+                <img
+                    className={styles.img}
+                    src="./src/assets/illustration_inscription.png"
+                    alt=""
+                />
                 <div className={styles.txt}>
                     <h3 className={styles.subTitle}>Content de vous voir !</h3>
                     <p>Lorem ipsum dolor sit amet.</p>
