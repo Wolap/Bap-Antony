@@ -14,29 +14,44 @@ datasource db {
 }
 
 model User {
-  id       String   @id @default(uuid())
-  nom      String
-  prenom   String
-  mail     String   @unique
-  password String
+  id                Int      @id @default(autoincrement())
+  nom               String
+  prenom            String
+  age               String
+  mail              String   @unique
+  password          String
+  SoumissionProjets SoumissionProjets[]
+  likes             Like[]
 }
 
 model SoumissionProjets {
-  id       String   @id @default(uuid())
+  id             Int      @id @default(autoincrement())
   nomProjet      String
   description    String
   categorie      String
-  budget         Int
+  budget         String
   lieu           String
+  image          Bytes? @default("")
+  user           User   @relation(fields: [userId], references: [id])
+  userId         Int
+  likes          Like[]
 }
 
 model PrecedentProjets {
-  id       String   @id @default(uuid())
+  id             Int   @id @default(autoincrement())
   nomProjet      String
   description    String
   categorie      String
-  budget         Int
+  budget         String
   lieu           String
   status         Boolean
-  image          String
+  image          Bytes
+}
+
+model Like {
+  id                  Int   @id @default(autoincrement())
+  user                User  @relation(fields: [userId], references: [id])
+  userId              Int
+  soumissionProjets   SoumissionProjets @relation(fields: [soumissionProjetsId], references: [id])
+  soumissionProjetsId Int
 }

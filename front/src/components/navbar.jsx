@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import styles from "../styles/navbar.module.css";
 
 const MenuBurger = ({ isOpen, toggleMenu }) => (
@@ -34,7 +35,7 @@ const Navbar = () => {
         function handleResize() {
             setIsMobile(window.innerWidth < 768);
         }
-        handleResize(); 
+        handleResize();
         window.addEventListener("resize", handleResize);
         return () => window.removeEventListener("resize", handleResize);
     }, []);
@@ -46,17 +47,30 @@ const Navbar = () => {
     return (
         <div className={styles.navbar}>
             <div className={styles.btnHome}>
-                <a href="">
+                <Link to="/">
                     <img src="./src/assets/Logo.svg" alt="" />
-                </a>
+                </Link>
             </div>
+
+            <li>
+                <Link to="/">Accueil</Link>
+            </li>
+            <li>
+                <Link to="/projets-soumis">Projets</Link>
+            </li>
+            <li>
+                <Link to="/formulaire-soumission-projet">
+                    Soumissions Projets
+                </Link>
+            </li>
 
             {!isMobile && <MenuNormal />}
 
             <div className={styles.connecter}>
-                <button className={styles.connexion}>Se connecter</button>
+                <button className={styles.connexion}>
+                    <Link to="/connexion">Se connecter</Link>
+                </button>
             </div>
-
 
             <MenuBurger isOpen={isOpen} toggleMenu={toggleMenu} />
 
@@ -69,7 +83,7 @@ const Navbar = () => {
                     <h3 className={styles.burgerSubtitle}>Votre compte</h3>
 
                     <div className={styles.bouttonCompte}>
-                        <button>S&apos;inscrire</button>
+                        <button> S&apos;inscrire</button>
                         <button>Se connecter</button>
                     </div>
 

@@ -1,0 +1,32 @@
+.footer {
+    background-color: #ffffff;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+    padding: 10px 20px;
+    border-top: #354BCF 1px solid;
+}
+
+ul {
+    list-style-type: none;
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.footerList a {
+    color: #354BCF;
+    text-decoration: none;
+}
+
+.socmed {
+    color: #354BCF;
+    display: flex;
+    gap: 20px;
+}
+
+.socmed img {
+    width: 30px;
+}
