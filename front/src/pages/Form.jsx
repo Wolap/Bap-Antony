@@ -111,13 +111,14 @@ function Form() {
                         <div className={styles.formgroup}>
                             <label htmlFor="nom">
                                 <span>Nom du projet</span>
-                                <input type="text" id="nom" name="nom" placeholder="Nom du projet" value={nomProjet} onChange={(e) => setNomProjet(e.target.value)}/>
-                            </label>
+                                <input type="text" id="nom" name="nom" placeholder="Nom du projet" value={nomProjet} onChange={(e) => setNomProjet(e.target.value)} required/>
+                              </label>
+                              
                         </div>
                         <div className={styles.formgroup}>
                             <label htmlFor="description">
                                 <span>Description du projet</span>
-                                <textarea id={styles.description} name="description" placeholder="Description du projet" value={description} onChange={(e) => setDescription(e.target.value)}></textarea>
+                                <textarea id={styles.description} name="description" placeholder="Description du projet" value={description} onChange={(e) => setDescription(e.target.value)} required></textarea>
                             </label>
                         </div>
                         <div className={styles.formgroup}>
@@ -131,7 +132,7 @@ function Form() {
                         <div className={styles.formgroup}>
                             <label htmlFor="budget">
                                 <span>Budget du projet</span>
-                                <select id="budget" name="budget" value={budget} onChange={(e) => setBudget(e.target.value)}>
+                                <select id="budget" name="budget" value={budget} onChange={(e) => setBudget(e.target.value)} required>
                                     <option value="0 - 100€">0 - 100€</option>
                                     <option value="100 - 1000€">100€ - 1.000€</option>
                                     <option value="1000 - 5000€">1.000€ - 5.000€</option>
@@ -146,13 +147,13 @@ function Form() {
                         <div className={styles.formgroup}>
                             <label htmlFor="lieu">
                                 <span>Lieu du projet</span>
-                                <input id="lieu" name="lieu" placeholder="Lieu du projet" value={lieu} onChange={(e) => setLieu(e.target.value)}></input>
+                                <input id="lieu" name="lieu" placeholder="Lieu du projet" value={lieu} onChange={(e) => setLieu(e.target.value)} required></input>
                             </label>
                         </div>
                         <div className={styles.formgroup}>
                             <label htmlFor="categorie">
                                 <span>Catégorie du projet</span>
-                                <select id="categorie" name="categorie" value={categorie} onChange={(e) => setCategorie(e.target.value)}>
+                                <select id="categorie" name="categorie" value={categorie} onChange={(e) => setCategorie(e.target.value)} required>
                                     <option value="Ecologie et environnement">Ecologie et environnement</option>
                                     <option value="Sport">Sport</option>
                                     <option value="Solidarité et inclusion">Solidarité et inclusion</option>
