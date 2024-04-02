@@ -120,6 +120,7 @@ export default function Soumission() {
                             value={selectedCategory}
                             onChange={handleCategoryChange}
                         >
+                            <option value="all">Toutes les catégories</option>
                             <option value="Ecologie et environnement">
                                 Ecologie et environnement
                             </option>
@@ -131,7 +132,6 @@ export default function Soumission() {
                             <option value="Culture">Culture</option>
                             <option value="Santé">Santé</option>
                             <option value="Education">Education</option>
-                            <option value="Autre">Autre</option>
                         </select>
                     </div>
                 </div>
