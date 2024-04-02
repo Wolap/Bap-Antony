@@ -1,6 +1,46 @@
-import styles from "../styles/accueil.module.css";
+import { useState, useEffect } from 'react'
+import styles from '../styles/accueil.module.css'
+import { Buffer } from 'buffer'
+
+import ProjectCardAccueil from '../components/projectCardAccueil'
 
 const Accueil = () => {
+    const [mostLiked, setMostLiked] = useState([]);
+
+    useEffect(() => {
+        fetch("http://localhost:3000/soumissions")
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }   
+                return response.json();
+            })
+            .then((payload) => {
+                const parsedData = payload.map((item) => {
+                    if (item.image.data.length === 0) {
+                        return { ...item, image: undefined };
+                    }
+
+                    const base64Image = Buffer.from(item.image.data).toString('base64');
+                    return {
+                        ...item,
+                        image: `data:image/jpeg;base64,${base64Image}`,
+                    };
+                });
+
+                // projets dans l'ordre décroissant des likes
+                parsedData.sort((a, b) => b.likes - a.likes);
+
+                // prendre les 3 premiers projets
+                const topThree = parsedData.slice(0, 3);
+
+                setMostLiked(topThree);
+            })
+            .catch((error) => {
+                console.error('Error fetching data:', error);
+            });
+    }, []);
+
     return (
         <>
             <div className={styles.containerTitle}>
@@ -103,47 +143,12 @@ const Accueil = () => {
             <section className={styles.containerCards}>
                 <h2 className={styles.containerCardsTitle}>Les projet soumis </h2>
 
-                <div className={styles.cards}>
-                    <div className={styles.card}>
-                        <img
-                            className={styles.cardImg}
-                            src="./src/assets/image_card1.png"
-                            alt=""
-                        />
-                        <h3>Titre</h3>
-                        <div className={styles.like}>
-                            <img src="./src/assets/like.png" alt="" />
-                            <p>123</p>
-                        </div>
-                        <button>Je découvre</button>
+                <div className={styles.containerLiked}>
+                    <div className={styles.projects}>
+                        {mostLiked.map((item) => (
+                            <ProjectCardAccueil key={item.id} item={item} />
+                        ))}
                     </div>
-                    <div className={styles.card}>
-                        <img
-                            className={styles.cardImg}
-                            src="./src/assets/image_card2.png"
-                            alt=""
-                        />
-                        <h3>Titre</h3>
-                        <div className={styles.like}>
-                            <img src="./src/assets/like.png" alt="" />
-                            <p>123</p>
-                        </div>
-                        <button>Je découvre </button>
-                    </div>
-                    <div className={styles.card}>
-                        <img
-                            className={styles.cardImg}
-                            src="./src/assets/image_card3.png"
-                            alt=""
-                        />
-                        <h3>Titre</h3>
-                        <div className={styles.like}>
-                            <img src="./src/assets/like.png" alt="" />
-                            <p>123</p>
-                        </div>
-                        <button>Je découvre </button>
-                    </div>
-
                 </div>
 
                 <a className={styles.bouttonVoirProjets} href="">Voir tous les projets</a>
@@ -200,5 +205,6 @@ const Accueil = () => {
         </>
     );
 };
+
 
 export default Accueil;
