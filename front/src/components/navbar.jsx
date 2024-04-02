@@ -83,8 +83,12 @@ const Navbar = () => {
                     <h3 className={styles.burgerSubtitle}>Votre compte</h3>
 
                     <div className={styles.bouttonCompte}>
-                        <button> S&apos;inscrire</button>
-                        <button>Se connecter</button>
+                        <button>
+                            <Link to="/inscription">S&apos;inscrire</Link>
+                        </button>
+                        <button>
+                            <Link to="/connexion">Se connecter</Link>
+                        </button>
                     </div>
 
                     <hr />
@@ -94,13 +98,15 @@ const Navbar = () => {
                             Budget participatif 2025
                         </h3>
                         <button className={styles.budgetProjet}>
-                            Voir les projets
+                            <Link to="/projets-soumis">Voir les projets</Link>
                         </button>
                         <button className={styles.budgetProjet}>
-                            Soumettre un projet
+                            <Link to="/formulaire-soumission-projet">
+                                Soumettre un projet
+                            </Link>
                         </button>
                         <button className={styles.deconnexion}>
-                            Déconnexion
+                            <a href="">Déconnexion</a>
                         </button>
                     </div>
                     <img
