@@ -3,6 +3,8 @@ import styles from "../styles/projectCard.module.css";
 import defaultProjectImage from '../assets/bgForm.png';
 import { useState } from "react";
 
+import { Link } from "react-router-dom";
+
 const ProjectCard = (props) => {
     const { item } = props;
     const [likes, setLikes] = useState(item.likes);
@@ -56,7 +58,9 @@ const ProjectCard = (props) => {
             </div>
             <div className={styles.containerTextCard}>
                 <div className={styles.container}>
-                    <h2 className={styles.titleProject}> {item.nomProjet} </h2>
+                    <Link to={`/projet/${item.id}`} className={styles.titleProject}> 
+                        <h2> {item.nomProjet} </h2>
+                    </Link>
                     <p className={styles.budget}> <span>Budget : {item.budget}</span> </p>
                 </div>
                 <p className={styles.description}> {item.description} </p>

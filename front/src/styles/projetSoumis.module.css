@@ -138,6 +138,10 @@
     }
 }
 
+.searchFilterBar input::placeholder {
+    color: white;
+}
+
 .search {
     background-color: #354bcf;
     border: none;

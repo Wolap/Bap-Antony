@@ -9,6 +9,7 @@ export default function Soumission() {
 
     const [infoProjet, setInfoProjet] = useState([]);
     const [selectedCategory, setSelectedCategory] = useState('all');
+    const [selectedLatest, setSelectedLatest] = useState('recent');
     const [searchTerm, setSearchTerm] = useState('');
 
     useEffect(() => {
@@ -43,8 +44,17 @@ export default function Soumission() {
             });
     }, []);
 
+    
+
     const handleCategoryChange = (e) => {
         setSelectedCategory(e.target.value);
+    };
+
+    const handleLatestChange = (e) => {
+        setSelectedLatest(e.target.value);
+        if (selectedLatest !== 'like') {
+            setInfoProjet([...infoProjet].reverse());
+        }
     };
 
     const handleSearchChange = (e) => {
@@ -111,15 +121,20 @@ export default function Soumission() {
                         placeholder="Chercher"
                     />
                     <div className={styles.filter}>
-                        <select name="filtre" id="filtre">
+                        <select 
+                            name="filtre" 
+                            id="filtre"
+                            value={selectedLatest}
+                            onChange={handleLatestChange}
+                        >
                             <option value="recent">Le plus récent</option>
                             <option value="ancien">Le plus ancien</option>
-                            <option value="like">Le plus aimé</option>
                         </select>
                         <select
                             value={selectedCategory}
                             onChange={handleCategoryChange}
                         >
+                            <option value="all">Toutes les catégories</option>
                             <option value="Ecologie et environnement">
                                 Ecologie et environnement
                             </option>
@@ -137,7 +152,7 @@ export default function Soumission() {
                 </div>
 
                 <div className={styles.flex}>
-                    {infoProjet.filter(item => (selectedCategory === 'all' || item.categorie === selectedCategory) && item.nomProjet.toLowerCase().includes(searchTerm.toLowerCase())).map((item, index) => (
+                    {infoProjet.filter(item => (selectedCategory === 'all' || item.categorie === selectedCategory || item.like  ) && item.nomProjet.toLowerCase().includes(searchTerm.toLowerCase())).map((item, index) => (
                         <ProjectCard key={index} item={item} />
                     ))}
                 </div>
