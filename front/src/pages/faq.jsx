@@ -38,23 +38,23 @@ const Faq = () => {
                     <h2>FAQ</h2>
                     <div className={styles.FAQcontainer} onClick={() => toggleAnswer(0)}>
                         <div className={styles.question}>
-                            <h3>Lorem ipsum dolor sit amet consectetur. Aliquam quis nisl volutpat sollicitudin egestas integer et egestas. Praesent ipsum facilisi facilisis odio ac ?</h3>
+                            <h3>Comment proposer son projet ?</h3>
                             <span>{showAnswer[0] ? '-' : '+'}</span>
                         </div>
                         {showAnswer[0] && (
                             <p>
-                                Lorem ipsum dolor sit amet consectetur. Aliquam quis nisl volutpat sollicitudin egestas integer et egestas. Praesent ipsum facilisi facilisis odio ac. Nec eget nisl nunc mattis magna eu vel condimentum sit. Senectus massa nunc molestie at arcu ipsum. Nunc pretium elementum vitae tristique donec fermentum nulla vel et. Arcu faucibus tortor pellentesque arcu elementum. Semper commodo neque rutrum blandit scelerisque scelerisque at. Leo a pretium ultricies magnis
+                                Pour déposer votre projet, créez ou connectez-vous à votre compte, puis remplissez le formulaire dans la section &apos;&apos;soumission projet&apos;&apos;.
                             </p>
                         )}
                     </div>
                     <div className={styles.FAQcontainer} onClick={() => toggleAnswer(1)}>
                         <div className={styles.question}>
-                            <h3>Lorem ipsum dolor sit amet consectetur. Aliquam quis nisl volutpat sollicitudin egestas integer et egestas. Praesent ipsum facilisi facilisis odio ac ?</h3>
+                            <h3>Quel est le but de cette plateforme ?</h3>
                             <span>{showAnswer[1] ? '-' : '+'}</span>
                         </div>
                         {showAnswer[1] && (
                             <p>
-                                Lorem ipsum dolor sit amet consectetur. Aliquam quis nisl volutpat sollicitudin egestas integer et egestas. Praesent ipsum facilisi facilisis odio ac. Nec eget nisl nunc mattis magna eu vel condimentum sit. Senectus massa nunc molestie at arcu ipsum. Nunc pretium elementum vitae tristique donec fermentum nulla vel et. Arcu faucibus tortor pellentesque arcu elementum. Semper commodo neque rutrum blandit scelerisque scelerisque at. Leo a pretium ultricies magnis
+                                Outil de dialogue et d&apos;échange, la plateforme de participation citoyenne permet aux habitants d&apos;Antony de s&apos;exprimer sur les projets locaux.
                             </p>
                         )}
                     </div>

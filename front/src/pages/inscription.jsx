@@ -1,17 +1,17 @@
 import { useState } from "react";
 import styles from "../styles/Inscription.module.css";
-import Navbar from "../components/navbar.jsx";
+import { Link } from "react-router-dom";
+import Navbar from "../components/navbar";
+import Footer from "../components/footer";
 
 export default function Inscription() {
-    
-
-    const [nom , setNom] = useState('');
-    const [prenom , setPrenom] = useState('');
-    const [age, setAge] = useState('');
-    const [mail , setMail] = useState('');
-    const [password , setPassword] = useState('');
-    const [errorMessage, setErrorMessage] = useState('');
-    const [successMessage, setSuccessMessage] = useState('');
+    const [nom, setNom] = useState("");
+    const [prenom, setPrenom] = useState("");
+    const [age, setAge] = useState("");
+    const [mail, setMail] = useState("");
+    const [password, setPassword] = useState("");
+    const [errorMessage, setErrorMessage] = useState("");
+    const [successMessage, setSuccessMessage] = useState("");
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -21,23 +21,27 @@ export default function Inscription() {
             headers: {
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify({nom, prenom, age, mail, password}),
+            body: JSON.stringify({ nom, prenom, age, mail, password }),
         })
-        .then((res) => {
-            if (!res.ok) {
-                throw res;
-            }
-            return res.json();
-        })
-        .then((data) => {
-            console.log(data)
-            setSuccessMessage("Inscription réussie !");
-        })
-        .catch((err) => {
-            err.json().then((errorMessage) => {
-                setErrorMessage(errorMessage.error);
+            .then((res) => {
+                if (!res.ok) {
+                    throw res;
+                }
+                return res.json();
+            })
+            .then((data) => {
+                console.log(data);
+                setSuccessMessage("Inscription réussie !");
+                setTimeout(() => {
+                    setSuccessMessage("");
+                    window.location.href = "/";
+                }, 2000);
+            })
+            .catch((err) => {
+                err.json().then((errorMessage) => {
+                    setErrorMessage(errorMessage.error);
+                });
             });
-        });
     };
 
     return (
@@ -80,7 +84,6 @@ export default function Inscription() {
                                 onChange={(e) => setAge(e.target.value)}
                                 required
                             />
-                            {errorMessage && <p>{errorMessage}</p>}
                         </div>
                         <div>
                             <label>Email :</label>
@@ -108,7 +111,12 @@ export default function Inscription() {
                         <button type="submit" className={styles.buttonInscrire}>
                             Inscription
                         </button>
-                        <a> Vous connecter </a>
+                        <Link
+                            className={styles.buttonConnexion}
+                            to="/connexion"
+                        >
+                            Connexion
+                        </Link>
                     </form>
                 </div>
                 <img
@@ -116,11 +124,8 @@ export default function Inscription() {
                     src="./src/assets/illustration_inscription.png"
                     alt=""
                 />
-                <div className={styles.txt}>
-                    <h3 className={styles.subTitle}>Content de vous voir !</h3>
-                    <p>Lorem ipsum dolor sit amet.</p>
-                </div>
             </div>
+            <Footer />
         </>
     );
 }

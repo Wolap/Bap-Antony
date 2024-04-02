@@ -1,6 +1,6 @@
 .title {
     font-size: 45px;
-    font-weight: 900;
+    font-family: "fredokaBold", sans-serif;
     margin-block: 75px 25px;
     color: #00336f;
     margin-left: 130px;
@@ -98,7 +98,7 @@
 .nbLike {
     margin-top: 10px;
     font-size: 25px;
-    font-weight: 900;
+    font-family: "fredokaBold", sans-serif;
 }
 
 .partager {
@@ -144,7 +144,7 @@
     justify-content: start;
     align-items: center;
     color: #00336f;
-    font-weight: 900;
+    font-family: "fredokaBold", sans-serif;
     font-size: 20px;
     margin-block: 40px;
     padding-left: 25px;
