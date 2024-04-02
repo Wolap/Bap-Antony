@@ -3,6 +3,7 @@ import styles from '../styles/accueil.module.css'
 import { Buffer } from 'buffer'
 
 import ProjectCardAccueil from '../components/projectCardAccueil'
+import Footer from '../components/footer';
 
 const Accueil = () => {
     const [mostLiked, setMostLiked] = useState([]);
@@ -122,9 +123,14 @@ const Accueil = () => {
                                 <option value="base">
                                     Choisissez un thème
                                 </option>
-                                <option value="1">Culture</option>
-                                <option value="2">Sport</option>
-                                <option value="3">Environnement</option>
+                                <option value="Ecologie et environnement">Ecologie et environnement</option>
+                                <option value="Sport">Sport</option>
+                                <option value="Solidarité et inclusion">Solidarité et inclusion</option>
+                                <option value="Mobilité">Mobilité</option>
+                                <option value="Culture">Culture</option>
+                                <option value="Santé">Santé</option>
+                                <option value="Education">Education</option>
+                                <option value="Autre">Autre</option>
                             </select>
                         </div>
                         <div className={styles.ideeLieu}>
@@ -196,12 +202,9 @@ const Accueil = () => {
                     src="./src/assets/illustrationAccueil_tache3.png"
                     alt=""
                 />
-                <img
-                    className={styles.trait4}
-                    src="./src/assets/traitAccueil4.png"
-                    alt=""
-                />
+                
             </div>
+            <Footer />
         </>
     );
 };
