@@ -70,7 +70,7 @@ export default function Connexion() {
                     <button type="submit" className={styles.buttonInscrire}>
                         Connexion
                     </button>
-                    <a> Vous inscrire </a>
+                    <a href="inscription"> Vous inscrire </a>
                 </form>
             </div>
         </div>

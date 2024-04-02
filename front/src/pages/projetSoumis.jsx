@@ -84,9 +84,7 @@ export default function Soumission() {
                         commodo neque rutrum blandit scelerisque scelerisque at.
                         Leo a pretium ultricies magnis
                     </p>
-                    <button className={styles.buttonSoumission}>
-                        Je depose mon idée
-                    </button>
+                    <a className={styles.buttonSoumission} href="projets-soumis">Je depose mon idée</a>
                 </div>
 
                 <img

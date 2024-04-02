@@ -103,7 +103,7 @@ export default function Inscription() {
                         <button type="submit" className={styles.buttonInscrire}>
                             Inscription
                         </button>
-                        <a> Vous connecter </a>
+                        <a href="connexion"> Vous connecter </a>
                     </form>
                 </div>
                 <img

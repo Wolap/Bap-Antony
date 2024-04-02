@@ -5,14 +5,14 @@
     border-bottom: #354BCF 2px solid;
     border-top: #354BCF 2px solid;
     border-left: #354BCF 2px solid;
-    margin: 70px 0px 50px 50px;
+    margin: 70px 0px 70px 50px;
 }
 
 .explications {
     display: flex;
     flex-direction: column;
     gap: 60px;
-    padding: 50px 60px;
+    padding: 70px 100px;
 }
 
 #guyFAQ {
@@ -20,11 +20,11 @@
 }
 
 .explications h2 {
-    font-size: 30px;
+    font-size: 2rem;
 }
 
 .explications p {
-    font-size: 14px;
+    font-size: 1rem;
 }
 
 .container2 {
@@ -49,16 +49,16 @@
     flex-direction: column;
     align-items: center;
     gap: 60px;
-    padding: 50px 50px;
+    padding: 70px 100px;
     padding-bottom: 150px;
 }
 
 .participer h2 {
-    font-size: 30px;
+    font-size: 2rem;
 }
 
 .participer p {
-    font-size: 14px;
+    font-size: 1rem;
 }
 
 #bold {
@@ -73,8 +73,6 @@
 .container3 {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
     color: #354BCF;
     border-bottom: #354BCF 2px solid;
     border-top: #354BCF 2px solid;
@@ -95,13 +93,13 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: right;
     gap: 20px;
     padding-inline: 100px;
 }
 
 .FAQ h2 {
-    font-size: 30px;
+    font-size: 2rem;
     margin-bottom: 20px;
 }
 
@@ -110,28 +108,28 @@
     padding: 30px 50px;
     border-radius: 10px;
     cursor: pointer;
+    width: 100%;
 }
 
 .FAQcontainer p {
     color: black;
     padding-top: 20px;
-    font-size: 14px;
+    font-size: 1rem;
 }
 
 .question {
     display: flex;
     align-items: top;
     justify-content: space-between;
-    width: 100%;
     gap: 20px;
 }
 
 .question h3 {
-    font-size: 20px;
+    font-size: 1.5rem;
 }
 
 .question span {
-    font-size: 20px;
+    font-size: 1.5rem;
     font-weight: bolder;
 }
 
@@ -143,6 +141,8 @@
     padding: 10px 80px;
     border-radius: 10px;
     margin-top: 80px;
+    margin-inline: 20%;
+    text-align: center;
 }
 
 #btn:hover {
@@ -153,7 +153,6 @@
 .container {
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
     margin: 80px 0px;
 }
@@ -180,7 +179,7 @@
     }
 
     .FAQcontainer h3 {
-        font-size: 18px;
+        font-size: 1rem;
     }
 }
 
