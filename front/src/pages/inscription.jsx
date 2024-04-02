@@ -47,6 +47,7 @@ export default function Inscription() {
                             <label className={styles.nom}>Nom :</label>
                             <input
                                 type="text"
+                                placeholder="DUPONT"
                                 className={styles.input}
                                 value={nom}
                                 onChange={(e) => setNom(e.target.value)}
@@ -57,6 +58,7 @@ export default function Inscription() {
                             <label>Prénom :</label>
                             <input
                                 type="text"
+                                placeholder="Jean"
                                 className={styles.input}
                                 value={prenom}
                                 onChange={(e) => setPrenom(e.target.value)}
@@ -67,6 +69,7 @@ export default function Inscription() {
                             <label>Age :</label>
                             <input
                                 type="text"
+                                placeholder="23"
                                 className={styles.input}
                                 value={age}
                                 onChange={(e) => setAge(e.target.value)}
@@ -78,6 +81,7 @@ export default function Inscription() {
                             <label>Email :</label>
                             <input
                                 type="email"
+                                placeholder="exemple@gmail.com"
                                 className={styles.input}
                                 value={mail}
                                 onChange={(e) => setMail(e.target.value)}
@@ -89,6 +93,7 @@ export default function Inscription() {
                             <label>Mot de passe :</label>
                             <input
                                 type="password"
+                                placeholder="********"
                                 className={styles.input}
                                 value={password}
                                 onChange={(e) => setPassword(e.target.value)}
@@ -101,6 +106,11 @@ export default function Inscription() {
                         <a> Vous connecter </a>
                     </form>
                 </div>
+                <img
+                    className={styles.img}
+                    src="./src/assets/illustration_inscription.png"
+                    alt=""
+                />
                 <div className={styles.txt}>
                     <h3 className={styles.subTitle}>Content de vous voir !</h3>
                     <p>Lorem ipsum dolor sit amet.</p>
