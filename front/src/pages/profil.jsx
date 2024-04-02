@@ -5,6 +5,7 @@ import styles from '../styles/profil.module.css';
 import Navbar from '../components/navbar';
 import Footer from '../components/footer';
 import defaultProjectImage from '../assets/bgForm.png';
+import { Link } from 'react-router-dom';
 
 const Profil = () => {
     const [infoUser, setInfoUser] = useState([]);
@@ -173,7 +174,9 @@ const Profil = () => {
                                 />
                             </div>
                             <div className={styles.projectText}>
-                                <p> {item.nomProjet} </p>
+                                <Link to={`/pageprojet/${item.id}`}>
+                                    <p> {item.nomProjet} </p>
+                                </Link>
                             </div>
                         </div>
                     ))}
@@ -195,7 +198,9 @@ const Profil = () => {
                                 />
                             </div>
                             <div className={styles.projectText}>
-                                <p> {item.nomProjet} </p>
+                                <Link to={`/pageprojet/${item.id}`}>
+                                    <p> {item.nomProjet} </p>
+                                </Link>
                             </div>
                         </div>
                     ))}
