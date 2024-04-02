@@ -11,6 +11,7 @@ export default function Inscription() {
     const [mail , setMail] = useState('');
     const [password , setPassword] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
+    const [successMessage, setSuccessMessage] = useState('');
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -28,7 +29,10 @@ export default function Inscription() {
             }
             return res.json();
         })
-        .then((data) => console.log(data))
+        .then((data) => {
+            console.log(data)
+            setSuccessMessage("Inscription réussie !");
+        })
         .catch((err) => {
             err.json().then((errorMessage) => {
                 setErrorMessage(errorMessage.error);
@@ -42,6 +46,7 @@ export default function Inscription() {
             <div className={styles.content}>
                 <div className={styles.inscription}>
                     <h2 className={styles.title}>Inscription !</h2>
+                    {successMessage && <p>{successMessage}</p>}
                     <form className={styles.formulaire} onSubmit={handleSubmit}>
                         <div>
                             <label className={styles.nom}>Nom :</label>
