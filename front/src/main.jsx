@@ -6,6 +6,8 @@ import Form from "./pages/Form";
 import Inscription from "./pages/inscription";
 import Connexion from "./pages/connexion";
 import Profil from "./pages/profil";
+import Faq from "./pages/faq";
+import PageProjet from "./pages/pageProjet";
 
 import "./index.module.css";
 
@@ -23,7 +25,7 @@ const router = createBrowserRouter([
     },
     {
         path: "/projets-soumis",
-        element: <ProjetSoumis />, 
+        element: <ProjetSoumis />,
     },
     {
         path: "/formulaire-soumission-projet",
@@ -38,8 +40,16 @@ const router = createBrowserRouter([
         element: <Connexion />,
     },
     {
+        path: "/pageprojet/:id",
+        element: <PageProjet />,
+    },
+    {
         path: "/profil",
         element: <Profil />,
+    },
+    {
+        path: "/faq",
+        element: <Faq />,
     }
 ]);
 
