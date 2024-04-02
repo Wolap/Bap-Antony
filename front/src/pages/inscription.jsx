@@ -7,9 +7,11 @@ export default function Inscription() {
 
     const [nom , setNom] = useState('');
     const [prenom , setPrenom] = useState('');
+    const [age, setAge] = useState('');
     const [mail , setMail] = useState('');
     const [password , setPassword] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
+    const [successMessage, setSuccessMessage] = useState('');
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -19,7 +21,7 @@ export default function Inscription() {
             headers: {
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify({nom, prenom, mail, password}),
+            body: JSON.stringify({nom, prenom, age, mail, password}),
         })
         .then((res) => {
             if (!res.ok) {
@@ -27,7 +29,10 @@ export default function Inscription() {
             }
             return res.json();
         })
-        .then((data) => console.log(data))
+        .then((data) => {
+            console.log(data)
+            setSuccessMessage("Inscription réussie !");
+        })
         .catch((err) => {
             err.json().then((errorMessage) => {
                 setErrorMessage(errorMessage.error);
@@ -41,11 +46,13 @@ export default function Inscription() {
             <div className={styles.content}>
                 <div className={styles.inscription}>
                     <h2 className={styles.title}>Inscription !</h2>
+                    {successMessage && <p>{successMessage}</p>}
                     <form className={styles.formulaire} onSubmit={handleSubmit}>
                         <div>
                             <label className={styles.nom}>Nom :</label>
                             <input
                                 type="text"
+                                placeholder="DUPONT"
                                 className={styles.input}
                                 value={nom}
                                 onChange={(e) => setNom(e.target.value)}
@@ -56,6 +63,7 @@ export default function Inscription() {
                             <label>Prénom :</label>
                             <input
                                 type="text"
+                                placeholder="Jean"
                                 className={styles.input}
                                 value={prenom}
                                 onChange={(e) => setPrenom(e.target.value)}
@@ -63,9 +71,22 @@ export default function Inscription() {
                             />
                         </div>
                         <div>
+                            <label>Age :</label>
+                            <input
+                                type="text"
+                                placeholder="23"
+                                className={styles.input}
+                                value={age}
+                                onChange={(e) => setAge(e.target.value)}
+                                required
+                            />
+                            {errorMessage && <p>{errorMessage}</p>}
+                        </div>
+                        <div>
                             <label>Email :</label>
                             <input
                                 type="email"
+                                placeholder="exemple@gmail.com"
                                 className={styles.input}
                                 value={mail}
                                 onChange={(e) => setMail(e.target.value)}
@@ -77,6 +98,7 @@ export default function Inscription() {
                             <label>Mot de passe :</label>
                             <input
                                 type="password"
+                                placeholder="********"
                                 className={styles.input}
                                 value={password}
                                 onChange={(e) => setPassword(e.target.value)}
@@ -86,9 +108,14 @@ export default function Inscription() {
                         <button type="submit" className={styles.buttonInscrire}>
                             Inscription
                         </button>
-                        <a> Vous connecter </a>
+                        <a href="connexion"> Vous connecter </a>
                     </form>
                 </div>
+                <img
+                    className={styles.img}
+                    src="./src/assets/illustration_inscription.png"
+                    alt=""
+                />
                 <div className={styles.txt}>
                     <h3 className={styles.subTitle}>Content de vous voir !</h3>
                     <p>Lorem ipsum dolor sit amet.</p>

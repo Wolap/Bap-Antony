@@ -5,7 +5,11 @@ const prisma = new PrismaClient()
 
 const getSoumissions = async (req, res) => {
     try {
-        const soumissions = await prisma.soumissionProjets.findMany();
+        const soumissions = await prisma.soumissionProjets.findMany({
+            include: {
+                likes: true,
+            }
+        });
         res.json(soumissions);
     } catch (error) {
         res.status(500).json({ error: error.message });
@@ -17,6 +21,9 @@ const getSoumission = async (req, res) => {
     try {
         const soumission = await prisma.soumissionProjets.findUnique({
             where: { id: parseInt(id) },
+            include: {
+                likes: true,
+            }
         });
         if (!soumission) return res.status(404).json({ error: 'Soumission not found' });
         res.json(soumission);
@@ -39,7 +46,7 @@ const createSoumission = async (req, res) => {
 
     try {
         const decoded = jwt.verify(token, process.env.JWT_SECRET);
-
+        
         // Utiliser Prisma pour créer une nouvelle entrée dans la base de données
         const newSoumission = await prisma.soumissionProjets.create({
             data: {
@@ -100,4 +107,79 @@ const deleteSoumission = async (req, res) => {
     }
 }
 
-export { getSoumissions, getSoumission, createSoumission, updateSoumission, deleteSoumission }
+const likeSoumission = async (req, res) => {
+    const { id } = req.params;
+    const token = req.headers["x-access-token"];
+
+    if (!token) {
+        return res.status(403).json({ error: "No token provided!" });
+    }
+
+    try {
+        const decoded = jwt.verify(token, process.env.JWT_SECRET);
+
+        // Vérifier si la soumission existe
+        const soumission = await prisma.soumissionProjets.findUnique({
+            where: { id: parseInt(id) },
+        });
+        if (!soumission) return res.status(404).json({ error: 'Soumission not found' });
+
+        // Vérifier si l'utilisateur existe
+        const user = await prisma.user.findUnique({
+            where: { id: Number(decoded.id) },
+        });
+        if (!user) return res.status(404).json({ error: 'User not found' });
+
+        // Ajouter un like à la soumission
+        const like = await prisma.like.create({
+            data: {
+                user: { connect: { id: Number(decoded.id) } },
+                soumissionProjets: { connect: { id: parseInt(id) } },
+            },
+        });
+
+        res.status(204).end();
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+}
+
+const dislikeSoumission = async (req, res) => {
+    const { id } = req.params;
+    const token = req.headers["x-access-token"];
+
+    if (!token) {
+        return res.status(403).json({ error: "No token provided!" });
+    }
+
+    try {
+        const decoded = jwt.verify(token, process.env.JWT_SECRET);
+
+        // Vérifier si la soumission existe
+        const soumission = await prisma.soumissionProjets.findUnique({
+            where: { id: parseInt(id) },
+        });
+        if (!soumission) return res.status(404).json({ error: 'Soumission not found' });
+
+        // Vérifier si l'utilisateur existe
+        const user = await prisma.user.findUnique({
+            where: { id: Number(decoded.id) },
+        });
+        if (!user) return res.status(404).json({ error: 'User not found' });
+
+        // Supprimer le like de la soumission
+        await prisma.like.deleteMany({
+            where: {
+                userId: Number(decoded.id),
+                soumissionProjetsId: parseInt(id),
+            },
+        });
+
+        res.status(204).end();
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+}
+
+
+export { getSoumissions, getSoumission, createSoumission, updateSoumission, deleteSoumission, likeSoumission, dislikeSoumission };

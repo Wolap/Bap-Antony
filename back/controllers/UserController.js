@@ -3,29 +3,51 @@ import jwt from 'jsonwebtoken'
 
 const prisma = new PrismaClient()
 
+// get profile with the like of the user
 const getProfile = async (req, res) => {
     const token = req.headers["x-access-token"]
+    const decodedToken = jwt.decode(token, "nodejsisawesome")
 
     if (!token) {
         return res.json({ error: "No token provided!" })
     }
 
-    jwt.verify(token, process.env.JWT_SECRET, (error, decoded) => {
-        if(error) {
-            return res.json({ error: "Unauthorized" })
+    const user = await prisma.user.findUnique({
+        where: {
+            id: decodedToken.id
+        },
+        include: {
+            likes: true
         }
-
-        prisma.user.findUnique({
-            where: {
-                email: decoded.email
-            },
-        }).then(user => {
-            res.json(user)
-        })
-        .catch(error => {
-            res.json(error)
-        })
+    }) .then(user => {
+        res.json(user)
+    })
+    .catch(error => {
+        res.json(error)
     })
 }
 
-export { getProfile }
+const updateProfile = async (req, res) => {
+    const token = req.headers["x-access-token"]
+    const decodedToken = jwt.decode(token, "nodejsisawesome")
+
+    if (!token) {
+        return res.json({ error: "No token provided!" })
+    }
+
+    const user = await prisma.user.update({
+        where: {
+            id: decodedToken.id
+        },
+        data: {
+            ...req.body
+        }
+    }) .then(user => {
+        res.json(user)
+    })
+    .catch(error => {
+        res.json(error)
+    })
+}
+
+export { getProfile, updateProfile }

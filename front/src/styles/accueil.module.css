@@ -1,41 +1,681 @@
-.banner img {
+.containerTitle {
+    margin-bottom: 50px;
+    background-image: url("./src/assets/bg.png");
+    height: 70vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: -1;
+}
+
+.containerTitleFilter {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     width: 100%;
-    margin-top: 2em; 
-    background-color: rgb(48, 48, 48);
-    height: 300px;
-    object-fit: cover;
+    height: 100%;
+    z-index: 1;
 }
 
-.presentation {
-    margin-top: 2em;
-    background-color: #bdbdbd;
-    padding: 1em;
-    margin-inline: 4em;
+h1 {
+    font-size: 40px;
+    margin-block: 50px;
+    text-align: center;
+    color: white;
+    font-weight: 900;
 }
 
-.presentation img {
+.containerButton {
+    display: flex;
+    width: 100%;
+    justify-content: end;
+    gap: 30px;
+    margin-right: 40%;
+
+    & a {
+        padding: 15px 40px;
+        border-radius: 10px;
+        font-weight: 900;
+    }
+}
+
+.buttonIdee {
+    background-color: white;
+    color: #354bcf;
+    text-decoration: none;
+    border: white solid 1px;
+}
+
+.buttonIdee:hover {
+    background-color: transparent;
+    color: white;
+    border: white solid 1px;
+}
+
+.buttonDecouvrir {
+    background-color: #354bcf;
+    color: white;
+    text-decoration: none;
+    border: #354bcf solid 1px;
+}
+
+.buttonDecouvrir:hover {
+    background-color: transparent;
+    border: #354bcf solid 2px;
+    color: #354bcf;
+}
+
+.budgetParticipatif {
+    background-color: white;
+    width: 80%;
+    margin-inline: auto;
+    display: flex;
+    border: #354bcf solid 2px;
+    position: relative;
+    border-radius: 10px;
+    margin-top: 100px;
+    padding-right: 30px;
+}
+
+.budgetParticipatif h2 {
+    font-size: 30px;
+    margin-block: 20px;
+    color: #354bcf;
+    font-weight: 900;
+    padding-left: 300px;
+    padding-top: 20px;
+}
+
+.budgetParticipatif p {
+    margin-bottom: 60px;
+    line-height: 25px;
+    padding-left: 300px;
+}
+
+.budgetParticipatif img {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+}
+
+.participer {
+    margin-top: 200px;
+    background-color: #3d47a0;
+    width: 80%;
+    margin-inline: auto;
+    position: relative;
+    border-radius: 10px;
+}
+
+.participerText {
+    padding-right: 150px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+
+.participerText ul {
+    display: block;
+}
+
+.participerText ul li {
+    color: white;
+}
+
+.participer h2 {
+    font-size: 30px;
+    color: white;
+    font-weight: 900;
+    text-align: center;
+}
+
+.participer ul {
+    padding: 30px;
+    padding-left: 70px;
+    padding-right: 100px;
+    color: #fff;
+}
+
+.participer li {
+    line-height: 25px;
+}
+
+.participer img {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}
+
+.bouttonVoirPlus {
+    margin-top: 20px;
+    padding: 15px 120px;
+    font-weight: 800;
+    text-decoration: none;
+    text-align: center;
+    margin-inline: auto;
+    border: #354bcf solid 2px;
+    color: #354bcf;
+    border-radius: 10px;
+    background-color: white;
+    margin-bottom: 200px;
+}
+
+.bouttonVoirPlus:hover {
+    background-color: #354bcf;
+    color: white;
+}
+
+.contentIdee {
+    background-image: url("./src/assets/illustrationAccueil_tache1.png");
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.idee {
+    margin-block: 200px;
+    background-color: white;
+    border-radius: 10px;
+    border: #354bcf solid 2px;
+    padding-block: 50px;
+    padding-inline: 100px;
+    padding-bottom: 150px;
+    position: relative;
+    margin-inline: 30px;
+}
+
+.idee h2 {
+    font-size: 30px;
+    color: #354bcf;
+    font-weight: 900;
+    padding-right: 200px;
+}
+
+.idee img {
+    width: 30%;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}
+
+.selecteur {
+    padding-top: 70px;
+    display: flex;
+    gap: 20px;
+}
+
+.selecteur label {
+    font-weight: 800;
+}
+
+.ideeTheme {
+    display: flex;
+    flex-direction: column;
+    width: 250px;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.ideeTheme select {
+    background-color: white;
+    border: #354bcf solid 1px;
+    height: 30px;
+    border-radius: 10px;
+    padding-left: 10px;
+}
+
+.ideeLieu {
+    display: flex;
+    flex-direction: column;
+    width: 250px;
+    gap: 20px;
+}
+
+.ideeLieu input {
+    background-color: white;
+    border: #354bcf solid 1px;
+    height: 30px;
+    border-radius: 10px;
+    padding-left: 10px;
+}
+
+.idee a {
+    text-decoration: none;
+    background-color: #e22c3f;
+    color: white;
+    border-radius: 10px;
+    font-weight: 900;
+    border: 2px solid #e22c3f;
+    padding: 10px 170px;
+}
+
+.idee a:hover {
+    background-color: white;
+    color: #e22c3f;
+    border: #e22c3f solid 2px;
+}
+
+.containerCards {
+    height: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    margin-inline: 20px;
+}
+
+.containerCardsTitle {
+    text-align: center;
+    font-size: 30px;
+    color: #354bcf;
+    font-weight: 900;
+}
+
+
+.projects {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    padding-inline: 100px;
+    margin-top: 50px;
+}
+
+.Image {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    z-index: -1;
+}
+
+
+.like {
+    display: flex;
+    width: 100%;
+    gap: 10px;
+    justify-content: center;
+}
+
+.card button {
+    margin-top: 30px;
+    background-color: #354bcf;
+    color: white;
+    height: 50px;
+    width: 80%;
+    border-radius: 10px;
+    font-weight: 900;
+    border: none;
+}
+
+.bouttonVoirProjets {
+    padding: 15px 120px;
+    font-weight: 800;
+    text-decoration: none;
+    text-align: center;
+    margin-inline: auto;
+    border: #354bcf solid 2px;
+    color: #354bcf;
+    border-radius: 10px;
+    background-color: white;
+    margin-bottom: 200px;
+}
+
+.bouttonVoirProjets:hover {
+    background-color: #354bcf;
+    color: white;
+}
+
+.containerDiscours {
+    padding-inline: 70px;
+    padding-block: 30px;
     width: 90%;
-    max-width: 600px;
-    height: 90%;
-    max-height: 300px;
-    object-fit: cover;
+    margin-inline: auto;
+    background-color: #3f479a;
+    color: white;
+    border-radius: 10px;
 }
 
-.presentation div h1 {
-    margin-bottom: 1em;
-}
-
-.infos {
+.discours {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 2em;
+    align-items: center;
 }
 
-.infos div {
-    width: 50%;
-    padding: 1em;
+.containerDiscours h2 {
+    font-size: 25px;
+    font-weight: 900;
 }
 
-.infos:nth-child(even) {
-    flex-direction: row-reverse;
+.discours p {
+    margin-block: 70px;
+}
+
+.discours img {
+    margin-left: 50px;
+}
+
+.taches3 {
+    position: absolute;
+    left: 0;
+    top: -900px;
+    z-index: -1;
+}
+
+.fullWidth {
+    width: 100%;
+    display: flex;
+    position: relative;
+}
+
+.trait1 {
+    position: absolute;
+    left: 3%;
+    top: -50px;
+    z-index: -1;
+}
+
+.trait2 {
+    position: absolute;
+    right: 3%;
+    top: -150px;
+    z-index: -1;
+}
+
+.trait3 {
+    position: absolute;
+    left: 20%;
+    top: 0px;
+    z-index: -1;
+}
+
+.trait4 {
+    position: absolute;
+    right: 2%;
+    bottom: -150px;
+    z-index: -1;
+}
+
+/* Responsive */
+
+@media screen and (max-width: 920px) {
+    h1 {
+        font-size: 30px;
+    }
+    .containerButton {
+        display: flex;
+        width: 100%;
+        justify-content: end;
+        gap: 30px;
+        margin-right: 40%;
+    
+        & a {
+            padding: 15px 40px;
+            border-radius: 10px;
+            font-weight: 900;
+            font-size: 10px;
+        }
+    }
+
+    .budgetParticipatif img {
+        left: -50px;
+    }
+
+    .idee {
+        padding-inline: 80px;
+    }
+
+    .idee h2 {
+        padding-right: 0px;
+    }
+
+    .idee a {
+        padding: 10px 100px;
+    }
+
+    .ideeLieu {
+        width: 160px;
+    }
+
+    .ideeTheme {
+        width: 200px;
+    }
+
+    .idee img {
+        width: 35%;
+    }
+
+    .projects {
+        flex-direction: column;
+    }
+}
+
+@media screen and (max-width: 800px) {
+
+    .trait1 {
+        display: none;
+    }
+
+    .trait2 {
+        display: none;
+    }
+
+    .trait3 {
+        display: none;
+    }
+
+    .trait4 {
+        display: none;
+    }
+
+    .budgetParticipatif {
+        margin-top: 30px;
+        width: 90%;
+    }
+
+    .participer {
+        margin-top: 50px;
+        width: 90%;
+    }
+
+    .bouttonVoirPlus {
+        margin-top: 20px;
+    }
+
+    .idee {
+        margin-block: 50px;
+        padding-inline: 50px;
+    }
+
+    .containerCards {
+        height: 100%;
+    }
+
+    .discours img {
+        width: 170px;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    h1 {
+        font-size: 30px;
+    }
+
+    .budgetParticipatif img {
+        display: none;
+    }
+
+    .budgetParticipatif {
+        padding-left: 30px;
+    }
+
+    .budgetParticipatif h2 {
+        padding-left: 0px;
+        font-size: 25px;
+        text-align: center;
+    }
+
+    .budgetParticipatif p {
+        padding-left: 0px;
+    }
+
+    .participer img {
+        display: none;
+    }
+
+    .participerText {
+        padding-right: 0px;
+    }
+
+    .idee {
+        width: 90%;
+    }
+
+    .idee h2 {
+        text-align: center;
+    }
+
+    .idee a {
+        padding: 10px 0%;
+    }
+
+    .selecteur {
+        display: block;
+        margin-bottom: 50px;
+    }
+
+    .ideeLieu {
+        width: 100%;
+    }
+
+    .ideeTheme {
+        width: 100%;
+    }
+
+    .idee img {
+        display: none;
+    }
+
+    .containerCards {
+        height: 100%;
+    }
+
+    .cards {
+        grid-template-columns: 1fr;
+        padding-inline: 0;
+    }
+
+    .discours img {
+        display: none;
+    }
+
+    .containerDiscours h2 {
+        text-align: center;
+    }
+}
+
+@media screen and (max-width: 550px) {
+    h1 {
+        font-size: 25px;
+    }
+    .containerButton {
+        display: flex;
+        width: 100%;
+        justify-content: end;
+        gap: 30px;
+        margin-right: 0;
+    
+        & a {
+            padding: 15px 40px;
+            border-radius: 10px;
+            font-weight: 900;
+            font-size: 10px;
+        }
+    }
+
+    .budgetParticipatif h2 {
+        font-size: 20px;
+    }
+
+    .budgetParticipatif p {
+        font-size: 15px;
+    }
+
+    .participer h2 {
+        font-size: 20px;
+    }
+
+    .participer ul {
+        padding: 30px;
+        padding-left: 30px;
+        padding-right: 20px;
+    }
+
+    .participer ul li {
+        font-size: 15px;
+    }
+
+    .bouttonVoirPlus {
+        padding: 15px 100px;
+        font-size: 15px;
+        margin-bottom: 50px;
+    }
+
+    .idee {
+        padding-inline: 20px;
+    }
+
+    .idee h2 {
+        font-size: 20px;
+    }
+
+    .idee a {
+        font-size: 15px;
+        padding-inline: 10px;
+    }
+
+    .ideeTheme label {
+        font-size: 15px;
+    }
+
+    .ideeLieu label {
+        font-size: 15px;
+    }
+
+    .containerCards {
+        height: 100%;
+    }
+
+    .containerCards h2 {
+        font-size: 20px;
+    }
+
+    .cards {
+        grid-template-columns: 1fr;
+        margin-top: 0;
+    }
+
+    .bouttonVoirProjets {
+        font-size: 14px;
+        padding: 15px 100px;
+        margin-bottom: 50px;
+    }
+
+    .discours img {
+        display: none;
+    }
+
+    .containerDiscours {
+        padding-inline: 20px;
+        padding-block: 20px;
+    }
+    .containerDiscours h2 {
+        text-align: center;
+        font-size: 20px;
+    }
+
+    .containerDiscours p {
+        font-size: 15px;
+        margin-block: 20px;
+    }
 }

@@ -22,7 +22,7 @@ export default function Connexion() {
             if (data.error) {
                 throw new Error(data.error);
             } else {
-                setMessage("Login successful!");    
+                setMessage("Connexion réussie !");    
                 localStorage.setItem('token', data.token);
                 localStorage.setItem('userId', data.userId);
                 console.log("data", data)
@@ -32,21 +32,27 @@ export default function Connexion() {
         })
         .catch(error => {
             console.error('Error:', error);
-            setMessage("Login failed. Please check your credentials.");
+            setMessage("Erreur de connexion !");
         });
     };
 
     return (
         <div className={styles.content}>
+            <img
+                className={styles.img}
+                src="./src/assets/illustration_connexion.png"
+                alt=""
+            />
             <div className={styles.connexion}>
                 <h2 className={styles.title}>Connexion !</h2>
                 {message && <p>{message}</p>}
-                <form className={styles.formulaire} onSubmit={handleSubmit} >
+                <form className={styles.formulaire} onSubmit={handleSubmit}>
                     <div>
                         <label>mail :</label>
                         <input
                             type="mail"
                             className={styles.input}
+                            placeholder="exemple@gmail.com"
                             value={mail}
                             onChange={(e) => setMail(e.target.value)}
                         />
@@ -56,19 +62,16 @@ export default function Connexion() {
                         <input
                             type="password"
                             className={styles.input}
+                            placeholder="••••••••"
                             value={password}
-                            onChange={(e) => setPassword(e.target.value) }
+                            onChange={(e) => setPassword(e.target.value)}
                         />
                     </div>
                     <button type="submit" className={styles.buttonInscrire}>
                         Connexion
                     </button>
-                    <a> Vous inscrire </a>
+                    <a href="inscription"> Vous inscrire </a>
                 </form>
-            </div>
-            <div className={styles.txt}>
-                <h3 className={styles.subTitle}>Content de vous revoir !</h3>
-                <p>Lorem ipsum dolor sit amet.</p>
             </div>
         </div>
     );
