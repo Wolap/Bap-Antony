@@ -1,0 +1,234 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.formcontainer {
+    padding: 200px 100px;
+    color: #354BCF;
+    background-image: url('../assets/bg.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.formcontainer h1 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    padding-left: 20px;
+}
+
+.form {
+    border: #354BCF 1px solid;
+    border-radius: 5px;
+    padding: 50px;
+    margin-inline: 20px;
+    position: relative;
+    background-color: white;
+}
+
+.heart {
+    position: absolute;
+    top: 20px;
+    right: 50px;
+    width: 100px;
+    height: 110px;
+}
+
+#bottom {
+    position: absolute;
+    transition: opacity 0.3s;
+    opacity: 1;
+}
+
+#top {
+    position: absolute;
+    transition: opacity 0.3s;
+    opacity: 0;
+}
+
+.form:hover #bottom {
+    opacity: 0;
+}
+
+.form:hover #top{
+    opacity: 1;
+}
+
+.title {
+    display: flex;
+    padding-top: 10px;
+    padding-left: 20px;
+    align-items: center;
+}
+
+.title span {
+    width: 50px;
+    height: 50px;
+    font-size: 30px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background-color: #354BCF;
+    color: white;
+    margin-right: 10px;
+    padding: 10px;
+}
+
+.title h2 {
+    font-size: 20px;
+    font-weight: 800;
+    color: #354BCF;
+}
+
+.form p {
+    color: red;
+}
+
+.formcard {
+    display: flex;
+    justify-content: left;
+    gap: 100px;
+    margin: 50px;
+}
+
+.formgroup {
+    display: flex;
+    flex-direction: column;
+}
+
+.formgroup input {
+    width: 100%;
+    padding: 20px;
+    border: #354BCF 1px solid;
+    border-radius: 5px;
+    margin-top: 15px;
+    margin-bottom: 20px;
+}
+
+.formgroup select {
+    width: 100%;
+    padding: 20px;
+    border: #354BCF 1px solid;
+    border-radius: 5px;
+    margin-top: 15px;
+    margin-bottom: 20px;
+    cursor: pointer;
+}
+
+input::file-selector-button {
+    padding: 30px 20px;
+    border: none;
+    background-color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#img {
+    padding: 0;
+    margin-top: 20px;
+}
+
+#description {
+    width: 100%;
+    padding: 10px;
+    border: #354BCF 1px solid;
+    border-radius: 5px;
+    margin-top: 15px;
+    height: 100px;
+}
+
+#formbtn {
+    background-color: #354BCF;
+    color: white;
+    padding: 10px 30px;
+    border-radius: 5px;
+    border: none;
+    border-radius: 5px;
+    position: absolute;
+    bottom: 50px;
+    right: 100px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+#formbtn:hover {
+    background-color: white;
+    color: #354BCF;
+    border: #354BCF 1px solid;
+}
+
+/* Responsive */
+
+@media screen and (max-width: 800px) {
+    .formcontainer {
+        padding: 100px 50px;
+    }
+
+    .form {
+        padding: 30px;
+        position: relative;
+    }
+
+    .formcard {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .formgroup {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .formgroup input {
+        width: 100%;
+        padding: 10px;
+        border: #354BCF 1px solid;
+        border-radius: 5px;
+        margin-top: 15px;
+        margin-bottom: 20px;
+    }
+
+    .formgroup select {
+        width: 100%;
+        padding: 10px;
+        border: #354BCF 1px solid;
+        border-radius: 5px;
+        margin-top: 15px;
+        margin-bottom: 20px;
+        cursor: pointer;
+    }
+
+    #description {
+        width: 100%;
+        padding: 10px;
+        border: #354BCF 1px solid;
+        border-radius: 5px;
+        margin-top: 15px;
+        height: 100px;
+    }
+
+    #formbtn {
+        background-color: #354BCF;
+        color: white;
+        padding: 10px 30px;
+        border-radius: 5px;
+        border: none;
+        border-radius: 5px;
+        position: absolute;
+        bottom: 30px;
+        right: 40%;
+        cursor: pointer;
+        font-weight: 600;
+    }
+
+    #formbtn:hover {
+        background-color: white;
+        color: #354BCF;
+        border: #354BCF 1px solid;
+    }
+}
+
