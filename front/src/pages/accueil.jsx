@@ -119,7 +119,7 @@ const Accueil = () => {
                     </h2>
                     <div className={styles.selecteur}>
                         <div className={styles.ideeTheme}>
-                            <label>J`ai une idée pour</label>
+                            <label>J&apos;ai une idée pour</label>
                             <select name="ideeTheme" id="choixTheme" value={categorie} onChange={(e) => setTheme(e.target.value)}>
                                 <option value="Autre">
                                     Choisissez un thème
