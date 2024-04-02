@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import {Buffer} from 'buffer';  
+import { Buffer } from "buffer";  
 import styles from "../styles/projetSoumis.module.css";
 import Navbar from "../components/navbar.jsx";
 import ProjectCard from "../components/projectCard.jsx";
@@ -7,14 +7,8 @@ import ProjectCard from "../components/projectCard.jsx";
 export default function Soumission() {
 
     const [infoProjet, setInfoProjet] = useState([]);
-    // const [likesByProject, setLikesByProject] = useState({});
     const [selectedCategory, setSelectedCategory] = useState('all');
     const [searchTerm, setSearchTerm] = useState('');
-
-    useEffect(() => {
-        // récup likes du localStorage au premier rendu
-        // setLikesByProject(JSON.parse(localStorage.getItem('likesByProject') ?? '{}'));
-    }, []);
 
     useEffect(() => {
         console.log('infoProjet', infoProjet);
@@ -30,15 +24,15 @@ export default function Soumission() {
             })
             .then((payload) => {
                 const parsedData = payload.map((item) => {
-                        if (item.image.data.length === 0) {
-                            return { ...item, image: undefined };
-                        }
+                    if (item.image.data.length === 0) {
+                        return { ...item, image: undefined };
+                    }
 
-                        const base64Image = Buffer.from(item.image.data).toString('base64');
-                        return {
-                            ...item,
-                            image: `data:image/jpeg;base64,${base64Image}`,
-                        };
+                    const base64Image = Buffer.from(item.image.data).toString('base64');
+                    return {
+                        ...item,
+                        image: `data:image/jpeg;base64,${base64Image}`,
+                    };
                 });
 
                 setInfoProjet(parsedData);

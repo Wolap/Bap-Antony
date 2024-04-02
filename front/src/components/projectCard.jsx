@@ -37,12 +37,12 @@ const ProjectCard = (props) => {
                     'x-access-token': localStorage.getItem('token'),
                 },
             })
-                .then((response) => {
-                    if (!response.ok) {
-                        return alert('Error liking project');
-                    }
-                    setLikes([...likes, { userId }]);
-                })
+            .then((response) => {
+                if (!response.ok) {
+                    return alert('Error liking project');
+                }
+                setLikes([...likes, { userId }]);
+            })
         }
     }
 
