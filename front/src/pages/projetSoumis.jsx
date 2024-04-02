@@ -1,115 +1,83 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import {Buffer} from 'buffer';  
 import styles from "../styles/projetSoumis.module.css";
+import Navbar from "../components/navbar.jsx";
+import ProjectCard from "../components/projectCard.jsx";
 
 export default function Soumission() {
-    const [infoNom, setInfoNom] = useState({
-        nom: "Parc de la paix",
-    });
 
-    const [infoLieu, setInfoLieu] = useState({
-        lieu: "34 rue de la paix, 75000 Paris",
-    });
+    const [infoProjet, setInfoProjet] = useState([]);
+    // const [likesByProject, setLikesByProject] = useState({});
+    const [selectedCategory, setSelectedCategory] = useState('all');
+    const [searchTerm, setSearchTerm] = useState('');
 
-    const [infoDescription, setInfoDescription] = useState({
-        description:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec, mattis ac neque. Duis vulputate commodo.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec, mattis ac neque. Duis vulputate commodo.",
-    });
+    useEffect(() => {
+        // récup likes du localStorage au premier rendu
+        // setLikesByProject(JSON.parse(localStorage.getItem('likesByProject') ?? '{}'));
+    }, []);
 
-    const [infoBudget, setInfoBudget] = useState({
-        budget: "3499-4999 €",
-    });
+    useEffect(() => {
+        console.log('infoProjet', infoProjet);
+    }, [infoProjet]);
 
-    const [infoCatgorie, setInfoCategorie] = useState({
-        categorie: "Environnement",
-    });
+    useEffect(() => {
+        fetch("http://localhost:3000/soumissions")
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }   
+                return response.json();
+            })
+            .then((payload) => {
+                const parsedData = payload.map((item) => {
+                        if (item.image.data.length === 0) {
+                            return { ...item, image: undefined };
+                        }
+
+                        const base64Image = Buffer.from(item.image.data).toString('base64');
+                        return {
+                            ...item,
+                            image: `data:image/jpeg;base64,${base64Image}`,
+                        };
+                });
+
+                setInfoProjet(parsedData);
+            })
+            .catch((error) => {
+                console.error('Error fetching data:', error);
+            });
+    }, []);
+
+    const handleCategoryChange = (e) => {
+        setSelectedCategory(e.target.value);
+    };
+
+    const handleSearchChange = (e) => {
+        setSearchTerm(e.target.value);
+    };
 
     return (
-        <div>
-            <h1 className={styles.title}>Projet Soumis </h1>
-            <div className={styles.flex}>
-                <div className={styles.card}>
-                    <img
-                        className={styles.image}
-                        src="../assets/exemple.png"
-                        alt=""
-                    />
-                    <h2 className={styles.titleProject}> {infoNom.nom} </h2>
-                    <h3 className={styles.lieu}> {infoLieu.lieu} </h3>
-                    <p className={styles.description}>
-                        {infoDescription.description}
-                    </p>
-                    <h3 className={styles.budget}>
-                        Budget : {infoBudget.budget}
-                    </h3>
-                    <p className={styles.categorie}>
-                        Catégorie : {infoCatgorie.categorie}
-                    </p>
-                </div>
-                <div className={styles.card}>
-                    <img
-                        className={styles.image}
-                        src="../assets/exemple.png"
-                        alt=""
-                    />
-                    <h2 className={styles.titleProject}> {infoNom.nom} </h2>
-                    <h3 className={styles.lieu}> {infoLieu.lieu} </h3>
-                    <p className={styles.description}>
-                        {infoDescription.description}
-                    </p>
-                    <h3 className={styles.budget}> {infoBudget.budget} </h3>
-                    <p className={styles.categorie}>
-                        Catégorie : {infoCatgorie.categorie}
-                    </p>
-                </div>
-                <div className={styles.card}>
-                    <img
-                        className={styles.image}
-                        src="../assets/exemple.png"
-                        alt=""
-                    />
-                    <h2 className={styles.titleProject}> {infoNom.nom} </h2>
-                    <h3 className={styles.lieu}> {infoLieu.lieu} </h3>
-                    <p className={styles.description}>
-                        {infoDescription.description}
-                    </p>
-                    <h3 className={styles.budget}> {infoBudget.budget} </h3>
-                    <p className={styles.categorie}>
-                        Catégorie : {infoCatgorie.categorie}
-                    </p>
-                </div>
-                <div className={styles.card}>
-                    <img
-                        className={styles.image}
-                        src="../assets/exemple.png"
-                        alt=""
-                    />
-                    <h2 className={styles.titleProject}> {infoNom.nom} </h2>
-                    <h3 className={styles.lieu}> {infoLieu.lieu} </h3>
-                    <p className={styles.description}>
-                        {infoDescription.description}
-                    </p>
-                    <h3 className={styles.budget}> {infoBudget.budget} </h3>
-                    <p className={styles.categorie}>
-                        Catégorie : {infoCatgorie.categorie}
-                    </p>
-                </div>
-                <div className={styles.card}>
-                    <img
-                        className={styles.image}
-                        src="../assets/exemple.png"
-                        alt=""
-                    />
-                    <h2 className={styles.titleProject}> {infoNom.nom} </h2>
-                    <h3 className={styles.lieu}> {infoLieu.lieu} </h3>
-                    <p className={styles.description}>
-                        {infoDescription.description}
-                    </p>
-                    <h3 className={styles.budget}> {infoBudget.budget} </h3>
-                    <p className={styles.categorie}>
-                        Catégorie : {infoCatgorie.categorie}
-                    </p>
+        <>
+            <Navbar/>
+            <div>
+                <h1 className={styles.title}>Projet Soumis </h1>
+                <input type="text" value={searchTerm} onChange={handleSearchChange} placeholder="Chercher" />
+                <select value={selectedCategory} onChange={handleCategoryChange}>
+                    <option value="Ecologie et environnement">Ecologie et environnement</option>
+                    <option value="Sport">Sport</option>
+                    <option value="Solidarité et inclusion">Solidarité et inclusion</option>
+                    <option value="Mobilité">Mobilité</option>
+                    <option value="Culture">Culture</option>
+                    <option value="Santé">Santé</option>
+                    <option value="Education">Education</option>
+                    <option value="Autre">Autre</option>
+                </select>
+                <div className={styles.flex}>
+                    {infoProjet.filter(item => (selectedCategory === 'all' || item.categorie === selectedCategory) && item.nomProjet.toLowerCase().includes(searchTerm.toLowerCase())).map((item, index) => (
+                        <ProjectCard key={index} item={item} />
+                    ))}
                 </div>
             </div>
-        </div>
+        </>
     );
 }

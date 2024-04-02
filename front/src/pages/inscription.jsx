@@ -1,104 +1,121 @@
 import { useState } from "react";
 import styles from "../styles/Inscription.module.css";
+import Navbar from "../components/navbar.jsx";
 
 export default function Inscription() {
-    const [infoPerso, setInfoPerso] = useState({
-        nom: "",
-        prenom: "",
-        email: "",
-        password: "",
-    });
+    
+
+    const [nom , setNom] = useState('');
+    const [prenom , setPrenom] = useState('');
+    const [age, setAge] = useState('');
+    const [mail , setMail] = useState('');
+    const [password , setPassword] = useState('');
+    const [errorMessage, setErrorMessage] = useState('');
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
+        fetch("http://localhost:3000/auth/signup", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({nom, prenom, age, mail, password}),
+        })
+        .then((res) => {
+            if (!res.ok) {
+                throw res;
+            }
+            return res.json();
+        })
+        .then((data) => console.log(data))
+        .catch((err) => {
+            err.json().then((errorMessage) => {
+                setErrorMessage(errorMessage.error);
+            });
+        });
+    };
 
     return (
-        <div className={styles.content}>
-            <div className={styles.inscription}>
-                <h2 className={styles.title}>Inscription</h2>
-                <form className={styles.formulaire}>
-                    <div>
-                        <label className={styles.nom}>Nom :</label>
-                        <input
-                            type="text"
-                            className={styles.input}
-                            placeholder="DUPONT"
-                            value={infoPerso.nom}
-                            onChange={(e) =>
-                                setInfoPerso({
-                                    ...infoPerso,
-                                    nom: e.target.value,
-                                })
-                            }
-                        />
-                    </div>
-                    <div>
-                        <label className={styles.prenom}>Prénom :</label>
-                        <input
-                            type="text"
-                            className={styles.input}
-                            placeholder="Jean"
-                            value={infoPerso.prenom}
-                            onChange={(e) =>
-                                setInfoPerso({
-                                    ...infoPerso,
-                                    prenom: e.target.value,
-                                })
-                            }
-                        />
-                    </div>
-                    <div>
-                        <label className={styles.age}>Age :</label>
-                        <input
-                            type="number"
-                            className={styles.input}
-                            placeholder="23"
-                            min="10"
-                            max="150"
-                            value={infoPerso.age}
-                        />
-                    </div>
-                    <div>
-                        <label>Email :</label>
-                        <input
-                            type="email"
-                            className={styles.input}
-                            placeholder="exemple@gmail.com"
-                            value={infoPerso.email}
-                            onChange={(e) =>
-                                setInfoPerso({
-                                    ...infoPerso,
-                                    email: e.target.value,
-                                })
-                            }
-                        />
-                    </div>
-                    <div>
-                        <label>Mot de passe :</label>
-                        <input
-                            type="password"
-                            className={styles.input}
-                            placeholder="********"
-                            value={infoPerso.password}
-                            onChange={(e) =>
-                                setInfoPerso({
-                                    ...infoPerso,
-                                    password: e.target.value,
-                                })
-                            }
-                        />
-                    </div>
-                    <button type="submit" className={styles.buttonInscrire}>
-                        Inscription
-                    </button>
-                    <button type="submit" className={styles.buttonConnexion}>
-                        Connexion
-                    </button>
-                </form>
+        <>
+            <Navbar />
+            <div className={styles.content}>
+                <div className={styles.inscription}>
+                    <h2 className={styles.title}>Inscription !</h2>
+                    <form className={styles.formulaire} onSubmit={handleSubmit}>
+                        <div>
+                            <label className={styles.nom}>Nom :</label>
+                            <input
+                                type="text"
+                                placeholder="DUPONT"
+                                className={styles.input}
+                                value={nom}
+                                onChange={(e) => setNom(e.target.value)}
+                                required
+                            />
+                        </div>
+                        <div>
+                            <label>Prénom :</label>
+                            <input
+                                type="text"
+                                placeholder="Jean"
+                                className={styles.input}
+                                value={prenom}
+                                onChange={(e) => setPrenom(e.target.value)}
+                                required
+                            />
+                        </div>
+                        <div>
+                            <label>Age :</label>
+                            <input
+                                type="text"
+                                placeholder="23"
+                                className={styles.input}
+                                value={age}
+                                onChange={(e) => setAge(e.target.value)}
+                                required
+                            />
+                            {errorMessage && <p>{errorMessage}</p>}
+                        </div>
+                        <div>
+                            <label>Email :</label>
+                            <input
+                                type="email"
+                                placeholder="exemple@gmail.com"
+                                className={styles.input}
+                                value={mail}
+                                onChange={(e) => setMail(e.target.value)}
+                                required
+                            />
+                            {errorMessage && <p>{errorMessage}</p>}
+                        </div>
+                        <div>
+                            <label>Mot de passe :</label>
+                            <input
+                                type="password"
+                                placeholder="********"
+                                className={styles.input}
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
+                                required
+                            />
+                        </div>
+                        <button type="submit" className={styles.buttonInscrire}>
+                            Inscription
+                        </button>
+                        <a> Vous connecter </a>
+                    </form>
+                </div>
+                <img
+                    className={styles.img}
+                    src="./src/assets/illustration_inscription.png"
+                    alt=""
+                />
+                <div className={styles.txt}>
+                    <h3 className={styles.subTitle}>Content de vous voir !</h3>
+                    <p>Lorem ipsum dolor sit amet.</p>
+                </div>
             </div>
-
-            <img
-                className={styles.img}
-                src="./src/assets/illustration_inscription.png"
-                alt=""
-            />
-        </div>
+        </>
     );
 }

@@ -1,10 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App.jsx";
-import ProjetSoumis from "./pages/projetSoumis.jsx";
-// import Form from './pages/form.jsx'
-import Inscription from "./pages/inscription.jsx";
-import Connexion from "./pages/connexion.jsx";
+import ProjetSoumis from "./pages/projetSoumis";
+import Form from "./pages/Form";
+import Inscription from "./pages/inscription";
+import Connexion from "./pages/connexion";
+import Profil from "./pages/profil";
+
 import "./index.module.css";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
@@ -20,13 +22,17 @@ const router = createBrowserRouter([
         element: <Root />,
     },
     {
-        path: "/projet-soumis",
-        element: <ProjetSoumis />,
+        path: "/projets-soumis",
+        element: <ProjetSoumis />, 
     },
-    // {
-    //     path: "/formulaire-soumission-projet",
-    //     element: <Form />,
-    // },
+    {
+        path: "/formulaire-soumission-projet",
+        element: <Form />,
+    },
+    {
+        path: "/profil",
+        element: <Profil />,
+    },
     {
         path: "/inscription",
         element: <Inscription />,
