@@ -6,7 +6,7 @@
     align-items: center;
     font-size: 14px;
     padding: 10px 20px;
-    border-top: #354BCF 1px solid;
+    border-top: #354BCF 2px solid;
 }
 
 ul {
@@ -21,12 +21,31 @@ ul {
     text-decoration: none;
 }
 
+.footerList a:hover {
+    color: #354BCF;
+    text-decoration: underline;
+}
+
 .socmed {
     color: #354BCF;
     display: flex;
     gap: 20px;
+    align-items: center;
 }
 
 .socmed img {
-    width: 30px;
+    width: 20px;
+}
+
+/* Responsive */
+
+@media (max-width: 800px) {
+    .footer {
+        flex-direction: column;
+    }
+
+    ul {
+        margin: 20px;
+        flex-wrap: wrap;
+    }
 }

@@ -8,14 +8,16 @@ const Footer = () => {
                 <li><a href="">Conditions générales</a></li>
                 <li><a href="">Politique de confidentialité</a></li>
                 <li><a href="">Politique de cookies</a></li>
-                <li><a href="">Standards d`accéssibilité</a></li>
+                <li><a href="">Standards d&apos;accéssibilité</a></li>
                 <li><a href="">Paramètre des cookies</a></li>
                 <li><a href="">Plan du site</a></li>
             </ul>
             <div className={styles.socmed}>
-                <a href=""><img src="/src/assets/insta.png" alt="" /></a>
-                <a href=""><img src="/src/assets/twitter.png" alt="" /></a>
-                <a href=""><img src="/src/assets/youtube.png" alt="" /></a>
+                <a href="https://www.instagram.com/antony.92160/"><img src="/src/assets/insta.png" alt="" /></a>
+                <a href="https://twitter.com/VilleAntony"><img src="/src/assets/twitter.png" alt="" /></a>
+                <a href="https://www.youtube.com/user/VilleAntony"><img src="/src/assets/youtube.png" alt="" /></a>
+                <a href="https://www.facebook.com/ville.antony/"><img src="/src/assets/fb.png" alt="" /></a>
+                <a href=""><img src="/src/assets/tiktok.png" alt="" /></a>
             </div>
         </div>
     )
