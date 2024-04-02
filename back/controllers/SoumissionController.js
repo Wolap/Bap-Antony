@@ -181,5 +181,18 @@ const dislikeSoumission = async (req, res) => {
     }
 }
 
+// get number of like 
+const getLikes = async (req, res) => {
+    const { id } = req.params;
+    try {
+        const likes = await prisma.like.findMany({
+            where: { soumissionProjetsId: parseInt(id) },
+        });
+        res.json(likes);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+}
 
-export { getSoumissions, getSoumission, createSoumission, updateSoumission, deleteSoumission, likeSoumission, dislikeSoumission };
+
+export { getSoumissions, getSoumission, createSoumission, updateSoumission, deleteSoumission, likeSoumission, dislikeSoumission, getLikes };

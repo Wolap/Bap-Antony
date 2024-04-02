@@ -28,6 +28,10 @@ const router = createBrowserRouter([
         element: <ProjetSoumis />,
     },
     {
+        path: "/projets-soumis/:id",
+        element: <ProjetSoumis />,
+    },
+    {
         path: "/formulaire-soumission-projet",
         element: <Form />,
     },

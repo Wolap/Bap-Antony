@@ -1,7 +1,9 @@
 /* eslint-disable react/prop-types */
-import styles from "../styles/projetSoumis.module.css";
+import styles from "../styles/projectCard.module.css";
 import defaultProjectImage from '../assets/bgForm.png';
 import { useState } from "react";
+
+import { Link } from "react-router-dom";
 
 const ProjectCard = (props) => {
     const { item } = props;
@@ -48,26 +50,30 @@ const ProjectCard = (props) => {
 
     return (
         <div className={styles.card}>
-            <img
-                className={styles.image}
-                src={item.image ?? defaultProjectImage}
-                alt=""
-            />
-            <h2 className={styles.titleProject}> {item.nomProjet} </h2>
-            <h3 className={styles.lieu}> {item.lieu} </h3>
-            <p className={styles.description}> {item.description} </p>
-            <h3 className={styles.budget}> Budget : {item.budget} </h3>
-            <p className={styles.categorie}> {item.categorie} </p>
-            <div>
-                <button
-                    className={styles.likeButton}
-                    onClick={userId ? handleLike : () => alert('You must be logged in to like a project')}
-                >
-                    Like
-                </button>
-                <span className={styles.likeCount}>
-                    {likes.length}
-                </span>
+            <div className={styles.containerImg}>
+                <img
+                    src={item.image ?? defaultProjectImage}
+                    alt=""
+                />
+            </div>
+            <div className={styles.containerTextCard}>
+                <div className={styles.container}>
+                    <Link to={`/pageprojet/${item.id}`} className={styles.titleProject}> 
+                        <h2> {item.nomProjet} </h2>
+                    </Link>
+                    <p className={styles.budget}> <span>Budget : {item.budget}</span> </p>
+                </div>
+                <p className={styles.description}> {item.description} </p>
+                <div className={styles.containerLike}>
+                    <button
+                        className={styles.buttonLike}
+                        onClick={userId ? handleLike : () => alert('You must be logged in to like a project')}
+                    > <img src="/src/assets/likeProjet.png" alt="" />
+                    </button>
+                    <span className={styles.likeCount}>
+                        {likes.length}
+                    </span>
+                </div>
             </div>
         </div>
     );
