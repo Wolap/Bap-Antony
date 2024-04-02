@@ -41,6 +41,7 @@ export default function PageProjet() {
             })
             .then((likes) => {
                 setLikes(likes);
+                console.log(likes);
             })
             .catch((error) => {
                 console.error("Error fetching data:", error);

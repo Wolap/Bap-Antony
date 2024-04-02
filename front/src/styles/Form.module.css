@@ -163,8 +163,13 @@ input::file-selector-button {
 /* Responsive */
 
 @media screen and (max-width: 800px) {
+
+    .heart {
+        display: none;
+    }
+
     .formcontainer {
-        padding: 100px 50px;
+        padding: 50px 0px;
     }
 
     .form {

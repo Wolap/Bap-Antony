@@ -112,9 +112,9 @@ function Form() {
                             <label htmlFor="nom">
                                 <span>Nom du projet</span>
                                 <input type="text" id="nom" name="nom" placeholder="Nom du projet" value={nomProjet} onChange={(e) => setNomProjet(e.target.value)} required/>
-                              </label>
-                              
+                            </label>
                         </div>
+                        
                         <div className={styles.formgroup}>
                             <label htmlFor="description">
                                 <span>Description du projet</span>

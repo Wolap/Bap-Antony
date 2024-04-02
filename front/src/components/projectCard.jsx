@@ -6,7 +6,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 
 const ProjectCard = (props) => {
-    const { item } = props;
+    const { item, updateLikes } = props;
     const [likes, setLikes] = useState(item.likes);
 
     const userId = localStorage.getItem('userId') ?? null;
@@ -14,7 +14,7 @@ const ProjectCard = (props) => {
     const handleLike = () => {
         // check if the user has already liked the project
         const hasLiked = likes.some((like) => like.userId == userId);
-        
+
         if (hasLiked) {
             // remove like
             fetch(`http://localhost:3000/soumissions/${item.id}/like`, {

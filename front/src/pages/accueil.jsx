@@ -33,9 +33,11 @@ const Accueil = () => {
 
                 // projets dans l'ordre décroissant des likes
                 parsedData.sort((a, b) => b.likes - a.likes);
+                console.log("mostLiked",parsedData.sort((a, b) => b.likes - a.likes));
 
                 // prendre les 3 premiers projets
                 const topThree = parsedData.slice(0, 3);
+                console.log("topThree",topThree);
 
                 setMostLiked(topThree);
             })
@@ -52,8 +54,8 @@ const Accueil = () => {
                         Vous aussi, décidez pour Anthony !
                     </h1>
                     <div className={styles.containerButton}>
-                            <a className={styles.buttonIdee} href="projets-soumis">Voir les idées</a>
-                            <a className={styles.buttonDecouvrir} href="faq">Je découvre</a>
+                        <a className={styles.buttonIdee} href="projets-soumis">Voir les idées</a>
+                        <a className={styles.buttonDecouvrir} href="faq">Je découvre</a>
                     </div>
                 </div>
             </div>
