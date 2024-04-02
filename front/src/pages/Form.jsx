@@ -52,8 +52,10 @@ function Form() {
                     });
                     const data = await response.json();
                     console.log(data);
+                    setMessage('Projet soumis avec succès');
                 } catch (error) {
                     console.error('Error:', error);
+                    setMessage('Erreur lors de la soumission du projet');
                 }
             };
         } else {
@@ -76,8 +78,10 @@ function Form() {
                 });
                 const data = await response.json();
                 console.log(data);
+                setMessage('Projet soumis avec succès');
             } catch (error) {
                 console.error('Error:', error);
+                setMessage('Erreur lors de la soumission du projet');
             }
         }
     }
@@ -88,10 +92,11 @@ function Form() {
         <Navbar/>
         <div className={styles.formcontainer}>
             <form onSubmit={handleSubmit}  className={styles.form}>
-                <img className={styles.heart} src="/src/assets/FormHearts.svg" alt="" />
+                <img id={styles.bottom} className={styles.heart} src="/src/assets/MainForm.svg" alt="" />
+                <img id={styles.top} className={styles.heart} src="/src/assets/MainHover.svg" alt="" />
                 <section className={styles.title}>
                     <span>1</span>
-                    <h2>Proposez un projet</h2>   
+                    <h2>Proposez un projet</h2>  
                 </section>
                 <div className={styles.formcard}>
                     <section>
@@ -126,7 +131,7 @@ function Form() {
                                     <option value="10000 - 50000€">10.000€ - 50.000€</option>
                                     <option value="50000 - 100000€">50.000€ - 100.000€</option>
                                     <option value="100000€ +">100.000€ +</option>
-                                    <option value="N/A">Je ne sais pas</option>
+                                    <option value="N/A">N/A</option>
                                 </select>
                             </label>
                         </div>
