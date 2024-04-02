@@ -85,19 +85,10 @@ export default function Soumission() {
                         Proposez nous vos projets
                     </h2>
                     <p className={styles.textSoumission}>
-                        Lorem ipsum dolor sit amet consectetur. Aliquam quis
-                        nisl volutpat sollicitudin egestas integer et egestas.
-                        Praesent ipsum facilisi facilisis odio ac. Nec eget nisl
-                        nunc mattis magna eu vel condimentum sit. Senectus massa
-                        nunc molestie at arcu ipsum. Nunc pretium elementum
-                        vitae tristique donec fermentum nulla vel et. Arcu
-                        faucibus tortor pellentesque arcu elementum. Semper
-                        commodo neque rutrum blandit scelerisque scelerisque at.
-                        Leo a pretium ultricies magnis
+                    Pour la 4ème édition du budget participatif antonien, 13 projets ont été élus. Découvrez-les dès maintenant ci-dessous !
+Cette année, une enveloppe de 600 000€ a été affectée au dispositif. Antony consacre 9,7€ par habitant au budget participatif, contre 6,5€ en moyenne en France. 13 projets ont été élus par les 1477 habitants qui ont participé au vote. Sur cette page, vous trouverez toutes les informations concernant la démarche : règlement, calendrier, projets proposés par les habitants et le suivi des réalisations.
                     </p>
-                    <button className={styles.buttonSoumission}>
-                        Je depose mon idée
-                    </button>
+                    <a className={styles.buttonSoumission} href="formulaire-soumission-projet">Je depose mon idée</a>
                 </div>
 
                 <img

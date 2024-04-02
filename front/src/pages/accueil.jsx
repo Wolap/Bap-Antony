@@ -3,8 +3,11 @@ import styles from '../styles/accueil.module.css'
 import { Buffer } from 'buffer'
 
 import ProjectCardAccueil from '../components/projectCardAccueil'
+import Footer from '../components/footer';
 
 const Accueil = () => {
+    const [categorie, setTheme] = useState('');
+    const [lieu, setLieu] = useState('');
     const [mostLiked, setMostLiked] = useState([]);
 
     useEffect(() => {
@@ -49,8 +52,8 @@ const Accueil = () => {
                         Vous aussi, décidez pour Anthony !
                     </h1>
                     <div className={styles.containerButton}>
-                            <a className={styles.buttonIdee} href="">Voir les idées</a>
-                            <a className={styles.buttonDecouvrir} href="">Je découvre</a>
+                            <a className={styles.buttonIdee} href="projets-soumis">Voir les idées</a>
+                            <a className={styles.buttonDecouvrir} href="faq">Je découvre</a>
                     </div>
                 </div>
             </div>
@@ -108,7 +111,7 @@ const Accueil = () => {
                     src="./src/assets/traitAccueil3.png"
                     alt=""
                 />
-                <a className={styles.bouttonVoirPlus} href="">Voir plus</a>
+                <a className={styles.bouttonVoirPlus} href="faq">Voir plus</a>
             </div>
             <section className={styles.contentIdee}>
                 <div className={styles.idee}>
@@ -117,22 +120,27 @@ const Accueil = () => {
                     </h2>
                     <div className={styles.selecteur}>
                         <div className={styles.ideeTheme}>
-                            <label>J`ai une idée pour</label>
-                            <select name="ideeTheme" id="choixTheme">
-                                <option value="base">
+                            <label>J&apos;ai une idée pour</label>
+                            <select name="ideeTheme" id="choixTheme" value={categorie} onChange={(e) => setTheme(e.target.value)}>
+                                <option value="Autre">
                                     Choisissez un thème
                                 </option>
-                                <option value="1">Culture</option>
-                                <option value="2">Sport</option>
-                                <option value="3">Environnement</option>
+                                <option value="Ecologie et environnement">Ecologie et environnement</option>
+                                <option value="Sport">Sport</option>
+                                <option value="Solidarité et inclusion">Solidarité et inclusion</option>
+                                <option value="Mobilité">Mobilité</option>
+                                <option value="Culture">Culture</option>
+                                <option value="Santé">Santé</option>
+                                <option value="Education">Education</option>
+                                <option value="Autre">Autre</option>
                             </select>
                         </div>
                         <div className={styles.ideeLieu}>
                             <label>Dans </label>
-                            <input type="text" placeholder="Indiquez le lieu" />
+                            <input type="text" placeholder="Indiquez le lieu" value={lieu} onChange={(e) => setLieu(e.target.value)} />
                         </div>
                     </div>
-                    <a href="">Je dépose mon idée</a>
+                    <a href={`formulaire-soumission-projet?categorie=${categorie}&lieu=${lieu}`}>Je dépose mon idée</a>
                     <img
                         src="./src/assets/illustrationAccueil_idee.png"
                         alt=""
@@ -151,7 +159,7 @@ const Accueil = () => {
                     </div>
                 </div>
 
-                <a className={styles.bouttonVoirProjets} href="">Voir tous les projets</a>
+                <a className={styles.bouttonVoirProjets} href="projets-soumis">Voir tous les projets</a>
 
             </section>
 
@@ -160,10 +168,10 @@ const Accueil = () => {
                 <div className={styles.discours}>
                     <p>
                         En incluant les habitants toujours davantage dans la vie
-                        locale, la Ville mobilise l’intelligence collective pour
+                        locale, la Ville mobilise l&apos;intelligence collective pour
                         répondre aux préoccupations de ses citoyens. Dans le
                         cadre du Budget Participatif de 2023, vous avez élu de
-                        nouveaux projets. Vous pourrez suivre l’avancement de
+                        nouveaux projets. Vous pourrez suivre l&apos;avancement de
                         leur réalisation dès cette année grâce à cette
                         plateforme.
                         <br />
@@ -175,8 +183,8 @@ const Accueil = () => {
                         effectué.
                         <br />
                         <br />
-                        Outil de dialogue et d’échange, cette plateforme vous
-                        permet de contribuer facilement à l’avenir de votre
+                        Outil de dialogue et d&apos;échange, cette plateforme vous
+                        permet de contribuer facilement à l&apos;avenir de votre
                         commune en proposant des projets ou en votant pour les
                         initiatives qui vous semblent les plus pertinentes. Elle
                         vous permet de vous exprimer, de manière sécurisée et
@@ -196,12 +204,9 @@ const Accueil = () => {
                     src="./src/assets/illustrationAccueil_tache3.png"
                     alt=""
                 />
-                <img
-                    className={styles.trait4}
-                    src="./src/assets/traitAccueil4.png"
-                    alt=""
-                />
+                
             </div>
+            <Footer />
         </>
     );
 };
