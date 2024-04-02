@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import styles from '../styles/accueil.module.css'
 import { Buffer } from 'buffer'
 
-import ProjectCard from '../components/projectCard';
+import ProjectCardAccueil from '../components/projectCardAccueil'
 
 const Accueil = () => {
     const [mostLiked, setMostLiked] = useState([]);
@@ -143,11 +143,10 @@ const Accueil = () => {
             <section className={styles.containerCards}>
                 <h2 className={styles.containerCardsTitle}>Les projet soumis </h2>
 
-                <div className={styles.container}>
-                    <h1>Projets les plus aimés</h1>
+                <div className={styles.containerLiked}>
                     <div className={styles.projects}>
                         {mostLiked.map((item) => (
-                            <ProjectCard key={item.id} item={item} />
+                            <ProjectCardAccueil key={item.id} item={item} />
                         ))}
                     </div>
                 </div>
