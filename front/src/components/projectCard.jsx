@@ -54,22 +54,22 @@ const ProjectCard = (props) => {
                     alt=""
                 />
             </div>
-            <div className={styles.containerCard}>
-                <h2 className={styles.titleProject}> {item.nomProjet} </h2>
-                <p className={styles.budget}> Budget : {item.budget} </p>
-            </div>
-            <p className={styles.description}> {item.description} </p>
-            <p className={styles.categorie}> {item.categorie} </p>
-            <div>
-                <button
-                    className={styles.likeButton}
-                    onClick={userId ? handleLike : () => alert('You must be logged in to like a project')}
-                >
-                    Like
-                </button>
-                <span className={styles.likeCount}>
-                    {likes.length}
-                </span>
+            <div className={styles.containerTextCard}>
+                <div className={styles.container}>
+                    <h2 className={styles.titleProject}> {item.nomProjet} </h2>
+                    <p className={styles.budget}> <span>Budget : {item.budget}</span> </p>
+                </div>
+                <p className={styles.description}> {item.description} </p>
+                <div className={styles.containerLike}>
+                    <button
+                        className={styles.buttonLike}
+                        onClick={userId ? handleLike : () => alert('You must be logged in to like a project')}
+                    > <img src="/src/assets/likeProjet.png" alt="" />
+                    </button>
+                    <span className={styles.likeCount}>
+                        {likes.length}
+                    </span>
+                </div>
             </div>
         </div>
     );

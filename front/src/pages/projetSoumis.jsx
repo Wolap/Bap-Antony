@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Buffer } from "buffer";  
 import styles from "../styles/projetSoumis.module.css";
 import Navbar from "../components/navbar.jsx";
+import Footer from "../components/footer.jsx"
 import ProjectCard from "../components/projectCard.jsx";
 
 export default function Soumission() {
@@ -141,6 +142,7 @@ export default function Soumission() {
                     ))}
                 </div>
             </div>
+            <Footer />
         </>
     );
 }
