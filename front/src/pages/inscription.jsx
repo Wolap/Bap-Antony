@@ -7,6 +7,7 @@ export default function Inscription() {
 
     const [nom , setNom] = useState('');
     const [prenom , setPrenom] = useState('');
+    const [age, setAge] = useState('');
     const [mail , setMail] = useState('');
     const [password , setPassword] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
@@ -19,7 +20,7 @@ export default function Inscription() {
             headers: {
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify({nom, prenom, mail, password}),
+            body: JSON.stringify({nom, prenom, age, mail, password}),
         })
         .then((res) => {
             if (!res.ok) {
@@ -61,6 +62,17 @@ export default function Inscription() {
                                 onChange={(e) => setPrenom(e.target.value)}
                                 required
                             />
+                        </div>
+                        <div>
+                            <label>Age :</label>
+                            <input
+                                type="text"
+                                className={styles.input}
+                                value={age}
+                                onChange={(e) => setAge(e.target.value)}
+                                required
+                            />
+                            {errorMessage && <p>{errorMessage}</p>}
                         </div>
                         <div>
                             <label>Email :</label>
