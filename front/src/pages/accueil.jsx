@@ -3,6 +3,7 @@ import styles from '../styles/accueil.module.css'
 import { Buffer } from 'buffer'
 
 import ProjectCardAccueil from '../components/projectCardAccueil'
+import Footer from '../components/footer';
 
 const Accueil = () => {
     const [categorie, setTheme] = useState('');
@@ -203,12 +204,9 @@ const Accueil = () => {
                     src="./src/assets/illustrationAccueil_tache3.png"
                     alt=""
                 />
-                <img
-                    className={styles.trait4}
-                    src="./src/assets/traitAccueil4.png"
-                    alt=""
-                />
+                
             </div>
+            <Footer />
         </>
     );
 };

@@ -275,7 +275,7 @@ h1 {
 
 .projects {
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
     gap: 20px;
     padding-inline: 100px;
@@ -331,6 +331,7 @@ h1 {
     padding-block: 30px;
     width: 90%;
     margin-inline: auto;
+    margin-bottom: 4em  ;
     background-color: #3f479a;
     color: white;
     border-radius: 10px;
