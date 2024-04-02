@@ -14,12 +14,14 @@ datasource db {
 }
 
 model User {
-  id       Int      @id @default(autoincrement())
-  nom      String
-  prenom   String
-  mail     String   @unique
-  password String
+  id                Int      @id @default(autoincrement())
+  nom               String
+  prenom            String
+  age               String
+  mail              String   @unique
+  password          String
   SoumissionProjets SoumissionProjets[]
+  likes             Like[]
 }
 
 model SoumissionProjets {
@@ -32,6 +34,7 @@ model SoumissionProjets {
   image          Bytes? @default("")
   user           User   @relation(fields: [userId], references: [id])
   userId         Int
+  likes          Like[]
 }
 
 model PrecedentProjets {
@@ -43,4 +46,12 @@ model PrecedentProjets {
   lieu           String
   status         Boolean
   image          Bytes
+}
+
+model Like {
+  id                  Int   @id @default(autoincrement())
+  user                User  @relation(fields: [userId], references: [id])
+  userId              Int
+  soumissionProjets   SoumissionProjets @relation(fields: [soumissionProjetsId], references: [id])
+  soumissionProjetsId Int
 }

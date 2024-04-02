@@ -5,6 +5,7 @@ import ProjetSoumis from "./pages/projetSoumis";
 import Form from "./pages/Form";
 import Inscription from "./pages/inscription";
 import Connexion from "./pages/connexion";
+import Profil from "./pages/profil";
 import PageProjet from "./pages/pageProjet";
 
 import "./index.module.css";
@@ -41,11 +42,10 @@ const router = createBrowserRouter([
         path: "/pageprojet/:id",
         element: <PageProjet />,
     },
-    // Exemple de route
-    // {
-    //   path: "/example",
-    //   element: <ExamplePage />,
-    // }
+    {
+        path: "/profil",
+        element: <Profil />,
+    }
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
