@@ -9,7 +9,6 @@ export default function PageProjet() {
     const [pageLink, setPageLink] = useState(window.location.href);
     const [soumission, setSoumission] = useState([]);
     const [likes, setLikes] = useState([]);
-    const userId = localStorage.getItem("userId") ?? null;
 
     let url = window.location.href;
     let id = new URL(url).pathname.split("/").pop(); 
@@ -29,42 +28,6 @@ export default function PageProjet() {
         const facebookShareUrl = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
         window.open(facebookShareUrl, "_blank");
     };
-
-    // udapte likes
-    // const handleLike = () => {
-    //     const hasLiked = likes.some((like) => like.userId == userId);
-
-    //     if (hasLiked) {
-    //         fetch(`http://localhost:3000/soumissions/${id}/like`, {
-    //             method: "DELETE",
-    //             headers: {
-    //                 "Content-Type": "application/json",
-    //                 "x-access-token": localStorage.getItem("token"),
-    //             },
-    //         })
-    //         .then((response) => {
-    //             if (!response.ok) {
-    //                 return alert("Error liking project");
-    //             }
-    //             setLikes(likes.filter((like) => like.userId != userId));
-    //         });
-    //     } else {
-    //         fetch(`http://localhost:3000/soumissions/${id}/like`, {
-    //             method: "POST",
-    //             headers: {
-    //                 "Content-Type": "application/json",
-    //                 "x-access-token": localStorage.getItem("token"),
-    //             },
-    //         })
-    //         .then((response) => {
-    //             if (!response.ok) {
-    //                 return alert("Error liking project");
-    //             }
-    //             setLikes([...likes, { userId }]);
-    //         });
-    //     }
-    // }
-
 
     // get the number of likes from a project
     useEffect(() => {
@@ -106,31 +69,6 @@ export default function PageProjet() {
                 console.error("Error fetching data:", error);
             });
     }, [id]);
-
-    // const getSoumission = async (id) => {
-    //     try {
-    //         const response = await fetch(
-    //             `http://localhost:3000/soumissions/${id}`
-    //         );
-    //         if (!response.ok) {
-    //             throw new Error("Network response was not ok");
-    //         }
-    //         const soumission = await response.json();
-    //         const base64Image = Buffer.from(soumission.image.data).toString(
-    //             "base64"
-    //         );
-    //         setSoumission({
-    //             ...soumission,
-    //             image: `data:image/jpeg;base64,${base64Image}`,
-    //         });
-    //     } catch (error) {
-    //         console.error("Error fetching data:", error);
-    //     }
-    // };
-
-    // useEffect(() => {
-    //     getSoumission(id);
-    // }, [id]);
 
     return (
         <>
