@@ -1,6 +1,6 @@
 .containerTitle {
     margin-bottom: 50px;
-    background-image: url("./src/assets/bg.png");
+    background-image: url("/src/assets/bg.png");
     height: 70vh;
     background-position: center;
     background-repeat: no-repeat;

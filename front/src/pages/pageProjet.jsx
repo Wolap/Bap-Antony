@@ -134,7 +134,6 @@ export default function PageProjet() {
                         </div>
 
                         <div>
-                            <div className={styles.publier}>Publié par :</div>
                             <div className={styles.statut}>Statut : En cours de vote</div>
                             <div className={styles.theme}>
                                 Catégorie : {soumission.categorie}

@@ -59,7 +59,7 @@ const Navbar = () => {
         <div className={styles.navbar}>
             <div className={styles.btnHome}>
                 <Link to="/">
-                    <img src="./src/assets/Logo.svg" alt="" />
+                    <img src="/src/assets/Logo.svg" alt="" />
                 </Link>
             </div>
 
@@ -129,7 +129,7 @@ const Navbar = () => {
                     </div>
                     <img
                         className={styles.image}
-                        src="./src/assets/illustration_burger.png"
+                        src="/src/assets/illustration_burger.png"
                         alt=""
                     />
                 </div>
