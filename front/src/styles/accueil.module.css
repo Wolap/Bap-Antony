@@ -348,12 +348,16 @@ h1 {
     font-family: "fredokaBold", sans-serif;
 }
 
-.discours p {
-    margin-block: 70px;
-}
+
 
 .discours img {
     margin-left: 50px;
+}
+
+.imgMaire {
+    display: flex;
+    flex-direction: column;
+    text-align: end;
 }
 
 .taches3 {

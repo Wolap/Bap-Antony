@@ -195,7 +195,11 @@ const Accueil = () => {
                         <br />
                         <span> À vos idées !</span>
                     </p>
-                    <img src="./src/assets/portrait.png" alt="" />
+                    <div className={styles.imgMaire}>
+                        <img src="./src/assets/portrait.png" alt="" />
+                        <h3>Jean-Yves Sénant</h3>
+                        <p>Maire d&apos;Antony</p>
+                    </div>
                 </div>
             </section>
 
@@ -205,7 +209,6 @@ const Accueil = () => {
                     src="./src/assets/illustrationAccueil_tache3.png"
                     alt=""
                 />
-                
             </div>
             <Footer />
         </>
