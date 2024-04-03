@@ -34,7 +34,7 @@ export default function Inscription() {
                 setSuccessMessage("Inscription réussie !");
                 setTimeout(() => {
                     setSuccessMessage("");
-                    window.location.href = "/";
+                    window.location.href = "/connexion";
                 }, 2000);
             })
             .catch((err) => {
