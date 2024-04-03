@@ -71,7 +71,7 @@ const ProjectCard = (props) => {
                     > <img src="/src/assets/likeProjet.png" alt="" />
                     </button>
                     <span className={styles.likeCount}>
-                        {item.likes.length}
+                        {likes.length}
                     </span>
                 </div>
             </div>

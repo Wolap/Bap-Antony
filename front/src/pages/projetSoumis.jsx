@@ -37,7 +37,7 @@ export default function Soumission() {
                     };
                 });
 
-                setInfoProjet(parsedData);
+                setInfoProjet(parsedData.reverse());
             })
             .catch((error) => {
                 console.error('Error fetching data:', error);
