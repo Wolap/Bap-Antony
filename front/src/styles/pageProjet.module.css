@@ -55,7 +55,6 @@
     border-radius: 10px;
 }
 
-
 .projetLieu {
     color: #354bcf;
     font-size: 20px;
@@ -81,11 +80,11 @@
 
     @media screen and (max-width: 768px) {
         width: 100%;
-        margin-top: -50%;
+        margin-top: -10%;
     }
 
     @media screen and (max-width: 600px) {
-        margin-top: -30%;
+        /* margin-top: -30%; */
     }
 }
 
