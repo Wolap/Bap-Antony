@@ -34,6 +34,10 @@
     margin-bottom: 0.2em ;
 }
 
+.container h2:hover {
+    color: #3c4bc6;
+}
+
 .container p span {
     color: #013370;
 }

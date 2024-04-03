@@ -143,7 +143,7 @@ Cette année, une enveloppe de 600 000€ a été affectée au dispositif. Anton
                 </div>
 
                 <div className={styles.flex}>
-                    {infoProjet.filter(item => (selectedCategory === 'all' || item.categorie === selectedCategory || item.like  ) && item.nomProjet.toLowerCase().includes(searchTerm.toLowerCase())).map((item, index) => (
+                    {infoProjet.filter(item => (selectedCategory === 'all' || item.categorie === selectedCategory ) && item.nomProjet.toLowerCase().includes(searchTerm.toLowerCase())).map((item, index) => (
                         <ProjectCard key={index} item={item} />
                     ))}
                 </div>
